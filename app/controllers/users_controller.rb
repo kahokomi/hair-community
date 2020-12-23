@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def show
     @user = User.where(id: params[:id])
   end
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def following
+    #@user = User.find(params[:id])
   end
 
   def followers

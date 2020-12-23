@@ -54,12 +54,12 @@
       <%= f.label :year, "美容師歴" %><br />
       <%= f.number_field :year, autofocus: true, autocomplete: "year" %>
     </div>
-  
+
     <div class="field">
       <%= f.label :hair_salon, "所属美容室" %><br />
       <%= f.text_field :hair_salon, autofocus: true, autocomplete: "hair_salon" %>
     </div>
-    
+
   <% else %>
     <div class="field">
       <%= f.label :job, "職業" %><br />
@@ -71,7 +71,7 @@
     <%= f.label :introduction, "自己紹介" %><br />
     <%= f.text_field :introduction, autofocus: true, autocomplete: "introduction" %>
   </div>
-  
+
   <% if user.is_hairdresser? == true %>
     <div class="field">
       <%= f.label :image, "過去の作品" %><br />
