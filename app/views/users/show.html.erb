@@ -1,0 +1,58 @@
+  <% @user.each do |user| %>
+
+    @<%= user.username %>
+
+    <div>
+      <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
+    </div>
+
+    <table>
+      <tbody>
+        <tr>
+          <th>氏名</th>
+          <td><%= user.name %></td>
+        </tr>
+        <tr>
+          <th>性別</th>
+          <td><%= user.sex %></td>
+        </tr>
+        <tr>
+          <th>年齢</th>
+          <td><%= user.age %></td>
+        </tr>
+        
+        <% if user.is_hairdresser? == true %>
+          <tr>
+            <th>美容師歴</th>
+            <td><%= user.year %></td>
+          </tr>
+          <tr>
+            <th>所属美容室</th>
+            <td><%= user.hair_salon %></td>
+          </tr>
+          <tr>
+            <th>役職</th>
+            <td><%= user.position %></td>
+          </tr>
+          
+        <% else %>
+          <tr>
+            <th>職業</th>
+            <td><%= user.job %></td>
+          </tr>
+        <% end %>
+        
+        <tr>
+          <th>自己紹介</th>
+          <td><%= user.introduction %></td>
+        </tr>
+        
+        <% if user.is_hairdresser? == true %>
+          <tr>
+            <th>過去の作品</th>
+            <td><%= attachment_image_tag user, :image, fill, 100, 100 %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
