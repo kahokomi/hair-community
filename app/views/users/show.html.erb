@@ -6,6 +6,23 @@
       <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
     </div>
 
+    <% if user != current_user %>
+      <% if current_user.following?(user) %>
+        <%= link_to "フォロー解除", user_relationship_path(user), method: :delete %>
+      <% else %>
+        <%= link_to "フォロー", user_relationships_path(user), method: :post %>
+      <% end %>
+    <% end %>
+
+
+    <div>
+      フォロー数<%= user.following_ids.count %>
+    </div>
+
+    <div>
+      フォロワー数<%= user.follower_ids.count %>
+    </div>
+
     <table>
       <tbody>
         <tr>
@@ -20,7 +37,7 @@
           <th>年齢</th>
           <td><%= user.age %></td>
         </tr>
-        
+
         <% if user.is_hairdresser? == true %>
           <tr>
             <th>美容師歴</th>
@@ -34,19 +51,19 @@
             <th>役職</th>
             <td><%= user.position %></td>
           </tr>
-          
+
         <% else %>
           <tr>
             <th>職業</th>
             <td><%= user.job %></td>
           </tr>
         <% end %>
-        
+
         <tr>
           <th>自己紹介</th>
           <td><%= user.introduction %></td>
         </tr>
-        
+
         <% if user.is_hairdresser? == true %>
           <tr>
             <th>過去の作品</th>
