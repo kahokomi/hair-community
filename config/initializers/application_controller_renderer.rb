@@ -6,3 +6,4 @@
 #     https: false
 #   )
 # end
+Refile.secret_key = ENV['SECRET_KEY']
