@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-8">
+    <% @tweets.each do |tweet| %>
+      <div>
+        <%= attachment_image_tag tweet.user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
+        <%= tweet.user.username %>
+      </div>
+      <div>
+        <%= attachment_image_tag tweet, :image, size: "100x100"  %>
+      </div>
+      <div>
+        <%= tweet.body %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-2">
+    <%= form_with model: @tweet, url: tweets_path, local: true do |f| %>
+      <%= f.attachment_field :image %>
+      <%= f.text_area :body %>
+      <%= f.submit "投稿" %>
+    <% end %>
+  </div>
+</div>
