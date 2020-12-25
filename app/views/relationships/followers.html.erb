@@ -1,0 +1,15 @@
+<h1>フォロワー一覧</h1>
+
+<div>
+  <% @users.each do |user| %>
+    
+    <% if user.is_hairdresser == false %>
+      フォロワー(一般ユーザー)
+      <%= user.username %>
+    <% elsif user.is_hairdresser == true %>
+      フォロワー(美容師)
+      <%= user.username %>
+    <% end %>
+    
+  <% end %>
+</div>
