@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def show
     @user = User.where(id: params[:id])
   end
@@ -13,12 +14,6 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user)
     end
-  end
-
-  def following
-  end
-
-  def followers
   end
 
   private
