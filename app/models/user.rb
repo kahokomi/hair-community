@@ -8,7 +8,7 @@ class User < ApplicationRecord
   attachment :icon_image
 
   has_many :tweets, dependent: :destroy
-  has_many :favorites, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :blogs, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :follower
   has_many :passive_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :following
+
+  #フォロー機能のメソッド
 
   def following?(user)
     self.followings.include?(user)
@@ -27,5 +29,11 @@ class User < ApplicationRecord
 
   def unfollow(user_id)
     self.active_relationships.find_by(follower_id: user_id).destroy
+  end
+
+  #いいね機能のメソッド
+
+  def already_liked?(tweet)
+    self.likes.exists?(tweet_id: tweet.id)
   end
 end
