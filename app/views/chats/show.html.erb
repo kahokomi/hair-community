@@ -1,0 +1,28 @@
+<div class="row">
+  <!-- チャット画面の表示 -->
+  <%= @user.username %>さんとのチャットルーム
+</div>
+
+  <% @chats.each do |chat| %>
+
+      <% if chat.user == @user %>
+        <div class="text-left">
+            <%= chat.content %>
+        </div>
+      <% else%>
+        <div class="text-right">
+            <%= chat.content %>
+        </div>
+
+      <% end %>
+
+  <% end %>
+   </div>
+
+
+<%= form_with model: @chat do |f| %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field :room_id %>
+  <%= f.submit %>
+<% end %>
+</div>
