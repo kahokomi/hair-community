@@ -12,13 +12,14 @@ class User < ApplicationRecord
   has_many :blogs, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
+  
+  #フォロー機能のアソシエーション
   has_many :active_relationships, foreign_key: "following_id", class_name: "Relationship",  dependent: :destroy
   has_many :followings, through: :active_relationships, source: :follower
   has_many :passive_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :following
 
   #フォロー機能のメソッド
-
   def following?(user)
     self.followings.include?(user)
   end
@@ -32,7 +33,6 @@ class User < ApplicationRecord
   end
 
   #いいね機能のメソッド
-
   def already_liked?(tweet)
     self.likes.exists?(tweet_id: tweet.id)
   end

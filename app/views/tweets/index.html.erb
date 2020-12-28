@@ -1,43 +1,11 @@
-<div class="row">
-  <div class="col-md-8">
-    <% @tweets.each do |tweet| %>
-    <div class="row">
-      <div class="col-md-9 offset-2">
-        <%= attachment_image_tag tweet.user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
-        <%= link_to tweet.user.username, user_path(tweet.user) %>
-        <%= render "relationships/follow", user: tweet.user %>
-      </div>
-      <div class="col-md-9 offset-2">
-        <%= attachment_image_tag tweet, :image, size: "100x100"  %>
-      </div>
-      <div class="col-md-6 offset-4 text-break">
-        <%= tweet.body %>
-      </div>
-      <div class="col-md-3 offset-3">
-        <%= tweet.likes.count %>気になる
-      </div>
-        <div class="col-md-4 offset-1">
-        <% if user_signed_in? && tweet.user_id == current_user.id %>
-            <%= link_to "つぶやきを消す", tweet_path(tweet), method: :delete %>
-        <% else %>
-          <% if current_user.already_liked?(tweet) %>
-            <%= link_to "いいね消す", tweet_likes_path(tweet), method: :delete %>
-          <% else %>
-            <%= link_to "いいねする", tweet_likes_path(tweet), method: :post %>
-          <% end %>
-
-          <%= link_to "はなしてみる", chat_path(tweet.user_id) %>
-        <% end %>
-        </div>
-    </div>
-    <% end %>
-  </div>
-
-  <div class="col-md-2">
-    <%= form_with model: @tweet, url: tweets_path, local: true do |f| %>
-      <%= f.attachment_field :image %>
-      <%= f.text_area :body %>
-      <%= f.submit "投稿" %>
-    <% end %>
-  </div>
+<div class="row new_tweet">
+  <%= render "tweets/list", tweets: @tweets %>
 </div>
+
+<div class="row">
+  <button type="button" class="btn btn-primary offset-8" data-toggle="modal" data-target="#exampleModal">
+    つぶやく
+  </button>
+</div>
+
+<%= render "tweets/form", tweet: @tweet %>
