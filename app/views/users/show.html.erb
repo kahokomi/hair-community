@@ -5,16 +5,14 @@
     <%= attachment_image_tag @user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
   </div>
 
-  <!-- フォローに関連する記述 -->
+<%# フォローに関連する記述 %>
+<div id="follow_<%= @user.id %>">
   <%= render "relationships/follow", user: @user %>
-  <div>
-    フォロー数<%= link_to @user.following_ids.count, user_followings_path(@user) %>
+  <div class="count">
+    <%= render "relationships/link", user: @user %>
   </div>
-
-  <div>
-    フォロワー数<%= link_to @user.follower_ids.count, user_followers_path(@user) %>
-  </div>
-
+</div>
+<%# ユーザーのプロフィール %>
   <table>
     <tbody>
       <tr>
@@ -64,3 +62,7 @@
       <% end %>
     </tbody>
   </table>
+
+<% if @user == current_user %>
+  <%= link_to "編集する", edit_user_path(@user), class: "btn btn-primary" %>
+<% end %>

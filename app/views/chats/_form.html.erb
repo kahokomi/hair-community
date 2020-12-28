@@ -1,0 +1,11 @@
+<% chats.each do |chat| %>
+    <% if chat.user == user %>
+      <div class="text-left">
+          <%= chat.content %>
+      </div>
+    <% else%>
+      <div class="text-right">
+          <%= chat.content %>
+      </div>
+    <% end %>
+<% end %>

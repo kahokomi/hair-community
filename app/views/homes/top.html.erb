@@ -1,1 +1,13 @@
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+<div class="container d-flex justify-content-center h-100">
+  <div class="row align-items-center h-100">
+    <div class="card px-5 py-5">
+      <div class="card-body">
+       <h1>へあこみゅ</h1>
+        <div>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
