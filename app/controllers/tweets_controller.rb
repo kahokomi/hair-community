@@ -8,10 +8,10 @@ class TweetsController < ApplicationController
   end
 
   def create
+    @tweets = Tweet.all.order(created_at: :desc)
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
     @tweet.save
-    redirect_back(fallback_location: root_path)
   end
 
   def destroy
