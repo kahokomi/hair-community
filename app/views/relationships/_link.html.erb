@@ -1,0 +1,8 @@
+<div class="col-md-5 text-center userpage-follow-link">
+  <%= link_to user.following_ids.count, user_follows_path(user) %>
+  <p>フォロー</p>
+</div>
+<div class="col-md-5 text-center userpage-follow-link">
+  <%= link_to user.follower_ids.count, user_follows_path(user) %>
+  <p>フォロワー</p>
+</div>
