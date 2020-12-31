@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :username, uniqueness: true
+
   attachment :image
   attachment :icon_image
 
@@ -12,7 +14,7 @@ class User < ApplicationRecord
   has_many :blogs, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
-  
+
   #フォロー機能のアソシエーション
   has_many :active_relationships, foreign_key: "following_id", class_name: "Relationship",  dependent: :destroy
   has_many :followings, through: :active_relationships, source: :follower
