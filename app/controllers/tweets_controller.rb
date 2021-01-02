@@ -2,13 +2,18 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tweets = Tweet.all.order(created_at: :desc)
-   #@users = User.where(id: @tweets.user_id)
+    @hairdressers = User.where(is_hairdresser: true)
+    @hd_tweets = Tweet.where(user_id: @hairdressers).order(created_at: :desc)
+    @users = User.where(is_hairdresser: false)
+    @user_tweets = Tweet.where(user_id: @users).order(created_at: :desc)
     @tweet = Tweet.new
   end
 
   def create
-    @tweets = Tweet.all.order(created_at: :desc)
+    @hairdressers = User.where(is_hairdresser: true)
+    @hd_tweets = Tweet.where(user_id: @hairdressers).order(created_at: :desc)
+    @users = User.where(is_hairdresser: false)
+    @user_tweets = Tweet.where(user_id: @users).order(created_at: :desc)
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
     @tweet.save

@@ -1,3 +1,2 @@
-$(".new_tweet").html("<%= j(render "tweets/list", tweets: @tweets) %>");
 $("#follow_<%= @user.id %>").html("<%= j(render "relationships/follow", user: @user) %>");
-$("#follow_<%= @user.id %> .count").html("<%= j(render "relationships/link", user: @user) %>");
+$(".follow-count").html("<%= j(render "relationships/link", user: @user) %>");

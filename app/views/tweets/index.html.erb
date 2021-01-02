@@ -1,11 +1,37 @@
-<div class="row new_tweet">
-  <%= render "tweets/list", tweets: @tweets %>
-</div>
+<div class="container-fluid pb-5 tweet-index">
+  <div class="new_tweet wrap">
+    <%# 美容師と一般ユーザでつぶやき表示分け %>
+    <ul id="tab-menu">
+      <li><a href="#tab1" class="active">美容師</a></li>
+      <li><a href="#tab2" class="">一般ユーザ</a></li>
+    </ul>
 
-<div class="row">
-  <button type="button" class="btn btn-primary offset-8" data-toggle="modal" data-target="#exampleModal">
-    つぶやく
-  </button>
-</div>
+    <%# 美容師側 %>
+    <div id="tab-contents">
+      <div id="tab1" class="tab">
+        <% @hd_tweets.each do |tweet| %>
+        <div id="tweet_<%= tweet.id %>" class="tweet">
+          <%= render "tweets/content", tweet: tweet %>
+        </div>
+        <% end %>
+      </div>
 
-<%= render "tweets/form", tweet: @tweet %>
+    <%# 一般ユーザ側 %>
+      <div id="tab2" class="tab">
+        <% @user_tweets.each do |tweet| %>
+        <div id="tweet_<%= tweet.id %>" class="tweet">
+          <%= render "tweets/content", tweet: tweet %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <button type="button" class="tweet-btn btn btn-info offset-8" data-toggle="modal" data-target="#exampleModal">
+      <i class="far fa-edit pl-2"></i>
+    </button>
+  </div>
+
+  <%= render "tweets/form", tweet: @tweet %>
+</div>
