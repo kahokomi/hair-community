@@ -18,10 +18,21 @@ html {
 }
 
 body {
+  margin: 0;
+  padding: 0;
   height: 100%;
   font-family: YakuHanJP, Jost, "Gothic Medium BBB", YuGothic, '游ゴシック', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   font-weight: 500;
   font-style: normal;
+}
+
+body > .container-fluid {
+  height: auto;
+}
+
+.container-fluid {
+  height: 100%;
+  min-height: 100%;
 }
 
 img {
@@ -34,12 +45,21 @@ img {
 
 .nav-header {
   background-color: #7290AC;
-  height: 5em;
+  height: 6em;
+}
+
+.navbar-brand {
+  background-image: url(logo.png);
+  background-size: contain;
+  height: 100px;
+  width: 100px;
 }
 
 .footer {
   background-color: #7290AC;
   height: 5em;
+  position: relative;
+  bottom: 0;
 }
 
 /* タブ機能 */
