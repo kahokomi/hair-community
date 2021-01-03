@@ -1,0 +1,70 @@
+<div class="container-fluid d-flex">
+  <div class="row mx-auto justify-content-center align-items-center w-75 pt-4">
+    <h2 class="pb-4">プロフィール編集</h2>
+    <%= form_with model: @user, local: true, class: "col-md-12" do |f| %>
+
+      <div class="row field">
+        <%= f.label :icon_image, "アイコン画像", class: "control-label col-md-3" %>
+        <%= f.attachment_field :icon_image %>
+      </div>
+
+      <div class="row field">
+        <%= f.label :username, "ユーザーID", class: "control-label col-md-3" %>
+        <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control col-md-8" %>
+      </div>
+
+      <div class="row field">
+        <%= f.label :name, "氏名", class: "control-label col-md-3" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control col-md-8" %>
+      </div>
+
+      <div class="row field">
+        <%= f.label :sex, "性別", class: "control-label col-md-3" %>
+        <%= f.text_field :sex, autofocus: true, autocomplete: "sex", class: "form-control col-md-8" %>
+      </div>
+
+      <div class="row field">
+        <%= f.label :age, "年齢", class: "control-label col-md-3" %>
+        <%= f.number_field :age, autofocus: true, autocomplete: "age", class: "form-control col-md-8" %>
+      </div>
+
+      <% if @user.is_hairdresser? == true %>
+        <div class="row field">
+          <%= f.label :year, "美容師歴", class: "control-label col-md-3" %>
+          <%= f.number_field :year, autofocus: true, autocomplete: "year", class: "form-control col-md-8" %>
+        </div>
+
+        <div class="row field">
+          <%= f.label :hair_salon, "所属美容室", class: "control-label col-md-3" %>
+          <%= f.text_field :hair_salon, autofocus: true, autocomplete: "hair_salon", class: "form-control col-md-8" %>
+        </div>
+
+        <div class="row field">
+          <%= f.label :position, "役職", class: "control-label col-md-3" %>
+          <%= f.text_field :position, autofocus: true, autocomplete: "position", class: "form-control col-md-8" %>
+        </div>
+
+      <% else %>
+        <div class="row field">
+          <%= f.label :job, "職業", class: "control-label col-md-3" %>
+          <%= f.text_field :job, autofocus: true, autocomplete: "job", class: "form-control col-md-8" %>
+        </div>
+      <% end %>
+
+      <div class="row field">
+        <%= f.label :introduction, "自己紹介", class: "control-label col-md-3" %>
+        <%= f.text_field :introduction, autofocus: true, autocomplete: "introduction", class: "form-control col-md-8" %>
+      </div>
+
+      <% if @user.is_hairdresser? == true %>
+        <div class="row field">
+          <%= f.label :image, "過去の作品", class: "control-label col-md-3" %>
+          <%= f.attachment_field :image%>
+        </div>
+      <% end %>
+
+      <%= f.submit "編集", class: "btn btn-primary col-md-3 offset-9" %>
+
+    <% end %>
+  </div>
+</div>

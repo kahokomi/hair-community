@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light nav-header">
+  <a class="navbar-brand" href="#">へあこみゅロゴ</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "Home", tweets_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <%= link_to "マイページ", user_path(current_user), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+      </li>
+    </ul>
+    <%= search_form_for @search, url: users_path do |f| %>
+      <%= f.label :username, "名前" %>
+      <%= f.search_field :username_cont %>
+
+    　<%= f.radio_button :is_hairdresser_eq, '', {:checked => true} %>指定なし
+      <%= f.radio_button :is_hairdresser_eq, true %>美容師
+      <%= f.radio_button :is_hairdresser_eq, false %>一般ユーザー
+      <%= f.submit '検索', :class => "btn btn-default" %>
+    <% end %>
+  </div>
+</nav>
