@@ -12,3 +12,233 @@
  *
  */
 @import "bootstrap";
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: YakuHanJP, Jost, "Gothic Medium BBB", YuGothic, '游ゴシック', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+img {
+  object-fit: contain;
+}
+
+.top {
+  background: linear-gradient(180deg, #7290AC 0%, #7290AC 50%, #F8ECC4 50%, #F8ECC4 100%);
+}
+
+.nav-header {
+  background-color: #7290AC;
+  height: 5em;
+}
+
+.footer {
+  background-color: #7290AC;
+  height: 5em;
+}
+
+/* タブ機能 */
+.wrap {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#tab-menu {
+  display: flex;
+  margin: 0 auto 0 -40px;
+}
+
+#tab-menu li {
+  list-style-type: none;
+  width: 25%;
+}
+
+#tab-menu li a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  padding: 20px;
+  text-align: center;
+  background: #FFF;
+  border: 1px solid #000;
+  border-bottom: none;
+}
+
+#tab-menu .active {
+  background: #CC8573;
+  color: #000;
+}
+
+#tab-contents {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#tab-contents .tab {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #000;
+}
+
+#tab-contents p {
+  color: #000;
+  line-height: 2.5;
+}
+
+/* つぶやき関連 */
+
+.tweet {
+  border-bottom: 1px solid #000;
+  background-color: #F6E8C1;
+}
+
+.tweet:nth-child(odd) {
+  background-color: #fdf5e6;
+}
+
+.tweet:last-child {
+  border-bottom: none;
+}
+
+.tweet-btn {
+  position: fixed;
+  bottom: 8%;
+  right: 5%;
+  width: 150px;
+  height: 150px;
+  font-size: 4em;
+  border-radius: 50% 50%;
+}
+
+.tweet-text {
+  margin-bottom: 0.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #000;
+}
+
+.tweet-index {
+  background-color: #BDE6A7;
+  padding-top: 50px;
+}
+
+/*マイページ関連*/
+
+.userpage {
+  background-color: #fff;
+}
+
+.userpage-name {
+  font-size: 2.5em;
+}
+
+.userpage-follow-link {
+  font-size: 2em;
+}
+
+.userpage-follow-link p{
+  font-size: 0.3em;
+}
+
+.userpage-table-color {
+  border-color: #000;
+}
+
+.row.field {
+  margin-bottom: 1em;
+}
+
+.userpage-edit-btn {
+  position: fixed;
+  bottom: 8%;
+  right: 5%;
+  width: 100px;
+  height: 100px;
+  font-size: 2em;
+  line-height: 2.5em;
+  border-radius: 50% 50%;
+}
+
+/*フォロー一覧*/
+
+.follows-index {
+  background-color: #F1DBCF;
+  padding-top: 50px;
+}
+
+.follows-index-tab {
+  font-size: 0.9em;
+}
+
+.follows-index-user {
+  border-bottom: 1px solid #000;
+  font-size: 1.5em;
+}
+
+.follows-index-user:last-child {
+  border-bottom: none;
+}
+
+
+/* 吹き出し本体 */
+.balloon1{
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #0888ff;
+}
+/* 画像 - 絶対配置で左上に配置 */
+.balloon1 .icon{
+  position: absolute;
+  left: -110px;
+}
+/* 三角アイコン */
+.balloon1::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  left: -15px;
+  top: 20px;
+  border-right: 15px solid #0888ff;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+/* 吹き出し本体 */
+.balloon2{
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #0888ff;
+}
+/* 画像 - 絶対配置で右上に配置 */
+.balloon2 .icon{
+  position: absolute;
+  right: -110px;
+}
+/* 三角アイコン */
+.balloon2::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  right: -15px;
+  top: 20px;
+  border-left: 15px solid #0888ff;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.search-username {
+  font-size: 2em;
+}

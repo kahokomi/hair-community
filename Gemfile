@@ -64,7 +64,16 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'rubocop-airbnb'
 gem 'ransack'
+gem 'rails-i18n', '~> 5.1'
+gem 'dotenv-rails'
+gem 'kaminari'
+
+group :production do
+  gem 'mysql2'
+end
