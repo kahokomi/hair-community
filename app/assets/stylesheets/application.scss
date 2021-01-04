@@ -31,7 +31,7 @@ body {
   letter-spacing: 3px;
   font-weight: 500;
   font-style: normal;
-  background-image: image-url(background.jpeg);
+  background-image: image-url("background.jpeg");
   background-size: cover;
   background-color:rgba(255,255,255,0.6);
   background-blend-mode:lighten;
@@ -57,7 +57,7 @@ img {
 }
 
 .top-logo {
-  background-image: image-url(logo.png);
+  background-image: image-url("logo.png");
   background-size: contain;
   height: 300px;
   width: 300px;
@@ -69,7 +69,7 @@ img {
 }
 
 .hairdresser-image {
-  background-image: image-url(hairdresser.png);
+  background-image: image-url("hairdresser.png");
   background-size: contain;
   background-repeat: no-repeat;
   height: 230px;
@@ -77,7 +77,7 @@ img {
 }
 
 .hairdresser-scissor {
-  background-image: image-url(scissor.png);
+  background-image: image-url("scissor.png");
   background-size: contain;
   background-repeat: no-repeat;
   height: 130px;
@@ -85,7 +85,7 @@ img {
 }
 
 .about-user {
-  background-image: image-url(about-user.png);
+  background-image: image-url("about-user.png");
   background-size: contain;
   background-repeat: no-repeat;
   height: 230px;
@@ -100,7 +100,7 @@ img {
 }
 
 .navbar-brand {
-  background-image: image-url(logo.png);
+  background-image: image-url("logo.png");
   background-size: contain;
   font-family: 'Abel', 'Waonjoyo';
   height: 100px;
