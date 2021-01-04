@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       :introduction,
       :image,
       :position,
-      :icon_image)
+      :icon_image
+    )
   end
-
 end

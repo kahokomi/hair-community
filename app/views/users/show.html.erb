@@ -6,58 +6,57 @@
       <span id="follow_<%= @user.id %>"><%= render "relationships/follow", user: @user %></span>
     </div>
 
+  <%# フォローに関連する記述 %>
     <div class="row col-md-4 follow-count">
       <%= render "relationships/link", user: @user %>
     </div>
 
-  <%# フォローに関連する記述 %>
-
   <%# ユーザーのプロフィール %>
     <table class="table">
       <tbody>
-        <tr>
-          <th>氏名</th>
-          <td><%= @user.name %></td>
+        <tr class="row">
+          <th class="col-md-2">氏名</th>
+          <td class="col-md-10"><%= @user.name %></td>
         </tr>
-        <tr>
-          <th>性別</th>
-          <td><%= @user.sex %></td>
+        <tr class="row">
+          <th class="col-md-2">性別</th>
+          <td class="col-md-10"><%= @user.sex %></td>
         </tr>
-        <tr>
-          <th>年齢</th>
-          <td><%= @user.age %></td>
+        <tr class="row">
+          <th class="col-md-2">年齢</th>
+          <td class="col-md-10"><%= @user.age %></td>
         </tr>
 
         <% if @user.is_hairdresser? == true %>
-          <tr>
-            <th>美容師歴</th>
-            <td><%= @user.year %></td>
+          <tr class="row">
+            <th class="col-md-2">美容師歴</th>
+            <td class="col-md-10"><%= @user.year %></td>
           </tr>
-          <tr>
-            <th>所属美容室</th>
-            <td><%= @user.hair_salon %></td>
+          <tr class="row">
+            <th class="col-md-2">所属美容室</th>
+            <td class="col-md-10"><%= @user.hair_salon %></td>
           </tr>
-          <tr>
-            <th>役職</th>
-            <td><%= @user.position %></td>
+          <tr class="row">
+            <th class="col-md-2">役職</th>
+            <td class="col-md-10"><%= @user.position %></td>
           </tr>
 
         <% else %>
-          <tr>
-            <th>職業</th>
-            <td><%= @user.job %></td>
+          <tr class="row">
+            <th class="col-md-2">職業</th>
+            <td class="col-md-10"><%= @user.job %></td>
           </tr>
         <% end %>
 
-        <tr>
-          <th>自己紹介</th>
-          <td><%= @user.introduction %></td>
+        <tr class="row">
+          <th class="col-md-2">自己紹介</th>
+          <td class="col-md-10"><%= @user.introduction %></td>
         </tr>
 
         <% if @user.is_hairdresser? == true %>
-          <tr>
-            <th>過去の作品</th>
-            <td><%= attachment_image_tag @user, :image, size: "550x500" %></td>
+          <tr class="row">
+            <th class="col-md-2">過去の作品</th>
+            <td><%= attachment_image_tag @user, :image, size: "450x400" %></td>
           </tr>
         <% end %>
       </tbody>

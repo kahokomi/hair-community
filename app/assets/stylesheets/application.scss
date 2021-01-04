@@ -12,6 +12,12 @@
  *
  */
 @import "bootstrap";
+@font-face {
+  font-family: 'Waonjoyo';
+  src: font-url('WaonJoyo-R.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 html {
   height: 100%;
@@ -21,7 +27,8 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: YakuHanJP, Jost, "Gothic Medium BBB", YuGothic, '游ゴシック', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-family: 'Abel', 'M PLUS Rounded 1c';
+  letter-spacing: 3px;
   font-weight: 500;
   font-style: normal;
 }
@@ -39,22 +46,67 @@ img {
   object-fit: contain;
 }
 
+/* topページ*/
 .top {
   background: linear-gradient(180deg, #7290AC 0%, #7290AC 50%, #F8ECC4 50%, #F8ECC4 100%);
 }
 
+.top-logo {
+  background-image: url(logo.png);
+  background-size: contain;
+  height: 300px;
+  width: 300px;
+}
+
+/*Aboutページ*/
+.about-page {
+  background-color: #F8ECC4;
+}
+
+.far.fa-handshake {
+  font-size: 100px;
+}
+
+.hairdresser-image {
+  background-image: url(hairdresser.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 230px;
+  width: 230px;
+}
+
+.hairdresser-scissor {
+  background-image: url(scissor.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 130px;
+  width: 130px;
+}
+
+.about-user {
+  background-image: url(about-user.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 230px;
+  width: 230px;
+}
+
+/* ヘッダー */
 .nav-header {
   background-color: #7290AC;
   height: 6em;
+  font-family: 'Abel', 'Waonjoyo';
 }
 
 .navbar-brand {
   background-image: url(logo.png);
   background-size: contain;
+  font-family: 'Abel', 'Waonjoyo';
   height: 100px;
   width: 100px;
 }
 
+/* フッター */
 .footer {
   background-color: #7290AC;
   height: 5em;
@@ -116,6 +168,10 @@ img {
 .tweet {
   border-bottom: 1px solid #000;
   background-color: #F6E8C1;
+}
+
+.tweet-font {
+  font-size: 2em;
 }
 
 .tweet:nth-child(odd) {
@@ -261,4 +317,8 @@ img {
 
 .search-username {
   font-size: 2em;
+}
+
+.search-hairdresser {
+  font-size: 15px;
 }
