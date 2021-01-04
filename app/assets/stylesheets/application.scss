@@ -31,6 +31,11 @@ body {
   letter-spacing: 3px;
   font-weight: 500;
   font-style: normal;
+  background-image: url(background.jpeg);
+  background-size: cover;
+  background-color:rgba(255,255,255,0.6);
+  background-blend-mode:lighten;
+  background-attachment: fixed;
 }
 
 body > .container-fluid {
@@ -59,10 +64,6 @@ img {
 }
 
 /*Aboutページ*/
-.about-page {
-  background-color: #F8ECC4;
-}
-
 .far.fa-handshake {
   font-size: 100px;
 }
@@ -104,6 +105,9 @@ img {
   font-family: 'Abel', 'Waonjoyo';
   height: 100px;
   width: 100px;
+}
+
+.header-name {
 }
 
 /* フッター */
@@ -164,6 +168,10 @@ img {
 }
 
 /* つぶやき関連 */
+.tweet-image {
+  object-fit: contain;
+  background-color:rgba(0,0,0,0.6);
+}
 
 .tweet {
   border-bottom: 1px solid #000;
@@ -199,15 +207,10 @@ img {
 }
 
 .tweet-index {
-  background-color: #BDE6A7;
   padding-top: 50px;
 }
 
 /*マイページ関連*/
-
-.userpage {
-  background-color: #fff;
-}
 
 .userpage-name {
   font-size: 2.5em;
@@ -243,7 +246,6 @@ img {
 /*フォロー一覧*/
 
 .follows-index {
-  background-color: #F1DBCF;
   padding-top: 50px;
 }
 

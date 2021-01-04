@@ -15,6 +15,7 @@
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
+        <li class="nav-item mt-2 ml-2">ようこそ、<%= current_user.username %>さん</li>
       </ul>
       <%= search_form_for @search, url: users_path do |f| %>
         <%= f.label :username, "名前" %>

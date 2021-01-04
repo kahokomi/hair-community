@@ -3,7 +3,12 @@
     <div class="col-md-8 userpage-name">
       <%= attachment_image_tag @user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
       <%= @user.username %>
-      <span id="follow_<%= @user.id %>"><%= render "relationships/follow", user: @user %></span>
+      <span id="follow_<%= @user.id %>">
+        <%= render "relationships/follow", user: @user %>
+        <% unless @user == current_user %>
+          <%= link_to "はなしてみる", chat_path(@user), class: "btn btn-success" %>
+        <% end %>
+      </span>
     </div>
 
   <%# フォローに関連する記述 %>
