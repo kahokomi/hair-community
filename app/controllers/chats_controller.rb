@@ -1,4 +1,6 @@
 class ChatsController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @user = User.find(params[:id])
     rooms = current_user.user_rooms.pluck(:room_id)
@@ -22,6 +24,7 @@ class ChatsController < ApplicationController
   end
 
   private
+
   def chat_params
     params.require(:chat).permit(:content, :room_id)
   end

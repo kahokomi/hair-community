@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :set_search
 
   def set_search
-  @search = User.ransack(params[:q])
-  @search_users = @search.result(distinct: true)
+    @search = User.ransack(params[:q])
+    @search_users = @search.result(distinct: true)
   end
 
   def after_sign_in_path_for(resource)

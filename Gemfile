@@ -49,6 +49,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-byebug'
+  gem 'rubocop-airbnb'
+  gem 'bullet'
 end
 
 group :test do
@@ -68,7 +70,6 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
-gem 'rubocop-airbnb'
 gem 'ransack'
 gem 'rails-i18n', '~> 5.1'
 gem 'dotenv-rails'
