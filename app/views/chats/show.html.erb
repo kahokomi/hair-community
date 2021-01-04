@@ -15,20 +15,7 @@
 
   <%# チャット画面の表示 %>
     <div class="chat-message offset-3 col-md-6">
-      <% @chats.each do |chat| %>
-        <div class="row">
-          <% if chat.user == current_user %>
-            <div class="text-right col-md-6 offset-6 mb-2">
-              <p class="balloon2"><%= chat.content %></p>
-            </div>
-          <% else%>
-            <div class="text-left balloon1 col-md-6 offset-6 mb-2">
-              <%= attachment_image_tag chat.user, :icon_image, fallback: "no_icon.png", size: "50x50", class: "icon" %>
-              <p><%= chat.content %></p>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+      <%= render "chats/form", chats: @chats %>
     </div>
   </div>
 </div>
