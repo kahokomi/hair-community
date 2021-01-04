@@ -9,7 +9,7 @@
     <%# 美容師側 %>
     <div id="tab-contents">
       <div id="tab1" class="tab">
-        <% @hd_tweets.each do |tweet| %>
+        <% @hd_tweets.includes([:user]).each do |tweet| %>
         <div id="tweet_<%= tweet.id %>" class="tweet">
           <%= render "tweets/content", tweet: tweet %>
         </div>
@@ -18,7 +18,7 @@
 
     <%# 一般ユーザ側 %>
       <div id="tab2" class="tab">
-        <% @user_tweets.each do |tweet| %>
+        <% @user_tweets.includes([:user]).each do |tweet| %>
         <div id="tweet_<%= tweet.id %>" class="tweet">
           <%= render "tweets/content", tweet: tweet %>
         </div>
