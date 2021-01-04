@@ -1,2 +1,2 @@
-$('.chat-message').append('<div class="text-right col-md-6 offset-6 mb-2"><p class="balloon2"><%= @chat.content %></p></div>');
+$('.chat-message').append("<%= escape_javascript render(:partial => 'chats/chat', :locals => { :chat => @chat }) %>");
 $('.form-control').val('');
