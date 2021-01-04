@@ -12,34 +12,110 @@
  *
  */
 @import "bootstrap";
+@font-face {
+  font-family: 'Waonjoyo';
+  src: font-url('WaonJoyo-R.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 html {
   height: 100%;
 }
 
 body {
+  margin: 0;
+  padding: 0;
   height: 100%;
-  font-family: YakuHanJP, Jost, "Gothic Medium BBB", YuGothic, '游ゴシック', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-family: 'Abel', 'M PLUS Rounded 1c';
+  letter-spacing: 3px;
   font-weight: 500;
   font-style: normal;
+  background-image: url(background.jpeg);
+  background-size: cover;
+  background-color:rgba(255,255,255,0.6);
+  background-blend-mode:lighten;
+  background-attachment: fixed;
+}
+
+body > .container-fluid {
+  height: auto;
+}
+
+.container-fluid {
+  height: 100%;
+  min-height: 100%;
 }
 
 img {
   object-fit: contain;
 }
 
+/* topページ*/
 .top {
   background: linear-gradient(180deg, #7290AC 0%, #7290AC 50%, #F8ECC4 50%, #F8ECC4 100%);
 }
 
-.nav-header {
-  background-color: #7290AC;
-  height: 5em;
+.top-logo {
+  background-image: url(logo.png);
+  background-size: contain;
+  height: 300px;
+  width: 300px;
 }
 
+/*Aboutページ*/
+.far.fa-handshake {
+  font-size: 100px;
+}
+
+.hairdresser-image {
+  background-image: url(hairdresser.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 230px;
+  width: 230px;
+}
+
+.hairdresser-scissor {
+  background-image: url(scissor.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 130px;
+  width: 130px;
+}
+
+.about-user {
+  background-image: url(about-user.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 230px;
+  width: 230px;
+}
+
+/* ヘッダー */
+.nav-header {
+  background-color: #7290AC;
+  height: 6em;
+  font-family: 'Abel', 'Waonjoyo';
+}
+
+.navbar-brand {
+  background-image: url(logo.png);
+  background-size: contain;
+  font-family: 'Abel', 'Waonjoyo';
+  height: 100px;
+  width: 100px;
+}
+
+.header-name {
+}
+
+/* フッター */
 .footer {
   background-color: #7290AC;
   height: 5em;
+  position: relative;
+  bottom: 0;
 }
 
 /* タブ機能 */
@@ -92,10 +168,18 @@ img {
 }
 
 /* つぶやき関連 */
+.tweet-image {
+  object-fit: contain;
+  background-color:rgba(0,0,0,0.6);
+}
 
 .tweet {
   border-bottom: 1px solid #000;
   background-color: #F6E8C1;
+}
+
+.tweet-font {
+  font-size: 2em;
 }
 
 .tweet:nth-child(odd) {
@@ -123,15 +207,10 @@ img {
 }
 
 .tweet-index {
-  background-color: #BDE6A7;
   padding-top: 50px;
 }
 
 /*マイページ関連*/
-
-.userpage {
-  background-color: #fff;
-}
 
 .userpage-name {
   font-size: 2.5em;
@@ -167,7 +246,6 @@ img {
 /*フォロー一覧*/
 
 .follows-index {
-  background-color: #F1DBCF;
   padding-top: 50px;
 }
 
@@ -241,4 +319,8 @@ img {
 
 .search-username {
   font-size: 2em;
+}
+
+.search-hairdresser {
+  font-size: 15px;
 }

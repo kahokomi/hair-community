@@ -1,4 +1,5 @@
 class RelationshipsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     current_user.follow(params[:user_id])
@@ -19,5 +20,4 @@ class RelationshipsController < ApplicationController
     @follower_hds = user.followers.where(is_hairdresser: true)
     @follower_users = user.followers.where(is_hairdresser: false)
   end
-
 end

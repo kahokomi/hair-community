@@ -20,5 +20,4 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
     get tweets_destroy_url
     assert_response :success
   end
-
 end

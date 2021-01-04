@@ -6,6 +6,18 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.string :username, null: false, unique: true
+      t.boolean :is_hairdresser, null: false, default: false
+      t.string :name
+      t.string :sex
+      t.integer :age
+      t.integer :year
+      t.string :hair_salon
+      t.string :job
+      t.string :position
+      t.text :introduction
+      t.string :image_id
+      t.string :icon_image_id
 
       ## Recoverable
       t.string   :reset_password_token
