@@ -51,6 +51,11 @@ group :development do
   gem 'pry-byebug'
   gem 'rubocop-airbnb'
   gem 'bullet'
+  # capistrano
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
 end
 
 group :test do
