@@ -1,5 +1,5 @@
 <div class="container-fluid pb-5 tweet-index">
-  <div class="new_tweet wrap">
+  <div class="wrap">
     <%# 美容師と一般ユーザでつぶやき表示分け %>
     <ul id="tab-menu">
       <li><a href="#tab1" class="active">美容師</a></li>
@@ -7,8 +7,13 @@
     </ul>
 
     <%# 美容師側 %>
-    <div class="tweet-contents">
-      <%= render 'tweets/contents', hd_tweets: @hd_tweets, user_tweets: @user_tweets %>
+    <div id="tab-contents">
+      <div id="tab1" class="tab">
+        <%= render 'tweets/hd_contents', hd_tweets: @hd_tweets %>
+      </div>
+      <div id="tab2" class="tab">
+        <%= render 'tweets/user_contents', user_tweets: @user_tweets %>
+      </div>
     </div>
   </div>
 
