@@ -1,4 +1,5 @@
 $("textarea").val("");
 $("input").val("");
 $('#exampleModal').modal('hide');
-$(".tweet-contents").html("<%= j(render 'tweets/contents', hd_tweets: @hd_tweets, user_tweets: @user_tweets) %>");
+$("#tab1").html("<%= j(render 'tweets/hd_contents', hd_tweets: @hd_tweets) %>");
+$("#tab2").html("<%= j(render 'tweets/user_contents', user_tweets: @user_tweets) %>");
