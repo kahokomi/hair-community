@@ -8,6 +8,10 @@ ja:
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
         username: "ユーザーネーム"
+        year: "美容師歴"
+        position: "役職"
+        job: "職業"
+        age: "年齢"
     models:
       user: "ユーザ"
   devise:

@@ -1,0 +1,6 @@
+<%# 美容師側 %>
+<% hd_tweets.includes([:user]).each do |tweet| %>
+<div id="tweet_<%= tweet.id %>" class="tweet">
+  <%= render "tweets/content", tweet: tweet %>
+</div>
+<% end %>
