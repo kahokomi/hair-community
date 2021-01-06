@@ -22,17 +22,9 @@
       <i class="fas fa-heart offset-2"></i><%= tweet.likes.count %>
       <%= link_to "つぶやきを消す", tweet_path(tweet), method: :delete, remote: true, class: "btn btn-danger offset-6" %>
     <% else %>
-      <% if current_user.already_liked?(tweet) %>
-        <%= link_to tweet_likes_path(tweet), method: :delete, remote: true, class: "offset-2" do %>
-          <i class="fas fa-heart"></i>
-        <% end %>
-        <%= tweet.likes.count %>
-      <% else %>
-        <%= link_to tweet_likes_path(tweet), method: :post, remote: true, class: "offset-2" do %>
-          <i class="far fa-heart"></i>
-        <% end %>
-        <%= tweet.likes.count %>
-      <% end %>
+      <div id="likes_<%= tweet.id %>" class="offset-2">
+        <%= render "likes/btn", tweet: tweet %>
+      </div>
       <%= link_to "はなしてみる", chat_path(tweet.user_id), class: "btn btn-success offset-6" %>
     <% end %>
   </div>
