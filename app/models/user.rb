@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :username, uniqueness: true, presence: true
-  validates :year, presence: true, on: :update, if: :hairdresser_valid?
+  validates :year, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 100 }, on: :update, if: :hairdresser_valid?
   validates :position, presence: true, on: :update, if: :hairdresser_valid?
   validates :job, presence: true, on: :update, unless: :hairdresser_valid?
   validates :age, allow_nil: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 100 }, on: :update
