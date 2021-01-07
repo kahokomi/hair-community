@@ -3,13 +3,19 @@ class RelationshipsController < ApplicationController
 
   def create
     current_user.follow(params[:user_id])
-    @tweets = Tweet.all.order(created_at: :desc)
+    @hairdressers = User.where(is_hairdresser: true)
+    @hd_tweets = Tweet.where(user_id: @hairdressers).order(created_at: :desc)
+    @users = User.where(is_hairdresser: false)
+    @user_tweets = Tweet.where(user_id: @users).order(created_at: :desc)
     @user = User.find(params[:user_id])
   end
 
   def destroy
     current_user.unfollow(params[:user_id])
-    @tweets = Tweet.all.order(created_at: :desc)
+    @hairdressers = User.where(is_hairdresser: true)
+    @hd_tweets = Tweet.where(user_id: @hairdressers).order(created_at: :desc)
+    @users = User.where(is_hairdresser: false)
+    @user_tweets = Tweet.where(user_id: @users).order(created_at: :desc)
     @user = User.find(params[:user_id])
   end
 
