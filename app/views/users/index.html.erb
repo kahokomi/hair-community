@@ -9,8 +9,20 @@
       <h3 class="mx-auto mt-5">検索キーワードがありません。</h3>
     <% elsif @search_users.present? %>
       <table class="table col-md-10 offset-2">
-        <% @search_users.each do |user| %>
-          <tbody>
+        <thead>
+          <tr class="row">
+            <th class="col-md-1">
+            </th>
+            <th class="col-md-4">
+              ユーザーID
+            </th>
+            <th class="col-md-5">
+              自己紹介
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @search_users.each do |user| %>
             <tr class="row">
                 <td class="col-md-1">
                 <%= link_to user_path(user) do%>
@@ -29,8 +41,8 @@
                   <%= user.introduction %>
                 </td>
             </tr>
-          </tbody>
-        <% end %>
+          <% end %>
+        </tbody>
       </table>
     <% else %>
       <h3 class="mx-auto mt-5">検索結果がありません</h3>
