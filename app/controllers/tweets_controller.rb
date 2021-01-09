@@ -16,7 +16,10 @@ class TweetsController < ApplicationController
     @user_tweets = Tweet.where(user_id: @users).order(created_at: :desc)
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
-    @tweet.save
+    unless @tweet.save
+      render 'error'
+    end
+    
   end
 
   def destroy

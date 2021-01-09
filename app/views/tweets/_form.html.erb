@@ -9,6 +9,9 @@
       </div>
       <%= form_with model: tweet, url: tweets_path do |f| %>
       <div class="modal-body">
+        <div id="tweets_error">
+          <%= render 'tweets/errors', tweet: @tweet %>
+        </div>
         <div class="form_group">
           <%= f.label :image, "画像を添付", class: "control-label" %>
           <%= f.attachment_field :image %>
