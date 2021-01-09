@@ -4,16 +4,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :username, uniqueness: true, presence: true
+  # 半角英数の指定
+  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
+
+  validates :username, uniqueness: true, presence: true, format: { with: VALID_PASSWORD_REGEX }
+  validates :name, presence: true, on: :update
+  validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }, on: :create
   validates :year, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 100 }, on: :update, if: :hairdresser_valid?
   validates :position, presence: true, on: :update, if: :hairdresser_valid?
+  validates :hair_salon, presence: true, on: :update, if: :hairdresser_valid?
   validates :job, presence: true, on: :update, unless: :hairdresser_valid?
   validates :age, allow_nil: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 100 }, on: :update
 
   def hairdresser_valid?
     self.is_hairdresser == true
   end
-
 
   attachment :image
   attachment :icon_image
