@@ -8,8 +8,10 @@ ja:
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
         username: "ユーザーネーム"
+        name: "氏名"
         year: "美容師歴"
         position: "役職"
+        hair_salon: "所属"
         job: "職業"
         age: "年齢"
     models:
