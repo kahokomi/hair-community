@@ -18,5 +18,7 @@
 //= require turbolinks
 //= require_tree .
 
-
-
+/*global $*/
+$(function(){
+  setTimeout("$('.time-limit').fadeOut('slow')", 1500)
+})

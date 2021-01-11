@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # 半角英数の指定
   VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
 
-  validates :username, uniqueness: true, presence: true, format: { with: VALID_PASSWORD_REGEX }
+  validates :username, uniqueness: true, presence: true, format: { with: VALID_PASSWORD_REGEX }, length: { minimum: 6, maximum: 20 }
   validates :name, presence: true, on: :update
   validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }, on: :create
   validates :year, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 100 }, on: :update, if: :hairdresser_valid?
@@ -16,6 +16,7 @@ class User < ApplicationRecord
   validates :job, presence: true, on: :update, unless: :hairdresser_valid?
   validates :age, allow_nil: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 100 }, on: :update
 
+  # 美容師の時のみバリデーションをかける
   def hairdresser_valid?
     self.is_hairdresser == true
   end
@@ -25,7 +26,6 @@ class User < ApplicationRecord
 
   has_many :tweets, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :blogs, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
 
@@ -34,6 +34,13 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :follower
   has_many :passive_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :following
+
+  #ゲストログイン
+  def self.guest
+    find_or_create_by!(username: 'guesthairdresser', email: 'guest@example.com', is_hairdresser: true) do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 
   # フォロー機能のメソッド
   def following?(user)

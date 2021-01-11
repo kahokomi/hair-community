@@ -10,12 +10,12 @@
           <%= link_to "About", about_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "マイページ", user_path(current_user), class: "nav-link" %>
+          <%= link_to "Mypage", user_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
-        <li class="nav-item mt-2 ml-2">ようこそ、<%= current_user.username %>さん</li>
+        <li class="nav-item mt-2 ml-5">ようこそ、<%= current_user.username %>さん</li>
       </ul>
       <%= search_form_for @search, url: users_path do |f| %>
         <%= f.label :username, "名前" %>
