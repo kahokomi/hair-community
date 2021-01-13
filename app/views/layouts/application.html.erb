@@ -16,17 +16,23 @@
 
 
   <body>
+    <header>
       <% if user_signed_in? %>
         <%= render "layouts/header" %>
       <% end %>
+    </header>
+    <!--<main class="d-flex justify-content-center align-items-center">-->
       <div class="row bg bg-success time-limit">
         <% if flash[:notice] %>
           <p class="mx-auto pt-3"><%= flash[:notice] %></p>
         <% end %>
       </div>
       <%= yield %>
+    <!--</main>-->
+    <footer>
       <% if user_signed_in? %>
         <%= render "layouts/footer" %>
       <% end %>
+    </footer>
   </body>
 </html>

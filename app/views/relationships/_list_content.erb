@@ -1,0 +1,12 @@
+<% if follows.exists? %>
+  <% follows.each do |user| %>
+    <div class="follows-index-user py-4">
+      <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
+      <%= link_to user.username, user_path(user), class: "pl-3" %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="follows-index-nouser py-4 text-center">
+    ユーザーがいません
+  </div>
+<% end %>
