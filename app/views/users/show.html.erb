@@ -1,6 +1,6 @@
 <div class="container-fluid">
-  <div class="row col-md-8 offset-2 mt-3 userpage">
-    <div class="col-md-8 userpage-name">
+  <div class="row col-md-10 mx-auto mt-3 userpage">
+    <div class="col-md-8 offset-1 userpage-name">
       <%= attachment_image_tag @user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
       <%= @user.username %>
       <span id="follow_<%= @user.id %>">
@@ -14,12 +14,12 @@
     </div>
 
   <%# フォローに関連する記述 %>
-    <div class="row col-md-4 follow-count">
+    <div class="row col-md-3 follow-count">
       <%= render "relationships/link", user: @user %>
     </div>
 
   <%# ユーザーのプロフィール %>
-    <table class="table">
+    <table class="table col-md-9 mx-auto">
       <tbody>
         <tr class="row">
           <th class="col-md-2">氏名</th>
