@@ -5,38 +5,42 @@ require 'rails_helper'
 describe 'トップページに関するテスト' do
   let!(:user) { create(:user) }
   let!(:hairdresser) { create(:hairdresser) }
+
   describe '新規登録に関するテスト' do
     before do
       visit new_user_registration_path
     end
+
     context '新規登録成功' do
       it '新規登録後、ツイート一覧画面へ遷移' do
-        fill_in 'user[email]', with: Faker::Internet.email
-        fill_in 'user[username]', with: Faker::Lorem.characters(number: 6)
+        fill_in 'user[email]', with: 'test@testmail'
+        fill_in 'user[username]', with: 'Testuser3'
         choose '一般の方'
-        fill_in 'user[password]', with: 'password'
-        fill_in 'user[password_confirmation]', with: 'password'
+        fill_in 'user[password]', with: 'Password1'
+        fill_in 'user[password_confirmation]', with: 'Password1'
         click_button '新規登録'
         expect(current_path).to eq tweets_path
+        expect(page).to have_content "アカウントを登録しました"
       end
     end
+
     context '新規作成失敗' do
       it 'メールアドレス未入力の場合エラーメッセージが出るか' do
         fill_in 'user[email]', with: ''
-        fill_in 'user[username]', with: Faker::Lorem.characters(number: 6)
+        fill_in 'user[username]', with: 'Testuser3'
         choose '一般の方'
-        fill_in 'user[password]', with: 'password'
-        fill_in 'user[password_confirmation]', with: 'password'
+        fill_in 'user[password]', with: 'Password1'
+        fill_in 'user[password_confirmation]', with: 'Password1'
         click_button '新規登録'
         expect(current_path).to eq user_registration_path
         expect(page).to have_content "メールアドレスを入力してください"
       end
       it '登録済みメールアドレスの場合エラーメッセージが出るか' do
         fill_in 'user[email]', with: user.email
-        fill_in 'user[username]', with: Faker::Lorem.characters(number: 6)
+        fill_in 'user[username]', with: 'Testuser3'
         choose '一般の方'
-        fill_in 'user[password]', with: 'password'
-        fill_in 'user[password_confirmation]', with: 'password'
+        fill_in 'user[password]', with: 'Password1'
+        fill_in 'user[password_confirmation]', with: 'Password1'
         click_button '新規登録'
         expect(current_path).to eq user_registration_path
         expect(page).to have_content "メールアドレスはすでに存在します"
@@ -45,18 +49,20 @@ describe 'トップページに関するテスト' do
         fill_in 'user[email]', with: Faker::Internet.email
         fill_in 'user[username]', with: user.username
         choose '一般の方'
-        fill_in 'user[password]', with: 'password'
-        fill_in 'user[password_confirmation]', with: 'password'
+        fill_in 'user[password]', with: 'Password1'
+        fill_in 'user[password_confirmation]', with: 'Password1'
         click_button '新規登録'
         expect(current_path).to eq user_registration_path
         expect(page).to have_content "ユーザーネームはすでに存在します"
       end
     end
   end
+
   describe 'ログインに関するテスト' do
     before do
       visit new_user_session_path
     end
+
     it 'ログイン成功後ツイート一覧画面へ遷移しているか' do
       fill_in 'user[username]', with: user.username
       fill_in 'user[password]', with: user.password
@@ -80,6 +86,7 @@ describe 'トップページに関するテスト' do
               sign_in_as(hairdresser)
               visit user_path(hairdresser)
             end
+
             it '美容師歴、所属、役職、過去の作品が表示されているか' do
               expect(page).to have_content hairdresser.year
               expect(page).to have_content hairdresser.hair_salon
@@ -87,10 +94,12 @@ describe 'トップページに関するテスト' do
               expect(page).to have_content '過去の作品'
             end
           end
+
           context 'ログアウトしている場合' do
             before do
               visit user_path(hairdresser)
             end
+
             it 'ログインページへ遷移しているか' do
               expect(current_path).to eq user_session_path
             end
@@ -103,14 +112,17 @@ describe 'トップページに関するテスト' do
               sign_in_as(user)
               visit user_path(user)
             end
+
             it '職業が表示されているか' do
               expect(page).to have_content user.job
             end
           end
+
           context 'ログアウトしている場合' do
             before do
               visit user_path(user)
             end
+
             it 'ログインページへ遷移しているか' do
               expect(current_path).to eq user_session_path
             end
@@ -126,27 +138,32 @@ describe 'トップページに関するテスト' do
             sign_in_as(user)
             visit user_path(user)
           end
+
           it '正しく遷移されているか' do
             click_on '編集'
             visit edit_user_path(user)
             expect(page).to have_content 'プロフィール編集'
           end
         end
+
         context 'ログアウトしている場合' do
           before do
             visit user_path(user)
           end
+
           it 'ログインページへ遷移しているか' do
             expect(current_path).to eq user_session_path
           end
         end
       end
+
       context '入力チェック' do
         context '美容師側の入力チェック' do
           before do
             sign_in_as(hairdresser)
             visit edit_user_path(hairdresser)
           end
+
           context '正しく入力されている場合' do
             it '保存されユーザー詳細ページへ遷移しているか' do
               fill_in 'user[username]', with: hairdresser.username
@@ -213,6 +230,7 @@ describe 'トップページに関するテスト' do
             sign_in_as(user)
             visit edit_user_path(user)
           end
+
           context '正しく入力されている場合' do
             it '保存されユーザー詳細ページへ遷移しているか' do
               fill_in 'user[username]', with: user.username

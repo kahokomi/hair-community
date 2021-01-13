@@ -43,8 +43,10 @@ body > .container-fluid {
 }
 
 .container-fluid {
-  height: 100%;
+  height: auto;
   min-height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 img {
@@ -52,8 +54,21 @@ img {
 }
 
 /* topページ*/
-.top {
-  background: linear-gradient(180deg, #7290AC 0%, #7290AC 50%, #F8ECC4 50%, #F8ECC4 100%);
+.test {
+  min-height: 100%;
+}
+
+.top-login {
+  background: #7290AC;
+  height: 800px;
+}
+
+.fa-angle-double-down {
+  font-size: 30px;
+}
+
+.top-about {
+  background: #F8ECC4 50%;
 }
 
 .top-logo {
@@ -149,10 +164,11 @@ img {
   text-decoration: none;
   display: block;
   padding: 20px;
+  margin-bottom: 20px;
   text-align: center;
   background: #FFF;
-  border: 1px solid #000;
-  border-bottom: none;
+  border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
+  border: 1px ridge #797979;
 }
 
 #tab-menu .active {
@@ -177,6 +193,7 @@ img {
 }
 
 /* つぶやき関連 */
+
 .tweet-image {
   object-fit: contain;
   background-color:rgba(0,0,0,0.6);
@@ -184,7 +201,7 @@ img {
 
 .tweet {
   border-bottom: 1px solid #000;
-  background-color: #F6E8C1;
+  background-color: #C8C0BC;
 }
 
 .tweet-font {
@@ -192,7 +209,7 @@ img {
 }
 
 .tweet:nth-child(odd) {
-  background-color: #fdf5e6;
+  background-color: #FFF4EE;
 }
 
 .tweet:last-child {
@@ -212,7 +229,6 @@ img {
 .tweet-text {
   margin-bottom: 0.5rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid #000;
 }
 
 .tweet-index {
@@ -276,6 +292,10 @@ img {
 
 .follows-index-user:last-child {
   border-bottom: none;
+}
+
+.follows-index-nouser {
+  font-size: 1em;
 }
 
 

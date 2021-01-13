@@ -17,15 +17,15 @@
   </div>
 
   <%# ユーザーによって表示内容の切り分け %>
-  <div class="row align-items-center">
+  <div class="card-footer align-items-center">
     <% if user_signed_in? && tweet.user_id == current_user.id %>
       <i class="fas fa-heart offset-2"></i><%= tweet.likes.count %>
-      <%= link_to "つぶやきを消す", tweet_path(tweet), method: :delete, remote: true, class: "btn btn-danger offset-6" %>
+      <%= link_to "つぶやきを消す", tweet_path(tweet), method: :delete, remote: true, class: "btn btn-danger offset-6", data: {confirm: "削除しますか？"} %>
     <% else %>
-      <div id="likes_<%= tweet.id %>" class="offset-2">
+      <span id="likes_<%= tweet.id %>">
         <%= render "likes/btn", tweet: tweet %>
-      </div>
-      <%= link_to "はなしてみる", chat_path(tweet.user_id), class: "btn btn-success offset-6" %>
+      </span>
+      <span><%= link_to "はなしてみる", chat_path(tweet.user_id), class: "btn btn-success offset-6" %></span>
     <% end %>
   </div>
 </div>
