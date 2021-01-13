@@ -2,48 +2,28 @@
   <div class="wrap">
     <%# 美容師と一般ユーザでフォロー表示分け %>
     <ul id="tab-menu">
-      <li><a href="#tab1" class="active follows-index__tab">フォロー<span class="badge badge-danger">美容師</span></a></li>
-      <li><a href="#tab2" class="follows-index__tab">フォロー<span class="badge badge-primary">一般ユーザ</span></a></li>
-      <li><a href="#tab3" class="follows-index__tab">フォロワー<span class="badge badge-danger">美容師</span></a></li>
-      <li><a href="#tab4" class="follows-index__tab">フォロワー<span class="badge badge-primary">一般ユーザ</span></a></li>
+      <li><a href="#tab1" class="active follows-index-tab">フォロー<span class="badge badge-danger">美容師</span></a></li>
+      <li><a href="#tab2" class="follows-index-tab">フォロー<span class="badge badge-primary">一般ユーザ</span></a></li>
+      <li><a href="#tab3" class="follows-index-tab">フォロワー<span class="badge badge-danger">美容師</span></a></li>
+      <li><a href="#tab4" class="follows-index-tab">フォロワー<span class="badge badge-primary">一般ユーザ</span></a></li>
     </ul>
 
     <div id="tab-contents">
        <%# フォロワー側 %>
       <div id="tab1" class="tab">
-        <% @following_hds.each do |user| %>
-        <div class="follows-index__user py-4">
-          <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
-          <%= link_to user.username, user_path(user), class: "pl-3" %>
-        </div>
-        <% end %>
+        <%= render 'list_content', follows: @following_hds %>
       </div>
 
       <div id="tab2" class="tab">
-        <% @following_users.each do |user| %>
-          <div class="follows-index__user py-4">
-            <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
-            <%= link_to user.username, user_path(user), class: "pl-3" %>
-          </div>
-        <% end %>
+        <%= render 'list_content', follows: @following_users %>
       </div>
 
       <div id="tab3" class="tab">
-        <% @follower_hds.each do |user| %>
-        <div class="follows-index__user py-4">
-          <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
-          <%= link_to user.username, user_path(user), class: "pl-3" %>
-        </div>
-        <% end %>
+        <%= render 'list_content', follows: @follower_hds %>
       </div>
 
       <div id="tab4" class="tab">
-        <% @follower_users.each do |user| %>
-        <div class="follows-index__user py-4">
-          <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
-          <%= link_to user.username, user_path(user), class: "pl-3" %>
-        </div>
-        <% end %>
+        <%= render 'list_content', follows: @follower_users %>
       </div>
     </div>
   </div>

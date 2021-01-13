@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # 半角英数の指定
-  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+(-_)*\z/.freeze
 
   validates :username, uniqueness: true, presence: true, format: { with: VALID_PASSWORD_REGEX }, length: { minimum: 6, maximum: 20 }
   validates :name, presence: true, on: :update
@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   # 美容師の時のみバリデーションをかける
   def hairdresser_valid?
-    self.is_hairdresser == true
+    is_hairdresser == true
   end
 
   attachment :image
@@ -35,9 +35,15 @@ class User < ApplicationRecord
   has_many :passive_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :following
 
-  #ゲストログイン
-  def self.guest
-    find_or_create_by!(username: 'guesthairdresser', email: 'guest@example.com', is_hairdresser: true) do |user|
+  # ゲストログイン
+  def self.guest_hairdresser
+    find_or_create_by!(username: 'Guesthairdresser1', email: 'hd_guest@example.com', is_hairdresser: true) do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
+  def self.guest_user
+    find_or_create_by!(username: 'Guestuser1', email: 'user_guest@example.com', is_hairdresser: false) do |user|
       user.password = SecureRandom.urlsafe_base64
     end
   end
