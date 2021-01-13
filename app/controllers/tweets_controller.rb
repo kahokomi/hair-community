@@ -19,7 +19,6 @@ class TweetsController < ApplicationController
     unless @tweet.save
       render 'error'
     end
-    
   end
 
   def destroy

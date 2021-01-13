@@ -3,9 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe User, "モデルに関するテスト", type: :model do
+  subject { user.valid? }
+
   let!(:user) { build(:user) }
   let!(:hairdresser) { build(:hairdresser) }
-  subject { user.valid? }
 
   it '全ての項目に正常な値が設定されていれば保存されるか' do
     expect(user).to be_valid
@@ -35,7 +36,7 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
 
     context '一意でない場合' do
       it 'usernameに対してエラーメッセージが返ってくるか' do
-        hairdresser.username = 'hogehoge'
+        hairdresser.username = 'Hogehoge1'
         hairdresser.save
         user.username = hairdresser.username
         user.save
@@ -46,7 +47,7 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
       it 'emailに対してエラーメッセージが返ってくるか' do
         hairdresser.email = 'hoge@hoge'
         hairdresser.save
-        user.email= hairdresser.email
+        user.email = hairdresser.email
         user.save
         is_expected.to eq false
         expect(user.errors[:email]).to include("はすでに存在します")
@@ -93,25 +94,36 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
 
     context '空欄かどうか' do
       context 'usernameが空の場合' do
-        let(:username) { '' }
-        before { user.update(username: username) }
         subject { user.errors[:username] }
+
+        let(:username) { '' }
+
+        before { user.update(username: username) }
+
         it 'エラーメッセージが返ってくるか' do
           is_expected.to include("を入力してください")
         end
       end
+
       context 'nameが空の場合' do
-        let(:name) { '' }
-        before { user.update(name: name) }
         subject { user.errors[:name] }
+
+        let(:name) { '' }
+
+        before { user.update(name: name) }
+
         it 'エラーメッセージが返ってくるか' do
           is_expected.to include("を入力してください")
         end
       end
+
       context 'yearが空の場合' do
-        let(:year) { nil }
-        before { hairdresser.update(year: year) }
         subject { hairdresser.errors[:year] }
+
+        let(:year) { nil }
+
+        before { hairdresser.update(year: year) }
+
         it 'エラーメッセージが返ってくるか' do
           is_expected.to include("を入力してください")
         end
@@ -119,11 +131,15 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
     end
 
     context '一般ユーザ 数値が正しく入力されているか' do
-      let(:age) { 1 }
-      before { user.update(age: age) }
       subject { user.errors[:age] }
+
+      let(:age) { 1 }
+
+      before { user.update(age: age) }
+
       context 'ageの数値が0以下になっている場合' do
         let(:age) { 0 }
+
         it 'エラーメッセージが返ってくるか' do
           is_expected.to include("は1以上の値にしてください")
         end
@@ -131,6 +147,7 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
 
       context 'ageの数値が100以上担っている場合' do
         let(:age) { 101 }
+
         it 'エラーメッセージが返ってくるか' do
           is_expected.to include("は100以下の値にしてください")
         end
@@ -138,12 +155,15 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
     end
 
     context '美容師 数値が正しく入力されているか' do
-      let(:year) { 1 }
-      before { hairdresser.update(year: year) }
       subject { hairdresser.errors[:year] }
+
+      let(:year) { 1 }
+
+      before { hairdresser.update(year: year) }
 
       context 'yearの数値が0以下になっている場合' do
         let(:year) { 0 }
+
         it 'エラーメッセージが返ってくるか' do
           is_expected.to include("は1以上の値にしてください")
         end
@@ -151,6 +171,7 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
 
       context 'yearの数値が0以下になっている場合' do
         let(:year) { 101 }
+
         it 'エラーメッセージが返ってくるか' do
           is_expected.to include("は100以下の値にしてください")
         end

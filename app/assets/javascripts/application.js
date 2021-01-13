@@ -19,6 +19,30 @@
 //= require_tree .
 
 /*global $*/
-$(function(){
-  setTimeout("$('.time-limit').fadeOut('slow')", 1500)
-})
+// $(function(){
+//   setTimeout("$('.time-limit').fadeOut('slow')", 1500)
+// })
+
+$(function() {
+  setTimeout(function(){
+    $('.time-limit')
+      .slideUp({
+        duration: 500,
+      })
+      .fadeOut({
+        duration: 500,
+      });
+    },2000);
+});
+
+$(document).on('turbolinks:load', function(){
+  $('#tab-contents .tab[id != "tab1"]').hide();
+
+  $('#tab-menu a').on('click', function(event) {
+  $("#tab-contents .tab").hide();
+  $("#tab-menu .active").removeClass("active");
+  $(this).addClass("active");
+  $($(this).attr("href")).show();
+  event.preventDefault();
+  });
+});

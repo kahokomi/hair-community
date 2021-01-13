@@ -3,10 +3,16 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  def new_guest
-    user = User.guest
+  def new_hairdresser_guest
+    hairdresser = User.guest_hairdresser
+    sign_in hairdresser
+    redirect_to tweets_path, notice: 'ゲストユーザー(美容師)としてログインしました。'
+  end
+
+  def new_user_guest
+    user = User.guest_user
     sign_in user
-    redirect_to tweets_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to tweets_path, notice: 'ゲストユーザー(一般ユーザ)としてログインしました。'
   end
 
   # GET /resource/sign_in
