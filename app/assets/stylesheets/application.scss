@@ -54,10 +54,6 @@ img {
 }
 
 /* topページ*/
-.test {
-  min-height: 100%;
-}
-
 .top-login {
   background: #7290AC;
   height: 800px;
@@ -131,13 +127,14 @@ img {
   width: 100px;
 }
 
-.header-name {
+.search_form {
+  font-size: 0.9em;
 }
 
 /* フッター */
 .footer {
   background-color: #7290AC;
-  height: 5em;
+  height: 3em;
   position: relative;
   bottom: 0;
 }

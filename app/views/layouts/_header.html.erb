@@ -17,7 +17,7 @@
         </li>
         <li class="nav-item mt-2 ml-5">ようこそ、<%= current_user.username %>さん</li>
       </ul>
-      <%= search_form_for @search, url: users_path do |f| %>
+      <%= search_form_for @search, url: users_path, class: "search_form" do |f| %>
         <%= f.label :username, "名前" %>
         <%= f.search_field :username_cont %>
 
