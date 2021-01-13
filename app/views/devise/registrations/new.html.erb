@@ -9,7 +9,7 @@
 
           <div class="field">
             <%= f.label :username, "ユーザーネーム", class: "control-label" %>
-            <%= f.text_field :username, autofocus: true, autocomplete: "username", placeholder: "半角英数で入力してください", class: "form-control col-md-12" %>
+            <%= f.text_field :username, autofocus: true, autocomplete: "username", placeholder: "半角英大小文字・数字をすべて含めて入力してください　　(ハイフン・アンダースコア入力可)", class: "form-control col-md-12" %>
           </div>
 
           <div class="text-center">
@@ -34,7 +34,7 @@
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> 文字以上)</em>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password", class: "form-control col-md-12", placeholder: "半角英数で入力してください" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control col-md-12", placeholder: "半角英大小文字・数字をすべて含めて入力してください　　(ハイフン・アンダースコア入力可)" %>
           </div>
 
           <div class="field">

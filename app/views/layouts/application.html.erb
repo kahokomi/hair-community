@@ -21,14 +21,12 @@
         <%= render "layouts/header" %>
       <% end %>
     </header>
-    <!--<main class="d-flex justify-content-center align-items-center">-->
-      <div class="row bg bg-success time-limit">
-        <% if flash[:notice] %>
-          <p class="mx-auto pt-3"><%= flash[:notice] %></p>
-        <% end %>
-      </div>
-      <%= yield %>
-    <!--</main>-->
+    <div class="row bg bg-success time-limit">
+      <% if flash[:notice] %>
+        <p class="mx-auto pt-3"><%= flash[:notice] %></p>
+      <% end %>
+    </div>
+    <%= yield %>
     <footer>
       <% if user_signed_in? %>
         <%= render "layouts/footer" %>

@@ -7,8 +7,8 @@
       <%= render "relationships/follow", user: tweet.user %>
     </span>
   </div>
-  <div class="col-md-10 offset-1">
-    <%= attachment_image_tag tweet, :image, size: "700x500", class: "tweet-image"  %>
+  <div class="col-md-10 offset-1 my-4">
+    <%= attachment_image_tag tweet, :image, size: "700x500" %>
   </div>
   <div class="row tweet-text">
     <div class="offset-1 col-md-10 text-break">

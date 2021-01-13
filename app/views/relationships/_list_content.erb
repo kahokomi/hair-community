@@ -1,12 +1,28 @@
 <% if follows.exists? %>
   <% follows.each do |user| %>
-    <div class="follows-index-user py-4">
+    <div class="follows-index-user d-flex py-3">
       <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
       <%= link_to user.username, user_path(user), class: "pl-3" %>
+      <% if user.is_hairdresser == true %>
+
+        <div class="col-md-3 offset-1">
+          <span class="badge badge-secondary">役職</span>
+          <span><%= user.position %></span>
+        </div>
+        <div class="col-md-5">
+          <span class="badge badge-secondary">美容師歴</span>
+          <span><%= user.year %></span>
+        </div>
+      <% else %>
+        <div class="col-md-3 offset-1">
+          <span class="badge badge-secondary">職業</span>
+          <span><%= user.job %></span>
+        </div>
+      <% end %>
     </div>
   <% end %>
 <% else %>
-  <div class="follows-index-nouser py-4 text-center">
+  <div class="follows-index-no-user py-4 text-center">
     ユーザーがいません
   </div>
 <% end %>

@@ -1,6 +1,6 @@
-<div class="container-fluid d-flex">
-  <div class="row mx-auto justify-content-center align-items-center w-75 py-4">
-    <h2 class="pb-4">プロフィール編集</h2>
+<div class="container-fluid d-flex pb-2">
+  <div class="row mx-auto justify-content-center align-items-center w-75">
+    <h2 class="text-center col-md-12">プロフィール編集</h2>
     <%= form_with model: @user, local: true, class: "col-md-12" do |f| %>
     <%= render "devise/shared/error_messages", resource: @user %>
 
@@ -10,12 +10,16 @@
       </div>
 
       <div class="row field">
-        <%= f.label :username, "ユーザーネーム", class: "control-label col-md-3" %>
+        <%= f.label :username, class: "control-label col-md-3" do %>
+          ユーザーネーム<span class="badge badge-danger">必須</span>
+        <% end %>
         <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control col-md-8" %>
       </div>
 
       <div class="row field">
-        <%= f.label :name, "氏名", class: "control-label col-md-3" %>
+        <%= f.label :name, class: "control-label col-md-3" do %>
+          氏名<span class="badge badge-danger">必須</span>
+        <% end %>
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control col-md-8" %>
       </div>
 
@@ -26,35 +30,43 @@
 
       <div class="row field">
         <%= f.label :age, "年齢", class: "control-label col-md-3" %>
-        <%= f.number_field :age, min: 1, max: 100, autofocus: true, autocomplete: "age", class: "form-control col-md-8" %>
+        <%= f.number_field :age, min: 1, max: 100, autofocus: true, autocomplete: "age", class: "form-control col-md-8", placeholder: "半角数字のみ" %>
       </div>
 
       <% if @user.is_hairdresser? == true %>
         <div class="row field">
-          <%= f.label :year, "美容師歴", class: "control-label col-md-3" %>
-          <%= f.number_field :year, min: 1, max: 100, autofocus: true, autocomplete: "year", class: "form-control col-md-8" %>
+          <%= f.label :year, class: "control-label col-md-3" do %>
+            美容師歴<span class="badge badge-danger">必須</span>
+          <% end %>
+          <%= f.number_field :year, min: 1, max: 100, autofocus: true, autocomplete: "year", class: "form-control col-md-8", placeholder: "半角数字のみ" %>
         </div>
 
         <div class="row field">
-          <%= f.label :hair_salon, "所属美容室", class: "control-label col-md-3" %>
+          <%= f.label :hair_salon, class: "control-label col-md-3" do %>
+            所属美容室<span class="badge badge-danger">必須</span>
+          <% end %>
           <%= f.text_field :hair_salon, autofocus: true, autocomplete: "hair_salon", class: "form-control col-md-8" %>
         </div>
 
         <div class="row field">
-          <%= f.label :position, "役職", class: "control-label col-md-3" %>
+          <%= f.label :position, class: "control-label col-md-3" do %>
+            役職<span class="badge badge-danger">必須</span>
+          <% end %>
           <%= f.text_field :position, autofocus: true, autocomplete: "position", class: "form-control col-md-8" %>
         </div>
 
       <% else %>
         <div class="row field">
-          <%= f.label :job, "職業", class: "control-label col-md-3" %>
+          <%= f.label :job, class: "control-label col-md-3" do %>
+            職業<span class="badge badge-danger">必須</span>
+          <% end %>
           <%= f.text_field :job, autofocus: true, autocomplete: "job", class: "form-control col-md-8" %>
         </div>
       <% end %>
 
       <div class="row field">
         <%= f.label :introduction, "自己紹介", class: "control-label col-md-3" %>
-        <%= f.text_field :introduction, autofocus: true, autocomplete: "introduction", class: "form-control col-md-8" %>
+        <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "form-control col-md-8" %>
       </div>
 
       <% if @user.is_hairdresser? == true %>

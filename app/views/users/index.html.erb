@@ -4,11 +4,11 @@
   </div>
 
 <%# 検索結果の表示 %>
-  <div class="row">
+  <div class="row mx-auto">
     <% if params[:q]['username_cont'] == "" %>
       <h3 class="mx-auto mt-5">検索キーワードがありません。</h3>
     <% elsif @search_users.present? %>
-      <table class="table col-md-10 offset-2">
+      <table class="table col-md-10 offset-1">
         <thead>
           <tr class="row">
             <th class="col-md-1">
@@ -16,8 +16,14 @@
             <th class="col-md-4">
               ユーザーID
             </th>
-            <th class="col-md-5">
-              自己紹介
+            <th class="col-md-2">
+              年齢
+            </th>
+            <th class="col-md-2">
+              職業<span class="badge badge-danger">美容師</span>
+            </th>
+            <th class="col-md-3">
+              役職<span class="badge badge-primary">一般ユーザ</span>
             </th>
           </tr>
         </thead>
@@ -37,8 +43,14 @@
                     <span class="badge badge-primary search-hairdresser">一般ユーザ</span>
                   <% end %>
                 </td>
-                <td class="col-md-5">
-                  <%= user.introduction %>
+                <td class="col-md-2">
+                  <%= user.age %>
+                </td>
+                <td class="col-md-2">
+                  <%= user.job %>
+                </td>
+                <td class="col-md-3">
+                  <%= user.position %>
                 </td>
             </tr>
           <% end %>

@@ -7,23 +7,11 @@
     </ul>
 
     <div id="tab-contents">
-      <div id="tab1" class="tab">
-        <% if @hd_tweets.exists? %>
+      <div id="tab1" class="tab tweet-tab">
           <%= render 'tweets/hd_contents', hd_tweets: @hd_tweets %>
-        <% else %>
-          <div class="card-body">
-            <p class="mx-auto text-center">コンテンツがありません</p>
-          </div>
-        <% end %>
       </div>
-      <div id="tab2" class="tab">
-        <% if @user_tweets.exists? %>
+      <div id="tab2" class="tab tweet-tab">
           <%= render 'tweets/user_contents', user_tweets: @user_tweets %>
-        <% else %>
-          <div class="card-body shadow-sm">
-            <p class="mx-auto text-center">コンテンツがありません</p>
-          </div>
-        <% end %>
       </div>
     </div>
   </div>

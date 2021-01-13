@@ -1,5 +1,9 @@
 <% unless controller.controller_name == 'homes' && controller.action_name == 'top' %>
-  <nav class="navbar navbar-expand-lg navbar-light nav-header">
+<% if current_user.is_hairdresser == true %>
+  <nav class="navbar navbar-expand-lg navbar-light nav-hd-header">
+<% else %>
+  <nav class="navbar navbar-expand-lg navbar-light nav-user-header">
+<% end %>
     <%= link_to "", tweets_path, class: "navbar-brand" %>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mr-auto">
