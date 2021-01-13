@@ -57,7 +57,11 @@
 
         <tr class="row">
           <th class="col-md-2">自己紹介</th>
-          <td class="col-md-10"><%= @user.introduction %></td>
+          <td class="col-md-10">
+            <% unless @user.introduction == nil %>
+              <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
+            <% end %>
+          </td>
         </tr>
 
         <% if @user.is_hairdresser? == true %>

@@ -10,19 +10,19 @@
 
     <div id="tab-contents">
        <%# フォロワー側 %>
-      <div id="tab1" class="tab">
+      <div id="tab1" class="tab follows-tab">
         <%= render 'list_content', follows: @following_hds %>
       </div>
 
-      <div id="tab2" class="tab">
+      <div id="tab2" class="tab follows-tab">
         <%= render 'list_content', follows: @following_users %>
       </div>
 
-      <div id="tab3" class="tab">
+      <div id="tab3" class="tab follows-tab">
         <%= render 'list_content', follows: @follower_hds %>
       </div>
 
-      <div id="tab4" class="tab">
+      <div id="tab4" class="tab follows-tab">
         <%= render 'list_content', follows: @follower_users %>
       </div>
     </div>

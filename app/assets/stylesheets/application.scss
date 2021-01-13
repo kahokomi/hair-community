@@ -112,10 +112,14 @@ img {
 }
 
 /* ヘッダー */
-.nav-header {
-  background-color: #7290AC;
+.nav-hd-header {
+  background-color: #C6767B;
   height: 6em;
   font-family: 'Abel', 'Waonjoyo';
+}
+
+.nav-user-header {
+  background-color: #7290AC;
 }
 
 .navbar-brand {
@@ -132,7 +136,14 @@ img {
 }
 
 /* フッター */
-.footer {
+.footer-hd {
+  background-color: #C6767B;
+  height: 3em;
+  position: relative;
+  bottom: 0;
+}
+
+.footer-user {
   background-color: #7290AC;
   height: 3em;
   position: relative;
@@ -190,26 +201,27 @@ img {
 }
 
 /* つぶやき関連 */
-
-.tweet-image {
-  object-fit: contain;
-  background-color:rgba(0,0,0,0.6);
+#tab-contents .tab.tweet-tab {
+  border-radius: 20px 20px 20px 20px;
+  background-color: transparent;
+  border: none;
 }
 
-.tweet {
-  border-bottom: 1px solid #000;
+.tweet-box {
   background-color: #C8C0BC;
+  border-radius: 20px 20px 20px 20px;
+  border: 0.5px solid #797979;
 }
 
 .tweet-font {
   font-size: 2em;
 }
 
-.tweet:nth-child(odd) {
+.tweet-box:nth-child(odd) {
   background-color: #FFF4EE;
 }
 
-.tweet:last-child {
+.tweet-box:last-child {
   border-bottom: none;
 }
 
@@ -273,6 +285,9 @@ img {
 }
 
 /*フォロー一覧*/
+.follows-tab {
+  border-radius: 10px 10px 10px 10px;
+}
 
 .follows-index {
   padding-top: 50px;
@@ -291,7 +306,7 @@ img {
   border-bottom: none;
 }
 
-.follows-index-nouser {
+.follows-index-no-user {
   font-size: 1em;
 }
 

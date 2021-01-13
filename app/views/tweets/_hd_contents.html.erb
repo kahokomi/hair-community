@@ -1,6 +1,12 @@
 <%# 美容師側 %>
-<% hd_tweets.includes([:user]).each do |tweet| %>
-<div id="tweet_<%= tweet.id %>" class="tweet">
-  <%= render "tweets/content", tweet: tweet %>
-</div>
+<% if hd_tweets.exists? %>
+  <% hd_tweets.includes([:user]).each do |tweet| %>
+  <div id="tweet_<%= tweet.id %>" class="tweet-box">
+    <%= render "tweets/content", tweet: tweet %>
+  </div>
+  <% end %>
+<% else %>
+  <div class="card-body">
+    <p class="mx-auto text-center">コンテンツがありません</p>
+  </div>
 <% end %>
