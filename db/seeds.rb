@@ -11,7 +11,7 @@
       {
         email: Faker::Internet.email,
         password: "Password1",
-        username: "Onoarashi1",
+        username: "OS1126a",
         name: Faker::Name.name,
         age: 40,
         year: 15,
@@ -23,7 +23,7 @@
       {
         email: Faker::Internet.email,
         password: "Password2",
-        username: "Sakuraiarashi2",
+        username: "SS0125a",
         name: Faker::Name.name,
         age: 39,
         year: 13,
@@ -35,7 +35,7 @@
       {
         email: Faker::Internet.email,
         password: "Password3",
-        username: "Aibaarashi3",
+        username: "AM1224a",
         name: Faker::Name.name,
         age: 38,
         job: "アパレル店員",
@@ -45,7 +45,7 @@
       {
         email: Faker::Internet.email,
         password: "Password4",
-        username: "Ninoarashi4",
+        username: "NK0617a",
         name: Faker::Name.name,
         age: 25,
         job: "エンジニア",
@@ -55,7 +55,7 @@
       {
         email: Faker::Internet.email,
         password: "Password5",
-        username: "MJarashi5",
+        username: "MJ0830a",
         name: Faker::Name.name,
         age: 28,
         job: "営業マン",
