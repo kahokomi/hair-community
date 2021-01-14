@@ -2,7 +2,11 @@
   <% if chat.user == current_user %>
     <div class="text-right balloon2 col-md-6 offset-6 mb-2">
       <%= attachment_image_tag chat.user, :icon_image, fallback: "no_icon.png", size: "50x50", class: "icon" %>
-      <p><%= chat.content %></p>
+      <p class="text-left">
+        <% unless chat.content == nil %>
+          <%= safe_join(chat.content.split("\n"),tag(:br)) %>
+        <% end %>
+      </p>
     </div>
     <p class="text-right col-md-6 offset-6 mb-2"><%= chat.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
   <% else%>
