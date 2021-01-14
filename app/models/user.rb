@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # 半角英数の指定
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+(-_)*\z/.freeze
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/.freeze
 
   validates :username, uniqueness: true, presence: true, format: { with: VALID_PASSWORD_REGEX }, length: { minimum: 6, maximum: 20 }
   validates :name, presence: true, on: :update
@@ -38,13 +38,13 @@ class User < ApplicationRecord
   # ゲストログイン
   def self.guest_hairdresser
     find_or_create_by!(username: 'Guesthairdresser1', email: 'hd_guest@example.com', is_hairdresser: true) do |user|
-      user.password = SecureRandom.urlsafe_base64
+      user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
     end
   end
 
   def self.guest_user
     find_or_create_by!(username: 'Guestuser1', email: 'user_guest@example.com', is_hairdresser: false) do |user|
-      user.password = SecureRandom.urlsafe_base64
+      user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
     end
   end
 
