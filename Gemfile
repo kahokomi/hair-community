@@ -57,6 +57,7 @@ group :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem "factory_bot_rails"
+  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -77,3 +78,5 @@ gem 'faker'
 group :production do
   gem 'mysql2'
 end
+
+

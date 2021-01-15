@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'simplecov'
+SimpleCov.start 'rails'
+
 
 RSpec.describe User, "モデルに関するテスト", type: :model do
   subject { user.valid? }
