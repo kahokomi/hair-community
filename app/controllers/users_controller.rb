@@ -31,6 +31,7 @@ class UsersController < ApplicationController
       :age,
       :year,
       :hair_salon,
+      :address,
       :job,
       :introduction,
       :image,

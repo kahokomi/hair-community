@@ -74,6 +74,7 @@ gem 'rails-i18n', '~> 5.1'
 gem 'dotenv-rails'
 gem 'kaminari'
 gem 'faker'
+gem "geocoder"
 
 group :production do
   gem 'mysql2'
