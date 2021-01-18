@@ -44,6 +44,13 @@
             <td class="col-md-10"><%= @user.hair_salon %></td>
           </tr>
           <tr class="row">
+            <th class="col-md-2">住所</th>
+            <td class="col-md-5"><%= @user.address %></td>
+            <% unless @user.address == nil %>
+              <td id="map" class="col-md-5"></td>
+            <% end %>
+          </tr>
+          <tr class="row">
             <th class="col-md-2">役職</th>
             <td class="col-md-10"><%= @user.position %></td>
           </tr>
@@ -73,9 +80,8 @@
       </tbody>
     </table>
 
+
   <% if @user == current_user %>
     <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary col-md-2 offset-8 userpage-edit-btn" %>
   <% end %>
-    </div>
-  </div>
-</div>
+

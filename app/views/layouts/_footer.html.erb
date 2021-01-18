@@ -1,8 +1,8 @@
 <% unless controller.controller_name == 'homes' && controller.action_name == 'top' %>
   <% if current_user.is_hairdresser == true %>
-    <div class="fixed-bottom d-flex align-items-center justify-content-center pt-2 footer-hd">
+    <div class="fixed-bottom d-flex align-items-center justify-content-center pt-2 footer">
   <% else %>
-    <div class="fixed-bottom d-flex align-items-center justify-content-center footer-user">
+    <div class="fixed-bottom d-flex align-items-center justify-content-center footer f-user">
   <% end %>
       <small>©︎hair_community</small>
     </div>
