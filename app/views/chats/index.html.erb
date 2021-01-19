@@ -1,5 +1,16 @@
 <div class="container-fluid">
   <div class="row">
-    <h2 class="mx-auto">チャット一覧</h2>
+    <h2 class="mx-auto">チャットしているユーザ一覧</h2>
   </div>
-  
+  <table class="table table-hover mx-auto w-50">
+    <tbody>
+      <% @anotherUserRooms.each do |e| %>
+      <tr>
+        <td class="text-center">
+          <%= link_to e.user.username, chat_path(e.user_id) %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
