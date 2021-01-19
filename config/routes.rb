@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     resource :likes, only: [:create, :destroy]
   end
   resources :chats, only: [:show, :create, :index]
+  # resources :rooms, only: [:index]
 end

@@ -30,6 +30,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
+  has_many :rooms, through: :user_rooms
 
   # フォロー機能のアソシエーション
   has_many :active_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
