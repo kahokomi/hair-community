@@ -2,11 +2,16 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    # ツイートの一覧表示・新規投稿
     @hairdressers = User.where(is_hairdresser: true)
     @hd_tweets = Tweet.where(user_id: @hairdressers).order(created_at: :desc)
     @users = User.where(is_hairdresser: false)
     @user_tweets = Tweet.where(user_id: @users).order(created_at: :desc)
     @tweet = Tweet.new
+    
+    #サイドバーで新規ユーザを表示
+    @new_user = User.where(is_hairdresser: false).order(created_at: :desc)
+    @new_hairdresser = User.where(is_hairdresser: true).order(created_at: :desc)
   end
 
   def create

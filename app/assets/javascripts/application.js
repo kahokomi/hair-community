@@ -14,6 +14,7 @@
 //= require popper
 //= require rails-ujs
 //= require bootstrap-sprockets
+//= require bxslider
 //= require activestorage
 //= require turbolinks
 //= require_tree .
@@ -23,6 +24,7 @@
 //   setTimeout("$('.time-limit').fadeOut('slow')", 1500)
 // })
 
+// メッセージログの動作づけ
 $(function() {
   setTimeout(function(){
     $('.time-limit')
@@ -35,6 +37,7 @@ $(function() {
     },2000);
 });
 
+// タブ機能
 $(document).on('turbolinks:load', function(){
   $('#tab-contents .tab[id != "tab1"]').hide();
 
@@ -45,4 +48,8 @@ $(document).on('turbolinks:load', function(){
   $($(this).attr("href")).show();
   event.preventDefault();
   });
+});
+
+$(document).ready(function(){
+  $('.bxslider').bxSlider();
 });
