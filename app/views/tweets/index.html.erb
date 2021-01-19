@@ -1,21 +1,33 @@
 <div class="container-fluid pb-5 tweet-index">
-  <div class="wrap">
-    <%# 美容師と一般ユーザでつぶやき表示分け %>
-    <ul id="tab-menu">
-      <li><a href="#tab1" class="active">美容師</a></li>
-      <li><a href="#tab2" class="">一般ユーザ</a></li>
-    </ul>
-
-    <div id="tab-contents">
-      <div id="tab1" class="tab tweet-tab">
-          <%= render 'tweets/hd_contents', hd_tweets: @hd_tweets %>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <% @new_user.each do |user| %>
+          <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "50x50", class: "icon card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= user.username %></h5>
+            <%= user.name %>
+          </div>
+        <% end %>
       </div>
-      <div id="tab2" class="tab tweet-tab">
-          <%= render 'tweets/user_contents', user_tweets: @user_tweets %>
+    </div>
+    <div class="wrap col-md-6">
+      <ul id="tab-menu">
+        <li><a href="#tab1" class="active">美容師</a></li>
+        <li><a href="#tab2" class="">一般ユーザ</a></li>
+      </ul>
+
+      <div id="tab-contents">
+        <div id="tab1" class="tab tweet-tab">
+            <%= render 'tweets/hd_contents', hd_tweets: @hd_tweets %>
+        </div>
+        <div id="tab2" class="tab tweet-tab">
+            <%= render 'tweets/user_contents', user_tweets: @user_tweets %>
+        </div>
       </div>
     </div>
   </div>
-
+　<!--新規投稿ボタン-->
   <div class="row">
     <button type="button" class="tweet-btn btn btn-info offset-8" data-toggle="modal" data-target="#exampleModal">
       <i class="far fa-edit pl-2"></i>
