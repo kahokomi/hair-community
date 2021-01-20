@@ -3,12 +3,12 @@ class TweetsController < ApplicationController
 
   def index
     # ツイートの一覧表示・新規投稿
+    @tweet = Tweet.new
     @hairdressers = User.where(is_hairdresser: true)
     @hd_tweets = Tweet.where(user_id: @hairdressers).order(created_at: :desc)
     @users = User.where(is_hairdresser: false)
     @user_tweets = Tweet.where(user_id: @users).order(created_at: :desc)
-    @tweet = Tweet.new
-    
+
     #サイドバーで新規ユーザを表示
     @new_user = User.where(is_hairdresser: false).order(created_at: :desc)
     @new_hairdresser = User.where(is_hairdresser: true).order(created_at: :desc)
@@ -35,6 +35,6 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:user_id, :image, :body)
+    params.require(:tweet).permit(:user_id, :image, :body, :tag_list)
   end
 end
