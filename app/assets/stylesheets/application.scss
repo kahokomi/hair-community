@@ -14,9 +14,9 @@
  *= require bxslider
  *= require_tree .
  */
- 
-  
- 
+
+
+
 @import "bootstrap";
 @font-face {
   font-family: 'Waonjoyo';
@@ -177,10 +177,18 @@ footer {
 }
 
 /* タブ機能 */
+.height-fixed {
+  height: 80vh;
+}
+
 .wrap {
   width: 50%;
   max-width: 900px;
   margin: 0;
+}
+
+.scroll {
+  overflow-y: auto;
 }
 
 #tab-menu {
