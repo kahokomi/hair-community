@@ -20,6 +20,9 @@
       <%= safe_join(tweet.body.split("\n"),tag(:br)) %>
     </div>
   </div>
+  <% tweet.tag_list.each do |tag| %>
+      <%= link_to tag, tweets_path(tag_name: tag), class: "badge badge-info" %>
+    <% end %>
 
   <%# ユーザーによって表示内容の切り分け %>
   <div class="card-footer align-items-center">

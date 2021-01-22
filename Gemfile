@@ -76,6 +76,7 @@ gem 'dotenv-rails'
 gem 'kaminari'
 gem 'faker'
 gem "geocoder"
+gem 'acts-as-taggable-on'
 
 group :production do
   gem 'mysql2'
