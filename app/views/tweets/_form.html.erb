@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
           <%= f.label :user, :tag_list %>
-          <%= f.text_field :tag_list, value: @tweet.tag_list.join(','), class: "form-control" %>
+          <%= f.text_field :tag_list, value: @tweet.tag_list.join(','), class: "form-control", placeholder: "2つ以上入力する場合カンマ(,)を入力" %>
         </div>
       </div>
       <div class="modal-footer">
