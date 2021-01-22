@@ -8,12 +8,13 @@ class TweetsController < ApplicationController
     @hd_tweets = Tweet.where(user_id: @hairdressers).order(created_at: :desc).includes([:taggings])
     @users = User.where(is_hairdresser: false)
     @user_tweets = Tweet.where(user_id: @users).order(created_at: :desc).includes([:taggings])
-    
+
     # タグで絞り込み
     if params[:tag_name]
       @hd_tweets = @hd_tweets.tagged_with(params[:tag_name])
       @user_tweets = @user_tweets.tagged_with(params[:tag_name])
     end
+    @tags = Tweet.tags_on(:tags)
     @tag = params[:tag_name]
 
     #サイドバーで新規ユーザを表示
