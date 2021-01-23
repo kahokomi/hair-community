@@ -2,12 +2,15 @@ class RelationshipsController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    @user = User.find(params[:user_id])
     current_user.follow(params[:user_id])
+    @user.create_notification_follow(current_user)
+
     @hairdressers = User.where(is_hairdresser: true)
     @hd_tweets = Tweet.where(user_id: @hairdressers).order(created_at: :desc)
     @users = User.where(is_hairdresser: false)
     @user_tweets = Tweet.where(user_id: @users).order(created_at: :desc)
-    @user = User.find(params[:user_id])
+
   end
 
   def destroy

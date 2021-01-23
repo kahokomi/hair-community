@@ -5,6 +5,7 @@ class LikesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     like = current_user.likes.build(tweet_id: params[:tweet_id])
     like.save
+    @tweet.create_notification_like(current_user)
   end
 
   def destroy

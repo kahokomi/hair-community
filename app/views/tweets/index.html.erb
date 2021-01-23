@@ -3,16 +3,15 @@
     <div class="col-md-3">
       <h3 class="text-center">新着ユーザ</h3>
       <div class="bxslider">
-        <% @new_user.each do |user| %>
-        <div class="card pt-3">
-          <div class="test text-center">
-            <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "100x100", class: "icon mx-auto mb-5" %>
-            <%= link_to user.username, user_path(user) %>
-            <p><%= user.name %></p>
+        <% @new_users.each do |user| %>
+          <div class="card pt-3">
+            <div class="test text-center">
+              <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "100x100", class: "icon mx-auto mb-5" %>
+              <%= link_to user.username, user_path(user) %>
+              <p><%= user.name %></p>
+            </div>
           </div>
-        </div>
         <% end %>
-
       </div>
     </div>
     <div class="wrap col-md-6">
