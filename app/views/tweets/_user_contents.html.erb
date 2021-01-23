@@ -1,6 +1,6 @@
 <%# 一般ユーザ側 %>
 <% if user_tweets.exists? %>
-  <% user_tweets.includes([:user]).each do |tweet| %>
+  <% user_tweets.includes([:user, :taggings]).each do |tweet| %>
   <div id="tweet_<%= tweet.id %>" class="tweet-box">
     <%= render "tweets/content", tweet: tweet %>
   </div>

@@ -1,0 +1,14 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div>
+  <%= link_to user_path(visitor) do %>
+      <%= visitor.name %>さんが
+  <% end %>
+  <% if notification.action == 'dm' %>
+    あなたに<%= link_to "チャット", chat_path(visitor) %>を送りました
+  <% elsif notification.action == 'like' %>
+    あなたにいいねしました
+  <% elsif notification.action == 'follow' %>
+    あなたに<%= link_to "フォロー", user_follows_path(visited) %>しました
+  <% end %>
+</div>

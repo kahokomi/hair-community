@@ -11,15 +11,15 @@ class TweetsController < ApplicationController
 
     # タグで絞り込み
     if params[:tag_name]
-      @hd_tweets = @hd_tweets.tagged_with(params[:tag_name])
-      @user_tweets = @user_tweets.tagged_with(params[:tag_name])
+      @hd_tweets = @hd_tweets.includes([:taggings]).tagged_with(params[:tag_name])
+      @user_tweets = @user_tweets.includes([:taggings]).tagged_with(params[:tag_name])
     end
-    @tags = Tweet.tags_on(:tags)
+    @tags = Tweet.includes([:taggings]).tags_on(:tags)
     @tag = params[:tag_name]
 
     #サイドバーで新規ユーザを表示
-    @new_user = User.where(is_hairdresser: false).order(created_at: :desc)
-    @new_hairdresser = User.where(is_hairdresser: true).order(created_at: :desc)
+    @new_users = User.where(is_hairdresser: false).order(created_at: :desc)
+    @new_hairdressers = User.where(is_hairdresser: true).order(created_at: :desc)
   end
 
   def create

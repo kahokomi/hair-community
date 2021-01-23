@@ -38,6 +38,10 @@ class User < ApplicationRecord
   has_many :passive_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :following
 
+  # 通知機能のアソシエーション
+  has_many :active_notification, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
+  has_many :passive_notification, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+
   # ゲストログイン
   def self.guest_hairdresser
     find_or_create_by!(username: 'Guesthairdresser1', email: 'hd_guest@example.com', is_hairdresser: true) do |user|
@@ -67,5 +71,17 @@ class User < ApplicationRecord
   # いいね機能のメソッド
   def already_liked?(tweet)
     likes.exists?(tweet_id: tweet.id)
+  end
+
+  # フォロー通知のメソッド
+  def create_notification_follow(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notification.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
   end
 end
