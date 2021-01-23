@@ -1,10 +1,18 @@
-<h3>通知一覧</h3>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <h3 class="text-center">通知一覧</h3>
+          <ul class="list-group">
+            <%= link_to "全削除", destroy_all_notifications_path, method: :delete %>
 
-<%= link_to "全削除", destroy_all_notifications_path, method: :delete %>
+            <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
 
-<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-<% if notifications.exists? %>
-    <%= render notifications.includes([:visitor, :visited]) %>
-<% else %>
-    <p>通知はございません</p>
-<% end %>
+            <% if notifications.exists? %>
+              <%= render notifications.includes([:visitor, :visited, :tweet]) %>
+            <% else %>
+              <li class="list-group-item">通知はございません</p>
+            <% end %>
+          </ul>
+      </div>
+    </div>
+  </div>

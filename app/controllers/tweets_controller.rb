@@ -5,10 +5,9 @@ class TweetsController < ApplicationController
     # ツイートの一覧表示・新規投稿
     @tweet = Tweet.new
     @hairdressers = User.where(is_hairdresser: true)
-    @hd_tweets = Tweet.where(user_id: @hairdressers).order(created_at: :desc).includes([:taggings])
+    @hd_tweets = Tweet.includes([:taggings]).where(user_id: @hairdressers).order(created_at: :desc)
     @users = User.where(is_hairdresser: false)
-    @user_tweets = Tweet.where(user_id: @users).order(created_at: :desc).includes([:taggings])
-
+    @user_tweets = Tweet.includes([:taggings]).where(user_id: @users).order(created_at: :desc)
     # タグで絞り込み
     if params[:tag_name]
       @hd_tweets = @hd_tweets.includes([:taggings]).tagged_with(params[:tag_name])
