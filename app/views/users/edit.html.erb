@@ -49,10 +49,41 @@
         </div>
 
         <div class="row field">
-          <%= f.label :address, class: "control-label col-md-3" do %>
-            住所<span class="badge badge-danger">必須</span>
+          <% if @user.is_hairdresser == true %>
+            <%= f.label :hair_styles, "得意なヘアスタイル", class: "col-md-3" %>
+            <%= render 'style_modal', user: @user, f: f %>
+          <% else %>
+            <%= f.label :communication_styles, "美容室での過ごし方", class: "col-md-3" %>
+            <%= render 'style_modal', user: @user, f: f %>
           <% end %>
-          <%= f.text_field :address, autofocus: true, autocomplete: "hair_salon", class: "form-control col-md-8" %>
+          <div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#styleModal">
+              こちらから選択してください
+            </button>
+            <span><small>(入力は任意ですが、検索時の絞り込み条件に反映されます)</small></span>
+          </div>
+        </div>
+
+        <div class="row field">
+          <%= f.label :prefecture, class: "control-label col-md-3" do %>
+            都道府県<span class="badge badge-danger">必須</span>
+          <% end %>
+          <%= f.text_field :prefecture, autofocus: true, autocomplete: "hair_salon", class: "form-control col-md-8" %>
+        </div>
+
+        <div class="row field">
+          <%= f.label :city, class: "control-label col-md-3" do %>
+            区・市<span class="badge badge-danger">必須</span>
+          <% end %>
+          <%= f.text_field :city, autofocus: true, autocomplete: "hair_salon", class: "form-control col-md-8" %>
+        </div>
+
+        <div class="row field">
+          <%= f.label :street, class: "control-label col-md-3" do %>
+            番地・建物名<br>
+            部屋番号<span class="badge badge-danger">必須</span>
+          <% end %>
+          <%= f.text_field :street, autofocus: true, autocomplete: "hair_salon", class: "form-control col-md-8" %>
         </div>
 
         <div class="row field">
@@ -73,7 +104,7 @@
 
       <div class="row field">
         <%= f.label :introduction, "自己紹介", class: "control-label col-md-3" %>
-        <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "form-control col-md-8" %>
+        <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "form-control col-md-8", placeholder: "趣味など自由に入力してください" %>
       </div>
 
       <% if @user.is_hairdresser? == true %>

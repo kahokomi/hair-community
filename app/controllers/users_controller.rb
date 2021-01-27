@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true)
   end
 
   def show
@@ -31,12 +33,15 @@ class UsersController < ApplicationController
       :age,
       :year,
       :hair_salon,
-      :address,
+      :prefecture,
+      :city,
+      :street,
       :job,
       :introduction,
       :image,
       :position,
-      :icon_image
+      :icon_image,
+      { :hair_style_ids=> [] }
     )
   end
 end

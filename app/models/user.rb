@@ -1,8 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
+
+  # ジオコーダーで住所の変換を行う
+  geocoded_by :concat_address
+  after_validation :geocode
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -31,6 +34,10 @@ class User < ApplicationRecord
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :user_rooms
+  has_many :user_communication_styles, dependent: :destroy
+  has_many :user_hair_styles, dependent: :destroy
+  has_many :communication_styles, through: :user_communication_styles
+  has_many :hair_styles, through: :user_hair_styles
 
   # フォロー機能のアソシエーション
   has_many :active_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
@@ -84,4 +91,10 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  # 都道府県、市町村、番地カラムの内容を結合
+  def concat_address
+    "%s%s%s"%([self.prefecture, self.city, self.street])
+  end
+
 end
