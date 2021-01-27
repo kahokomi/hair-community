@@ -12,18 +12,6 @@
             <%= f.text_field :username, autofocus: true, autocomplete: "username", placeholder: "半角英大小文字・数字をすべて含めて入力してください", class: "form-control col-md-12" %>
           </div>
 
-          <div class="text-center">
-            <span class="field">
-              <%= f.radio_button :is_hairdresser, true %>
-              <%= f.label :is_hairdresser, "美容師", value: true %>
-            </span>
-            <span class="field offset-3">
-              <%= f.radio_button :is_hairdresser, false %>
-              <%= f.label :is_hairdresser, "一般の方", value: false %>
-            </span>
-          </div>
-
-
           <div class="field">
             <%= f.label :email, "メールアドレス", class: "control-label" %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-md-12" %>
@@ -43,6 +31,7 @@
           </div>
 
           <div class="actions text-center my-3">
+            <%= f.hidden_field :is_hairdresser, :value => @is_hairdresser %>
             <%= f.submit "新規登録", class: "btn btn-primary col-md-12", data: {confirm: "この内容で登録しますか？\n\n※美容師or一般ユーザの誤りに注意してください※"} %>
           </div>
         <% end %>

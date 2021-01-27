@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_22_100853) do
+ActiveRecord::Schema.define(version: 2021_01_25_115044) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 2021_01_22_100853) do
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_chats_on_room_id"
     t.index ["user_id"], name: "index_chats_on_user_id"
+  end
+
+  create_table "communication_styles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hair_styles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "likes", force: :cascade do |t|
@@ -99,6 +111,24 @@ ActiveRecord::Schema.define(version: 2021_01_22_100853) do
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
+  create_table "user_communication_styles", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "communication_style_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["communication_style_id"], name: "index_user_communication_styles_on_communication_style_id"
+    t.index ["user_id"], name: "index_user_communication_styles_on_user_id"
+  end
+
+  create_table "user_hair_styles", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "hair_style_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hair_style_id"], name: "index_user_hair_styles_on_hair_style_id"
+    t.index ["user_id"], name: "index_user_hair_styles_on_user_id"
+  end
+
   create_table "user_rooms", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
@@ -128,7 +158,9 @@ ActiveRecord::Schema.define(version: 2021_01_22_100853) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "address"
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
     t.float "latitude"
     t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
