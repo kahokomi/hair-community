@@ -45,7 +45,7 @@
           </tr>
           <tr class="row">
             <th class="col-md-2">住所</th>
-            <td class="col-md-5"><%= @user.address %></td>
+            <td class="col-md-5"><%= @user.concat_address %></td>
             <!--google map表示-->
               <script type="text/javascript">
                 function initMap(){
@@ -57,7 +57,7 @@
                   var transitLayer = new google.maps.TransitLayer();
                   transitLayer.setMap(map);
 
-                  var contentString = '住所：<%= @user.address %>';
+                  var contentString = '住所：<%= @user.concat_address %>';
                   var infowindow = new google.maps.InfoWindow({
                     content: contentString
                   });
