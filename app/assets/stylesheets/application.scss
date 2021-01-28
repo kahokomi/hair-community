@@ -129,7 +129,7 @@ img {
 }
 
 /* ヘッダー */
-.nav-item > * {
+.nav-item > .nav-link {
   margin: 0 30px;
 }
 
@@ -154,6 +154,16 @@ img {
 
 .search_form {
   font-size: 0.9em;
+  font-family: 'Abel', 'M PLUS Rounded 1c';
+}
+
+.check_lb {
+  display:block;
+}
+
+.modal-dialog-fluid {
+  max-width: inherit;
+  width: 60%;
 }
 
 /* フッター */

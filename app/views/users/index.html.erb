@@ -1,24 +1,13 @@
 <div class="container-fluid">
-
-  <%= search_form_for @q, class: "search_form" do |f| %>
-    <%= f.label :username, "名前" %>
-    <%= f.search_field :username_cont %>
-
-  　<%= f.radio_button :is_hairdresser_eq, '', {:checked => true} %>指定なし
-    <%= f.radio_button :is_hairdresser_eq, true %>美容師
-    <%= f.radio_button :is_hairdresser_eq, false %>一般ユーザー
-    <%= f.submit '検索', :class => "btn btn-light" %>
-  <% end %>
-
   <div class="row my-2">
     <h2 class="mx-auto">検索結果</h2>
   </div>
 
 <%# 検索結果の表示 %>
   <div class="row mx-auto">
-    <%# unless params[:q]['username_cont'] == '' %>
-    <!--  <h3 class="mx-auto mt-5">検索キーワードがありません。</h3>-->
-    <!--<%# elsif @users.present? %>-->
+    <% if params[:q]['username_or_name_cont_any'] == '' %>
+      <h3 class="mx-auto mt-5">検索キーワードがありません。</h3>
+    <% elsif @users.present? %>
       <table class="table col-md-10 offset-1">
         <thead>
           <tr class="row">
@@ -67,8 +56,8 @@
           <% end %>
         </tbody>
       </table>
-    <%# else %>
-      <!--<h3 class="mx-auto mt-5">検索結果がありません</h3>-->
+    <% else %>
+      <h3 class="mx-auto mt-5">検索結果がありません</h3>
     <% end %>
   </div>
 </div>

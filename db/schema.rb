@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_25_115044) do
+ActiveRecord::Schema.define(version: 2021_01_28_125106) do
+
+  create_table "areas", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
@@ -148,17 +154,19 @@ ActiveRecord::Schema.define(version: 2021_01_25_115044) do
     t.integer "age"
     t.integer "year"
     t.string "hair_salon"
+    t.integer "area_id"
     t.string "job"
     t.string "position"
     t.text "introduction"
     t.string "image_id"
     t.string "icon_image_id"
+    t.integer "price"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "prefecture"
+    t.integer "prefecture_id"
     t.string "city"
     t.string "street"
     t.float "latitude"
