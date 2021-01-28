@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row col-md-10 mx-auto mt-3 userpage">
+  <div class="row col-md-11 mx-auto mt-3 userpage">
     <div class="col-md-8 offset-1 userpage-name">
       <%= attachment_image_tag @user, :icon_image, fallback: "no_icon.png", size: "50x50", class: "icon" %>
       <%= @user.username %>
@@ -22,26 +22,42 @@
     <table class="table col-md-9 mx-auto">
       <tbody>
         <tr class="row">
-          <th class="col-md-2">氏名</th>
-          <td class="col-md-10"><%= @user.name %></td>
+          <th class="col-md-4">氏名</th>
+          <td class="col-md-8"><%= @user.name %></td>
         </tr>
         <tr class="row">
-          <th class="col-md-2">性別</th>
-          <td class="col-md-10"><%= @user.sex %></td>
+          <th class="col-md-4">性別</th>
+          <td class="col-md-8"><%= @user.sex %></td>
         </tr>
         <tr class="row">
-          <th class="col-md-2">年齢</th>
-          <td class="col-md-10"><%= @user.age %></td>
+          <th class="col-md-4">年齢</th>
+          <td class="col-md-8"><%= @user.age %></td>
         </tr>
 
         <% if @user.is_hairdresser? == true %>
           <tr class="row">
-            <th class="col-md-2">美容師歴</th>
-            <td class="col-md-10"><%= @user.year %></td>
+            <th class="col-md-4">役職</th>
+            <td class="col-md-8"><%= @user.position %></td>
           </tr>
           <tr class="row">
-            <th class="col-md-2">所属美容室</th>
-            <td class="col-md-10"><%= @user.hair_salon %></td>
+            <th class="col-md-4">美容師歴</th>
+            <td class="col-md-8"><%= @user.year %></td>
+          </tr>
+          <tr class="row">
+            <th class="col-md-4">カット料金</th>
+            <td class="col-md-8">¥<%= @user.price %></td>
+          </tr>
+          <tr class="row">
+            <th class="col-md-4">得意なスタイル</th>
+            <td class="col-md-8"><%= @user.hair_styles.map{|id| id.name}.join(",") %></td>
+          </tr>
+          <tr class="row">
+            <th class="col-md-4">提供している<br>コミュニケーションスタイル</th>
+            <td class="col-md-8"><%= @user.communication_styles.map{|id| id.name}.join(",") %></td>
+          </tr>
+          <tr class="row">
+            <th class="col-md-4">所属美容室</th>
+            <td class="col-md-8"><%= @user.hair_salon %></td>
           </tr>
           <tr class="row">
             <th class="col-md-2">住所</th>
@@ -78,23 +94,27 @@
                             src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
               </script>
 
-              <td id="map" class="col-md-5"></td>
-          </tr>
-          <tr class="row">
-            <th class="col-md-2">役職</th>
-            <td class="col-md-10"><%= @user.position %></td>
+            <td id="map" class="col-md-5"></td>
           </tr>
 
         <% else %>
           <tr class="row">
-            <th class="col-md-2">職業</th>
-            <td class="col-md-10"><%= @user.job %></td>
+            <th class="col-md-4">職業</th>
+            <td class="col-md-8"><%= @user.job %></td>
+          </tr>
+          <tr class="row">
+            <th class="col-md-4">希望するヘアスタイル</th>
+            <td class="col-md-8"><%= @user.hair_styles.map{|id| id.name}.join(",") %></td>
+          </tr>
+          <tr class="row">
+            <th class="col-md-4">美容室での過ごし方</th>
+            <td class="col-md-8"><%= @user.communication_styles.map{|id| id.name}.join(",") %></td>
           </tr>
         <% end %>
 
         <tr class="row">
-          <th class="col-md-2">自己紹介</th>
-          <td class="col-md-10">
+          <th class="col-md-4">自己紹介</th>
+          <td class="col-md-8">
             <% unless @user.introduction == nil %>
               <%= safe_join(@user.introduction.split("\n"),tag(:br)) %>
             <% end %>
@@ -103,7 +123,7 @@
 
         <% if @user.is_hairdresser? == true %>
           <tr class="row">
-            <th class="col-md-2">過去の作品</th>
+            <th class="col-md-4">過去の作品</th>
             <td><%= attachment_image_tag @user, :image, size: "450x400" %></td>
           </tr>
         <% end %>
@@ -112,6 +132,6 @@
 
 
   <% if @user == current_user %>
-    <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary col-md-2 offset-8 userpage-edit-btn" %>
+    <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary col-md-4 offset-8 userpage-edit-btn" %>
   <% end %>
 

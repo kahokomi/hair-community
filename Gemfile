@@ -77,6 +77,7 @@ gem 'kaminari'
 gem 'faker'
 gem "geocoder"
 gem 'acts-as-taggable-on'
+gem 'active_hash'
 
 group :production do
   gem 'mysql2'

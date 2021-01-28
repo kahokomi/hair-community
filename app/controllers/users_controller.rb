@@ -41,7 +41,8 @@ class UsersController < ApplicationController
       :image,
       :position,
       :icon_image,
-      { :hair_style_ids=> [] }
-    )
+      { :hair_style_ids=> [] },
+      { :communication_style_ids=> [] }
+  )
   end
 end
