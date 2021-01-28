@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   # ジオコーダーで住所の変換を行う
-  geocoded_by :concat_address
-  after_validation :geocode
+  # geocoded_by :concat_address
+  # after_validation :geocode
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -38,6 +38,10 @@ class User < ApplicationRecord
   has_many :user_hair_styles, dependent: :destroy
   has_many :communication_styles, through: :user_communication_styles
   has_many :hair_styles, through: :user_hair_styles
+  belongs_to :area
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :prefecture
 
   # フォロー機能のアソシエーション
   has_many :active_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
@@ -51,14 +55,36 @@ class User < ApplicationRecord
 
   # ゲストログイン
   def self.guest_hairdresser
-    find_or_create_by!(username: 'Guesthairdresser1', email: 'hd_guest@example.com', is_hairdresser: true) do |user|
-      user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
+    find_or_create_by!(
+      username: "Guesthairdresser1",
+      email: "hd_guest@example.com",
+      name: "美容太郎",
+      age: 25,
+      year: 7,
+      sex: "男性",
+      hair_salon: "hairsalon OS",
+      position: "スタイリスト",
+      price: "4000",
+      prefecture_id: 13,
+      city: "渋谷区",
+      street: "神南1丁目",
+      is_hairdresser: true
+    ) do |user|
+    user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
     end
   end
 
   def self.guest_user
-    find_or_create_by!(username: 'Guestuser1', email: 'user_guest@example.com', is_hairdresser: false) do |user|
-      user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
+    find_or_create_by!(
+      username: "Guestuser1",
+      email: "user_guest@example.com",
+      name: "一般花子",
+      age: 25,
+      sex: "女性",
+      job: "エンジニア",
+      is_hairdresser: false
+    ) do |user|
+    user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
     end
   end
 
@@ -93,8 +119,8 @@ class User < ApplicationRecord
   end
 
   # 都道府県、市町村、番地カラムの内容を結合
-  def concat_address
-    "%s%s%s"%([self.prefecture, self.city, self.street])
-  end
+  # def concat_address
+  #   "%s%s%s"%([self.prefecture.name, self.city, self.street])
+  # end
 
 end

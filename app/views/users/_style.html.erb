@@ -1,0 +1,36 @@
+<div class="modal fade" id="styleModal" tabindex="-1" role="dialog" aria-labelledby="styleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="styleModalLabel">選択してください</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <% if user.is_hairdresser == true %>
+          <h5 class="modal-title" id="styleModalLabel">得意なヘアスタイル</h5>
+        <% else %>
+          <h5 class="modal-title" id="styleModalLabel">希望するヘアスタイル</h5>
+        <% end %>
+          <%= f.collection_check_boxes :hair_style_ids, HairStyle.all, :id, :name do |b| %>
+            <span class="ml-2"><%= b.label { b.check_box + b.text } %></span>
+          <% end %>
+      </div>
+      <div class="modal-body text-center">
+        <% if user.is_hairdresser == true %>
+          <h5 class="modal-title" id="styleModalLabel">提供している美容室での過ごし方</h5>
+          <small>※検索の際使用するため、お客様視点での内容となります※<br>※提供可能な内容にチェックをつけてください※</small>
+        <% else %>
+          <h5 class="modal-title" id="styleModalLabel">美容室での過ごし方</h5>
+        <% end %>
+          <%= f.collection_check_boxes :communication_style_ids, CommunicationStyle.all, :id, :name do |b| %>
+            <span class="ml-2"><%= b.label { b.check_box + b.text } %></span>
+          <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">保存して閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>

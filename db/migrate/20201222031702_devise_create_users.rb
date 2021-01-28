@@ -13,11 +13,13 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.integer :age
       t.integer :year
       t.string :hair_salon
+      t.integer :area_id, foreign_key: true
       t.string :job
       t.string :position
       t.text :introduction
       t.string :image_id
       t.string :icon_image_id
+      t.integer :price
 
       ## Recoverable
       t.string   :reset_password_token
