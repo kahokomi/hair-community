@@ -7,7 +7,14 @@ class ApplicationController < ActionController::Base
       params[:q][:username_or_name_cont_any] = params[:q][:username_or_name_cont_any].split(/[[:blank:]]+/)
       @q = User.ransack(params[:q])
       @users = @q.result
-
+      # ログインユーザが一般ユーザーの際、カテゴリ検索をかけた時の結果を美容師のみに限定
+      if current_user.is_hairdresser == false
+        if params[:q][:hair_styles_id_in] == [""] && params[:q][:communication_styles_id_in] == [""]
+          @hds = @q.result
+        else
+          @hds = @q.result.where(is_hairdresser: true)
+        end
+      end
     else
       @q = User.ransack(params[:q])
       @users = @q.result
