@@ -1,0 +1,24 @@
+<tr class="row">
+  <td class="col-md-1">
+    <%= link_to user_path(user) do%>
+      <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
+    <% end %>
+  </td>
+  <td class="col-md-4 search-username">
+    <%= link_to user.username, user_path(user) %>
+    <% if user.is_hairdresser == true %>
+      <span class="badge badge-danger search-hairdresser">美容師</span>
+    <% else %>
+      <span class="badge badge-primary search-hairdresser">一般ユーザ</span>
+    <% end %>
+  </td>
+  <td class="col-md-2">
+    <%= user.age %>
+  </td>
+  <td class="col-md-2">
+    <%= user.job %>
+  </td>
+  <td class="col-md-3">
+    <%= user.position %>
+  </td>
+</tr>

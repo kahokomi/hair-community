@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-  
+
   Area.create!(
     [
       {
@@ -87,7 +87,8 @@
         hair_salon: "hairsalon OS",
         position: "店長",
         price: "4000",
-        # prefecture_id: 13,
+        prefecture_id: 13,
+        area_id: 1,
         city: "渋谷区",
         street: "渋谷1丁目11-3",
         is_hairdresser: true
@@ -103,9 +104,10 @@
         hair_salon: "hairsalon Show",
         position: "スタイリスト",
         price: "5000",
-        # prefecture_id: 13,
+        prefecture_id: 13,
         city: "立川市",
         street: "柴崎町2丁目",
+        area_id: 12,
         is_hairdresser: true
       },
 
@@ -149,9 +151,10 @@
         hair_salon: "cut Natsuki",
         position: "スタイリスト",
         price: "3000",
-        # prefecture_id: 13,
+        prefecture_id: 13,
         city: "武蔵野市",
         street: "吉祥寺南町1丁目",
+        area_id: 12,
         is_hairdresser: true
       },
 
@@ -165,9 +168,10 @@
         hair_salon: "cut Natsuki",
         position: "アシスタント",
         price: "1500",
-        # prefecture_id: 13,
+        prefecture_id: 13,
         city: "渋谷区",
         street: "代官山町",
+        area_id: 6,
         is_hairdresser: true
       },
 
@@ -181,9 +185,10 @@
         hair_salon: "hairsalon Show",
         position: "ジュニアスタイリスト",
         price: "2000",
-        # prefecture_id: 13,
+        prefecture_id: 13,
         city: "渋谷区",
         street: "神宮前5丁目",
+        area_id: 3,
         is_hairdresser: true
       },
 
