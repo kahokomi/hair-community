@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @my_tweets = Tweet.where(user_id: @user).order(created_at: :desc)
   end
 
   def edit
@@ -33,9 +34,11 @@ class UsersController < ApplicationController
       :age,
       :year,
       :hair_salon,
-      :prefecture,
+      :price,
+      :prefecture_id,
       :city,
       :street,
+      :area_id,
       :job,
       :introduction,
       :image,

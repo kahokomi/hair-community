@@ -15,7 +15,7 @@
             </h5>
             <%= f.search_field :username_or_name_cont_any, class: "form-control col-md-5 mx-auto" %>
           </div>
-          <div>
+          <div class="mb-4">
           　<%= f.radio_button :is_hairdresser_eq, '', {:checked => true} %>指定なし
             <%= f.radio_button :is_hairdresser_eq, true %>美容師
             <%= f.radio_button :is_hairdresser_eq, false %>一般ユーザー
@@ -24,14 +24,25 @@
             <h5 class="control-label col-md-12">
               <%= f.label :city_or_street_cont_any, "エリア検索" %>
             </h5>
-            <%= f.search_field :city_or_street_cont_any, class: "form-control col-md-5 mx-auto", placeholder: "東京都 渋谷区etc" %>
+            <%= f.search_field :city_or_street_cont_any, class: "form-control col-md-5 mx-auto", placeholder: "例)東京都 渋谷区etc" %>
+          </div>
+
+          <div class="row field form-inline">
+            <h5 class="control-label col-md-12">
+              <%= f.label :price, "価格" %>
+            </h5>
+            <div class="mx-auto">
+              <%= f.search_field :price_gteq, class: "form-control", placeholder: "例)2000" %>
+              ~
+              <%= f.search_field :price_lteq, class: "form-control", placeholder: "例)4000" %>
+            </div>
           </div>
 
           <div class="row field mt-3">
             <% if current_user.is_hairdresser == false %>
               <h5 class="control-label col-md-12"><label>なりたいヘアスタイル</label></h5>
             <% else %>
-              <h5 class="control-label col-md-12"><label>得意なヘアスタイル</label></h5>
+              <h5 class="control-label col-md-12"><label>ヘアスタイル</label></h5>
             <% end %>
             <div class="col-md-8 offset-2">
               <%= f.collection_check_boxes :hair_styles_id_in, HairStyle.all, :id, :name do |b| %>
@@ -42,10 +53,10 @@
             <% if current_user.is_hairdresser == false %>
               <h5 class="control-label col-md-12"><label>希望の美容室での過ごし方</label></h5>
             <% else %>
-              <h5 class="control-label col-md-12"><label>お客様の求める接客スタイル</label></h5>
+              <h5 class="control-label col-md-12"><label>接客スタイル</label></h5>
             <% end %>
             <div class="col-md-8 offset-2">
-              <%= f.collection_check_boxes :communication_styles_id, CommunicationStyle.all, :id, :name do |b| %>
+              <%= f.collection_check_boxes :communication_styles_id_in, CommunicationStyle.all, :id, :name do |b| %>
                 <span class="ml-3"><%= b.label { b.check_box + b.text } %></span>
               <% end %>
             </div>
