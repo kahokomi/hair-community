@@ -10,6 +10,7 @@ class RelationshipsController < ApplicationController
     @hd_tweets = Tweet.where(user_id: @hairdressers).order(created_at: :desc)
     @users = User.where(is_hairdresser: false)
     @user_tweets = Tweet.where(user_id: @users).order(created_at: :desc)
+    @my_tweets = Tweet.where(user_id: @user).order(created_at: :desc)
 
   end
 
@@ -20,6 +21,7 @@ class RelationshipsController < ApplicationController
     @users = User.where(is_hairdresser: false)
     @user_tweets = Tweet.where(user_id: @users).order(created_at: :desc)
     @user = User.find(params[:user_id])
+
   end
 
   def follows

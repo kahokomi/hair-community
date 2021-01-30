@@ -5,7 +5,7 @@
 
 <%# 検索結果の表示 %>
   <div class="row mx-auto">
-    <% if params[:q]['username_or_name_cont_any'] == '' %>
+    <% if params[:q]['username_or_name_or_city_or_street_cont_any'] == '' %>
       <h3 class="mx-auto mt-5">検索キーワードがありません。</h3>
     <% elsif @users.present? %>
       <table class="table col-md-10 offset-1">

@@ -5,15 +5,14 @@ class TweetsController < ApplicationController
     # ツイートの一覧表示・新規投稿
     @tweet = Tweet.new
     @hairdressers = User.where(is_hairdresser: true)
-    @hd_tweets = Tweet.includes([:taggings]).where(user_id: @hairdressers).order(created_at: :desc)
     @users = User.where(is_hairdresser: false)
-    @user_tweets = Tweet.includes([:taggings]).where(user_id: @users).order(created_at: :desc)
-    # タグで絞り込み
+    @hd_tweets = Tweet.includes([:tags, :user]).where(user_id: @hairdressers).order(created_at: :desc)
+    @user_tweets = Tweet.includes([:tags, :user]).where(user_id: @users).order(created_at: :desc)
     if params[:tag_name]
-      @hd_tweets = @hd_tweets.includes([:taggings]).tagged_with(params[:tag_name])
-      @user_tweets = @user_tweets.includes([:taggings]).tagged_with(params[:tag_name])
+      @hd_tweets = @hd_tweets.includes([:tags, :user]).tagged_with(params[:tag_name])
+      @user_tweets = @user_tweets.includes([:tags, :user]).tagged_with(params[:tag_name])
     end
-    @tags = Tweet.includes([:taggings]).tags_on(:tags)
+    @tags = Tweet.includes([:tags, :tag_taggings]).tags_on(:tags)
     @tag = params[:tag_name]
 
     #サイドバーで新規ユーザを表示
