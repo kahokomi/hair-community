@@ -7,9 +7,11 @@
           <%= @user.username %>
         </div>
         <%# フォローに関連する記述 %>
-        <div class="row col-md-5 ml-auto follow-count">
-          <%= render "relationships/link", user: @user %>
-          <div class="mx-auto test-follow">
+        <div class="row col-md-5">
+          <div class="row col-md-12 follow-count">
+            <%= render "relationships/link", user: @user %>
+          </div>
+          <div class="mx-auto">
             <% if @user == current_user %>
               <%= link_to "チャット一覧", chats_path, class: "btn btn-success" %>
               <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
