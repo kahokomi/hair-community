@@ -176,6 +176,15 @@ img {
   color: #efa04c;
 }
 
+.column{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.style-column {
+  margin-left: 20%;
+}
+
 /* フッター */
 footer {
   position: absolute;
@@ -203,10 +212,6 @@ footer {
 }
 
 /* タブ機能 */
-.height-fixed {
-  height: 80vh;
-}
-
 .wrap {
   width: 50%;
   max-width: 900px;
@@ -271,6 +276,11 @@ footer {
 }
 
 /* つぶやき関連 */
+.height-fixed {
+  min-height: 80vh;
+  max-height: 170vh;
+}
+
 #tab-contents .tab.tweet-tab {
   border-radius: 20px 20px 20px 20px;
   background-color: transparent;

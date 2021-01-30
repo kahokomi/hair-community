@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def set_search
     if params[:q].present?
-      params[:q][:username_or_name_cont_any] = params[:q][:username_or_name_cont_any].split(/[[:blank:]]+/)
+      params[:q][:username_or_name_or_city_or_street_cont_any] = params[:q][:username_or_name_or_city_or_street_cont_any].split(/[[:blank:]]+/)
       @q = User.ransack(params[:q])
       @users = @q.result
       # ログインユーザが一般ユーザーの際、カテゴリ検索をかけた時の結果を美容師のみに限定

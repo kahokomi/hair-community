@@ -9,7 +9,7 @@
         <%# フォローに関連する記述 %>
         <div class="row col-md-5 ml-auto follow-count">
           <%= render "relationships/link", user: @user %>
-          <div class="mx-auto">
+          <div class="mx-auto test-follow">
             <% if @user == current_user %>
               <%= link_to "チャット一覧", chats_path, class: "btn btn-success" %>
               <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
@@ -143,8 +143,8 @@
       <div class="row">
         <h5><%= @user.name %>のツイート</h5>
       </div>
-      <div class="height-fixed scroll">
-        <%= render 'tweets/hd_contents', hd_tweets: @my_tweets %>
+      <div class="height-fixed scroll userpage-tweet-follow">
+        <%= render "tweets/lists", tweets: @my_tweets %>
       </div>
     </div>
   </div>
