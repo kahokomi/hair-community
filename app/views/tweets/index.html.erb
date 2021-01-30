@@ -25,12 +25,13 @@
       </ul>
       <div class="height-fixed scroll">
         <div id="tab-contents">
-          <div id="tab1" class="tab tweet-tab">
-              <%= render 'tweets/hd_contents', hd_tweets: @hd_tweets %>
-          </div>
-          <div id="tab2" class="tab tweet-tab">
-              <%= render 'tweets/user_contents', user_tweets: @user_tweets %>
-          </div>
+          <%# if @hd_tweets %>
+            <div id="tab1" class="tab tweet-tab">
+              <%= render 'lists', tweets: @hd_tweets %>
+            </div>
+            <div id="tab2" class="tab tweet-tab">
+              <%= render 'lists', tweets: @user_tweets %>
+            </div>
         </div>
       </div>
     </div>

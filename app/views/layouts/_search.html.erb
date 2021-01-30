@@ -11,20 +11,26 @@
         <div class="modal-body">
           <div class="row field">
             <h5 class="control-label col-md-12">
-              <%= f.label :username_or_name_cont_any, "ユーザー名・名前" %>
+              <%= f.label :username_or_name_or_city_or_street_cont_any, "ユーザー名・名前" %>
             </h5>
-            <%= f.search_field :username_or_name_cont_any, class: "form-control col-md-5 mx-auto" %>
+            <%= f.search_field :username_or_name_or_city_or_street_cont_any, class: "form-control col-md-5 mx-auto" %>
           </div>
           <div class="mb-4">
           　<%= f.radio_button :is_hairdresser_eq, '', {:checked => true} %>指定なし
             <%= f.radio_button :is_hairdresser_eq, true %>美容師
             <%= f.radio_button :is_hairdresser_eq, false %>一般ユーザー
           </div>
+
+          <h5 class="mx-auto">
+            <%= f.label :city_or_street_cont_any, "エリア検索" %>
+          </h5>
           <div class="row field">
-            <h5 class="control-label col-md-12">
-              <%= f.label :city_or_street_cont_any, "エリア検索" %>
-            </h5>
-            <%= f.search_field :city_or_street_cont_any, class: "form-control col-md-5 mx-auto", placeholder: "例)東京都 渋谷区etc" %>
+            <div class="mx-auto">
+            <%= f.label :prefecture_id, "都道府県", class: "control-label" %>
+            <%= f.collection_select(:prefecture_id_in, Prefecture.all, :id, :name, {include_blank: "---"}, class: "form-control") %></span>
+            <%= f.label :area_id, "エリア選択(東京のみ)" %>
+            <%= f.collection_select(:area_id_in, Area.all, :id, :name, {include_blank: "---"}, class: "form-control") %>
+            </div>
           </div>
 
           <div class="row field form-inline">
@@ -44,9 +50,9 @@
             <% else %>
               <h5 class="control-label col-md-12"><label>ヘアスタイル</label></h5>
             <% end %>
-            <div class="col-md-8 offset-2">
+            <div class="column style-column w-75">
               <%= f.collection_check_boxes :hair_styles_id_in, HairStyle.all, :id, :name do |b| %>
-                <span class="ml-3"><%= b.label { b.check_box + b.text } %></span>
+                <span class="text-left"><%= b.label { b.check_box + b.text } %></span>
               <% end %>
             </div>
 
@@ -55,9 +61,9 @@
             <% else %>
               <h5 class="control-label col-md-12"><label>接客スタイル</label></h5>
             <% end %>
-            <div class="col-md-8 offset-2">
+            <div class="column style-column w-75">
               <%= f.collection_check_boxes :communication_styles_id_in, CommunicationStyle.all, :id, :name do |b| %>
-                <span class="ml-3"><%= b.label { b.check_box + b.text } %></span>
+                <span class="text-left"><%= b.label { b.check_box + b.text } %></span>
               <% end %>
             </div>
           </div>
