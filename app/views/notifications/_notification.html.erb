@@ -14,6 +14,6 @@
     あなたに<%= link_to "フォロー", user_follows_path(visited) %>しました
   <% end %>
   <p class="text-right">
-    <%= time_ago_in_words(notification.created_at).upcase %>
+    <%= time_ago_in_words(notification.created_at).upcase %>前
   </p>
 </li>

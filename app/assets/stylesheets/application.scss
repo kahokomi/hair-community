@@ -63,6 +63,8 @@ img {
 
 .icon {
   border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #797979;
 }
 
 #map {
@@ -121,7 +123,7 @@ img {
 }
 
 .about-user {
-  background-image: image-url("about-user.png");
+  background-image: image-url("about_user.png");
   background-size: contain;
   background-repeat: no-repeat;
   height: 230px;
@@ -140,7 +142,9 @@ img {
 }
 
 .nav-user-header {
-  // background-color: #7290AC;
+  border-bottom: 1px dashed #7290AC;
+  height: 5em;
+  font-family: 'Abel', 'Waonjoyo';
 }
 
 .navbar-brand {
@@ -218,10 +222,6 @@ footer {
   margin: 0;
 }
 
-.scroll {
-  overflow-y: auto;
-}
-
 #tab-menu {
   display: flex;
   margin: 0 auto 0 -40px;
@@ -278,7 +278,11 @@ footer {
 /* つぶやき関連 */
 .height-fixed {
   min-height: 80vh;
-  max-height: 170vh;
+  max-height: 100vh;
+}
+
+.scroll {
+  overflow-y: auto;
 }
 
 #tab-contents .tab.tweet-tab {
@@ -320,6 +324,10 @@ footer {
   padding-top: 50px;
 }
 
+// .tweet-pagination {
+//   display: none;
+// }
+
 /*マイページ関連*/
 .userpage-wrap {
   width: 100%;
@@ -339,6 +347,10 @@ footer {
 
 .userpage-table-color {
   border-color: #000;
+}
+
+.userpage-tweet {
+  max-height: 170vh!important;
 }
 
 .row.field {
@@ -361,6 +373,10 @@ footer {
   input {
     @extend .is-invalid;
   }
+}
+
+.form-introduction {
+  height: 200px!important;
 }
 
 /*フォロー一覧*/
