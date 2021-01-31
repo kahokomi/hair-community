@@ -77,13 +77,6 @@
         </div>
 
         <div class="row field">
-          <%= f.label :hair_salon, class: "control-label col-md-3" do %>
-            美容室のエリア<small>(任意ですが検索にかかりやすくなります)</small>
-          <% end %>
-          <%= f.collection_select(:area_id, Area.all, :id, :name, {include_blank: "---"}, class: "form-control col-md-2") %>
-        </div>
-
-        <div class="row field">
           <%= f.label :prefecture_id, class: "control-label col-md-3" do %>
             都道府県<span class="badge badge-danger">必須</span>
           <% end %>
@@ -103,6 +96,14 @@
             部屋番号<span class="badge badge-danger">必須</span>
           <% end %>
           <%= f.text_field :street, autofocus: true, autocomplete: "hair_salon", class: "form-control col-md-8" %>
+        </div>
+
+        <div class="row field">
+          <%= f.label :hair_salon, class: "control-label col-md-3" do %>
+            美容室のエリア(東京限定)
+          <% end %>
+          <%= f.collection_select(:area_id, Area.all, :id, :name, {include_blank: "---"}, class: "form-control col-md-2") %>
+          <p class="mt-2 ml-2"><small>(入力は任意ですが、検索時の絞り込み条件に反映されます)</small></p>
         </div>
 
       <% else %>
@@ -130,7 +131,7 @@
 
       <div class="row field">
         <%= f.label :introduction, "自己紹介", class: "control-label col-md-3" %>
-        <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "form-control col-md-8", placeholder: "趣味など自由に入力してください" %>
+        <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "form-control col-md-8 form-introduction", placeholder: "趣味など自由に入力してください" %>
       </div>
 
       <% if @user.is_hairdresser? == true %>
