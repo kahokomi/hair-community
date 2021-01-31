@@ -3,16 +3,15 @@
     <div class="col-md-3">
       <h3 class="text-center">新着ユーザ</h3>
       <div class="bxslider">
-        <% @new_user.each do |user| %>
-        <div class="card pt-3">
-          <div class="test text-center">
-            <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "100x100", class: "icon mx-auto mb-5" %>
-            <%= link_to user.username, user_path(user) %>
-            <p><%= user.name %></p>
+        <% @new_users.each do |user| %>
+          <div class="card pt-3">
+            <div class="test text-center">
+              <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "100x100", class: "icon mx-auto mb-5" %>
+              <%= link_to user.username, user_path(user) %>
+              <p><%= user.name %></p>
+            </div>
           </div>
-        </div>
         <% end %>
-
       </div>
     </div>
     <div class="wrap col-md-6">
@@ -20,19 +19,19 @@
         <h3>絞り込みタグ：<%= @tag %></h3>
       <% end %>
 
-      <ul id="tab-menu">
+      <ul id="tab-menu" class="tweet-menu">
         <li><a href="#tab1" class="active">美容師</a></li>
         <li><a href="#tab2" class="">一般ユーザ</a></li>
       </ul>
       <div class="height-fixed scroll">
-      <div id="tab-contents">
-        <div id="tab1" class="tab tweet-tab">
-            <%= render 'tweets/hd_contents', hd_tweets: @hd_tweets %>
+        <div id="tab-contents">
+          <div id="tab1" class="tab tweet-tab">
+            <%= render 'lists', tweets: @hd_tweets %>
+          </div>
+          <div id="tab2" class="tab tweet-tab">
+            <%= render 'lists', tweets: @user_tweets %>
+          </div>
         </div>
-        <div id="tab2" class="tab tweet-tab">
-            <%= render 'tweets/user_contents', user_tweets: @user_tweets %>
-        </div>
-      </div>
       </div>
     </div>
     <div class="col-md-3">
@@ -51,7 +50,7 @@
   </div>
 　<!--新規投稿ボタン-->
   <div class="row">
-    <button type="button" class="tweet-btn btn btn-info offset-8" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="tweet-btn btn btn-info offset-8" data-toggle="modal" data-target="#tweetModal">
       <i class="far fa-edit pl-2"></i>
     </button>
   </div>

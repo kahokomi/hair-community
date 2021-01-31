@@ -5,9 +5,9 @@
 
 <%# 検索結果の表示 %>
   <div class="row mx-auto">
-    <% if params[:q]['username_cont'] == "" %>
+    <% if params[:q][:username_or_name_or_hair_salon_or_job_or_position_or_city_or_street_or_introduction_cont_any] == [] %>
       <h3 class="mx-auto mt-5">検索キーワードがありません。</h3>
-    <% elsif @search_users.present? %>
+    <% elsif @users.present? %>
       <table class="table col-md-10 offset-1">
         <thead>
           <tr class="row">
@@ -28,31 +28,14 @@
           </tr>
         </thead>
         <tbody>
-          <% @search_users.each do |user| %>
-            <tr class="row">
-                <td class="col-md-1">
-                <%= link_to user_path(user) do%>
-                  <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "50x50" %>
-                <% end %>
-                </td>
-                <td class="col-md-4 search-username">
-                  <%= link_to user.username, user_path(user) %>
-                  <% if user.is_hairdresser == true %>
-                    <span class="badge badge-danger search-hairdresser">美容師</span>
-                  <% else %>
-                    <span class="badge badge-primary search-hairdresser">一般ユーザ</span>
-                  <% end %>
-                </td>
-                <td class="col-md-2">
-                  <%= user.age %>
-                </td>
-                <td class="col-md-2">
-                  <%= user.job %>
-                </td>
-                <td class="col-md-3">
-                  <%= user.position %>
-                </td>
-            </tr>
+          <% if current_user.is_hairdresser == true %>
+            <% @users.each do |user| %>
+              <%= render 'result', user: user %>
+            <% end %>
+          <% else %>
+            <% @hds.each do |user| %>
+              <%= render 'result', user: user %>
+            <% end %>
           <% end %>
         </tbody>
       </table>

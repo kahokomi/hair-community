@@ -46,13 +46,6 @@ body {
   background-attachment: fixed;
 }
 
-.footer-bottom {
-  min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
-  position: relative;/* ←相対位置 */
-  padding-bottom: 60px; /* ←フッターの高さを指定 */
-  box-sizing: border-box;
-}
-
 body > .container-fluid {
   height: auto;
 }
@@ -70,6 +63,8 @@ img {
 
 .icon {
   border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #797979;
 }
 
 #map {
@@ -128,7 +123,7 @@ img {
 }
 
 .about-user {
-  background-image: image-url("about-user.png");
+  background-image: image-url("about_user.png");
   background-size: contain;
   background-repeat: no-repeat;
   height: 230px;
@@ -136,14 +131,20 @@ img {
 }
 
 /* ヘッダー */
+.nav-item > .nav-link {
+  margin: 0 30px;
+}
+
 .nav-hd-header {
-  background-color: #C6767B;
-  height: 6em;
+  border-bottom: 1px dashed #C6767B;
+  height: 5em;
   font-family: 'Abel', 'Waonjoyo';
 }
 
 .nav-user-header {
-  background-color: #7290AC;
+  border-bottom: 1px dashed #7290AC;
+  height: 5em;
+  font-family: 'Abel', 'Waonjoyo';
 }
 
 .navbar-brand {
@@ -151,46 +152,74 @@ img {
   background-size: contain;
   background-repeat: no-repeat;
   font-family: 'Abel', 'Waonjoyo';
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
 }
 
 .search_form {
   font-size: 0.9em;
+  font-family: 'Abel', 'M PLUS Rounded 1c';
+}
+
+.check_lb {
+  display:block;
+}
+
+.modal-dialog-fluid {
+  max-width: inherit;
+  width: 60%;
+}
+
+.n-stack {
+  line-height: 1em!important;
+}
+
+.n-circle {
+  position: absolute;
+  padding-right: 3rem;
+  color: #efa04c;
+}
+
+.column{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.style-column {
+  margin-left: 20%;
 }
 
 /* フッター */
 footer {
   position: absolute;
   bottom: 0;
-  left: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  align-items: center;
+  text-align: center;
 }
 
-.footer {
-  background-color: #C6767B;
-  height: 3em;
-  bottom: 0;
-}
-
-.footer.f-user {
+.user_footer {
   background-color: #7290AC;
-  height: 3em;
-  bottom: 0;
+}
+
+.hd_footer {
+  background-color: #C6767B;
+}
+
+.footerFixed{
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 60px;
+  box-sizing: border-box;
 }
 
 /* タブ機能 */
-.height-fixed {
-  height: 80vh;
-}
-
 .wrap {
   width: 50%;
   max-width: 900px;
   margin: 0;
-}
-
-.scroll {
-  overflow-y: auto;
 }
 
 #tab-menu {
@@ -204,6 +233,16 @@ footer {
 }
 
 #tab-menu li a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  background: #FFF;
+}
+
+.tweet-menu li a {
   color: #000;
   text-decoration: none;
   display: block;
@@ -237,6 +276,15 @@ footer {
 }
 
 /* つぶやき関連 */
+.height-fixed {
+  min-height: 80vh;
+  max-height: 100vh;
+}
+
+.scroll {
+  overflow-y: auto;
+}
+
 #tab-contents .tab.tweet-tab {
   border-radius: 20px 20px 20px 20px;
   background-color: transparent;
@@ -276,7 +324,14 @@ footer {
   padding-top: 50px;
 }
 
+// .tweet-pagination {
+//   display: none;
+// }
+
 /*マイページ関連*/
+.userpage-wrap {
+  width: 100%;
+}
 
 .userpage-name {
   font-size: 2.5em;
@@ -292,6 +347,10 @@ footer {
 
 .userpage-table-color {
   border-color: #000;
+}
+
+.userpage-tweet {
+  max-height: 170vh!important;
 }
 
 .row.field {
@@ -314,6 +373,10 @@ footer {
   input {
     @extend .is-invalid;
   }
+}
+
+.form-introduction {
+  height: 200px!important;
 }
 
 /*フォロー一覧*/
