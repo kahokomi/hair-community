@@ -4,8 +4,9 @@
     <div class="text-center">
       <div class="top-logo mx-auto"></div>
       <div class="mb-2">
-        <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary mx-auto" %>
-        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary mx-auto" %>
+        <%= link_to "初めての美容師の方はこちら", new_user_registration_path(is_hairdresser: true), class: "btn btn-primary mx-auto" %>
+        <%= link_to "初めての一般ユーザの方はこちら", new_user_registration_path(is_hairdresser: false), class: "btn btn-primary mx-auto" %><br>
+        <%= link_to "共通ログイン", new_user_session_path, class: "btn btn-primary mx-auto mt-2" %>
       </div>
       <div class="text-center mt-5">
         <small>ポートフォリオを閲覧される方はこちらから</small><br>

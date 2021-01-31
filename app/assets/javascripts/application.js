@@ -58,6 +58,7 @@ $(document).on('turbolinks:load', function() {
     pause: 3000,
     maxSlides: 1,
     slideWidth: 200,
-    autoHover: true
+    autoHover: true,
+    touchEnabled: false
   });
 });

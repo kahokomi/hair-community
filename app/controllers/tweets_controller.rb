@@ -5,21 +5,19 @@ class TweetsController < ApplicationController
     # ツイートの一覧表示・新規投稿
     @tweet = Tweet.new
     @hairdressers = User.where(is_hairdresser: true)
-    @hd_tweets = Tweet.where(user_id: @hairdressers).order(created_at: :desc).includes([:taggings])
     @users = User.where(is_hairdresser: false)
-    @user_tweets = Tweet.where(user_id: @users).order(created_at: :desc).includes([:taggings])
-
-    # タグで絞り込み
+    @hd_tweets = Tweet.includes([:tags, :user]).where(user_id: @hairdressers).order(created_at: :desc)
+    @user_tweets = Tweet.includes([:tags, :user]).where(user_id: @users).order(created_at: :desc)
     if params[:tag_name]
-      @hd_tweets = @hd_tweets.tagged_with(params[:tag_name])
-      @user_tweets = @user_tweets.tagged_with(params[:tag_name])
+      @hd_tweets = @hd_tweets.includes([:tags, :user]).tagged_with(params[:tag_name])
+      @user_tweets = @user_tweets.includes([:tags, :user]).tagged_with(params[:tag_name])
     end
-    @tags = Tweet.tags_on(:tags)
+    @tags = Tweet.includes([:tags, :tag_taggings]).tags_on(:tags)
     @tag = params[:tag_name]
 
     #サイドバーで新規ユーザを表示
-    @new_user = User.where(is_hairdresser: false).order(created_at: :desc)
-    @new_hairdresser = User.where(is_hairdresser: true).order(created_at: :desc)
+    @new_users = User.where(is_hairdresser: false).order(created_at: :desc)
+    @new_hairdressers = User.where(is_hairdresser: true).order(created_at: :desc)
   end
 
   def create
