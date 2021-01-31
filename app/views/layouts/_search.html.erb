@@ -11,9 +11,9 @@
         <div class="modal-body">
           <div class="row field">
             <h5 class="control-label col-md-12">
-              <%= f.label :username_or_name_or_city_or_street_cont_any, "ユーザー名・名前" %>
+              <%= f.label :username_or_name_or_hair_salon_or_job_or_position_or_city_or_street_or_introduction_cont_any, "キーワード検索" %>
             </h5>
-            <%= f.search_field :username_or_name_or_city_or_street_cont_any, class: "form-control col-md-5 mx-auto" %>
+            <%= f.search_field :username_or_name_or_hair_salon_or_job_or_position_or_city_or_street_or_introduction_cont_any, class: "form-control col-md-5 mx-auto" %>
           </div>
           <div class="mb-4">
           　<%= f.radio_button :is_hairdresser_eq, '', {:checked => true} %>指定なし
@@ -21,9 +21,7 @@
             <%= f.radio_button :is_hairdresser_eq, false %>一般ユーザー
           </div>
 
-          <h5 class="mx-auto">
-            <%= f.label :city_or_street_cont_any, "エリア検索" %>
-          </h5>
+          <h5 class="mx-auto">エリア検索</h5>
           <div class="row field">
             <div class="mx-auto">
             <%= f.label :prefecture_id, "都道府県", class: "control-label" %>

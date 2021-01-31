@@ -8,7 +8,7 @@
             <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
 
             <% if notifications.exists? %>
-              <%= render notifications.includes([:visitor, :visited]) %>
+              <%= render notifications.includes([:visitor, :visited, :tweet]) %>
             <% else %>
               <li class="list-group-item">通知はございません</p>
             <% end %>
