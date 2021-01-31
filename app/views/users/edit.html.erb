@@ -103,7 +103,7 @@
             美容室のエリア(東京限定)
           <% end %>
           <%= f.collection_select(:area_id, Area.all, :id, :name, {include_blank: "---"}, class: "form-control col-md-2") %>
-          <p class="mt-2 ml-2"><small>(入力は任意ですが、検索時の絞り込み条件に反映されます)</small></p>
+          <p class="ml-3 text-center"><small>(入力は任意ですが、検索時の絞り込み条件に反映されます)<br>(なお、マイページには表示されません)</small></p>
         </div>
 
       <% else %>
