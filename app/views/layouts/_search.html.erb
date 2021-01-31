@@ -1,0 +1,76 @@
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-fluid" role="document">
+    <div class="modal-content search-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchModalLabel">検索</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= search_form_for q, url: users_path, class: "search_form text-center" do |f| %>
+        <div class="modal-body">
+          <div class="row field">
+            <h5 class="control-label col-md-12">
+              <%= f.label :username_or_name_or_hair_salon_or_job_or_position_or_city_or_street_or_introduction_cont_any, "キーワード検索" %>
+            </h5>
+            <%= f.search_field :username_or_name_or_hair_salon_or_job_or_position_or_city_or_street_or_introduction_cont_any, class: "form-control col-md-5 mx-auto" %>
+          </div>
+          <div class="mb-4">
+          　<%= f.radio_button :is_hairdresser_eq, '', {:checked => true} %>指定なし
+            <%= f.radio_button :is_hairdresser_eq, true %>美容師
+            <%= f.radio_button :is_hairdresser_eq, false %>一般ユーザー
+          </div>
+
+          <h5 class="mx-auto">エリア検索</h5>
+          <div class="row field">
+            <div class="mx-auto">
+            <%= f.label :prefecture_id, "都道府県", class: "control-label" %>
+            <%= f.collection_select(:prefecture_id_in, Prefecture.all, :id, :name, {include_blank: "---"}, class: "form-control") %></span>
+            <%= f.label :area_id, "エリア選択(東京のみ)" %>
+            <%= f.collection_select(:area_id_in, Area.all, :id, :name, {include_blank: "---"}, class: "form-control") %>
+            </div>
+          </div>
+
+          <div class="row field form-inline">
+            <h5 class="control-label col-md-12">
+              <%= f.label :price, "価格" %>
+            </h5>
+            <div class="mx-auto">
+              <%= f.search_field :price_gteq, class: "form-control", placeholder: "例)2000" %>
+              ~
+              <%= f.search_field :price_lteq, class: "form-control", placeholder: "例)4000" %>
+            </div>
+          </div>
+
+          <div class="row field mt-3">
+            <% if current_user.is_hairdresser == false %>
+              <h5 class="control-label col-md-12"><label>なりたいヘアスタイル</label></h5>
+            <% else %>
+              <h5 class="control-label col-md-12"><label>ヘアスタイル</label></h5>
+            <% end %>
+            <div class="column style-column w-75">
+              <%= f.collection_check_boxes :hair_styles_id_in, HairStyle.all, :id, :name do |b| %>
+                <span class="text-left"><%= b.label { b.check_box + b.text } %></span>
+              <% end %>
+            </div>
+
+            <% if current_user.is_hairdresser == false %>
+              <h5 class="control-label col-md-12"><label>希望の美容室での過ごし方</label></h5>
+            <% else %>
+              <h5 class="control-label col-md-12"><label>接客スタイル</label></h5>
+            <% end %>
+            <div class="column style-column w-75">
+              <%= f.collection_check_boxes :communication_styles_id_in, CommunicationStyle.all, :id, :name do |b| %>
+                <span class="text-left"><%= b.label { b.check_box + b.text } %></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+          <%= f.submit '検索', :class => "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

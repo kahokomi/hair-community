@@ -18,5 +18,9 @@ Rails.application.routes.draw do
     resource :likes, only: [:create, :destroy]
   end
   resources :chats, only: [:show, :create, :index]
-  # resources :rooms, only: [:index]
+  resources :notifications, only: [:index] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
 end

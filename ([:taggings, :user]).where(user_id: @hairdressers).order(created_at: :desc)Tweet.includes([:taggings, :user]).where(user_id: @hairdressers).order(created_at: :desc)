@@ -1,0 +1,25 @@
+
+[1mFrom:[0m /home/ec2-user/environment/hair-community/app/controllers/tweets_controller.rb:10 TweetsController#index:
+
+     [1;34m4[0m: [32mdef[0m [1;34mindex[0m
+     [1;34m5[0m:   [1;34m# ツイートの一覧表示・新規投稿[0m
+     [1;34m6[0m:   @tweet = [1;34;4mTweet[0m.new
+     [1;34m7[0m:   @hairdressers = [1;34;4mUser[0m.where([35mis_hairdresser[0m: [1;36mtrue[0m)
+     [1;34m8[0m:   @users = [1;34;4mUser[0m.where([35mis_hairdresser[0m: [1;36mfalse[0m)
+     [1;34m9[0m:   binding.pry
+ => [1;34m10[0m:   @tweets = [1;34;4mTweet[0m.includes([[33m:taggings[0m, [33m:user[0m]).where([35muser_id[0m: @hairdressers).order([35mcreated_at[0m: [33m:desc[0m)
+    [1;34m11[0m:   [1;34m# @user_tweets = Tweet.includes([:taggings]).where(user_id: @users).order(created_at: :desc)[0m
+    [1;34m12[0m:   [1;34m# @tweets = Tweet.includes([:taggings]).where(user_id: @users).order(created_at: :desc)[0m
+    [1;34m13[0m:   [1;34m# タグで絞り込み[0m
+    [1;34m14[0m:   [1;34m# if params[:tag_name][0m
+    [1;34m15[0m:   [1;34m#   @hd_tweets = @hd_tweets.includes([:taggings]).tagged_with(params[:tag_name])[0m
+    [1;34m16[0m:   [1;34m#   @user_tweets = @user_tweets.includes([:taggings]).tagged_with(params[:tag_name])[0m
+    [1;34m17[0m:   [1;34m# end[0m
+    [1;34m18[0m:   [1;34m# @tags = Tweet.includes([:taggings]).tags_on(:tags)[0m
+    [1;34m19[0m:   [1;34m# @tag = params[:tag_name][0m
+    [1;34m20[0m: 
+    [1;34m21[0m:   [1;34m#サイドバーで新規ユーザを表示[0m
+    [1;34m22[0m:   @new_users = [1;34;4mUser[0m.where([35mis_hairdresser[0m: [1;36mfalse[0m).order([35mcreated_at[0m: [33m:desc[0m)
+    [1;34m23[0m:   @new_hairdressers = [1;34;4mUser[0m.where([35mis_hairdresser[0m: [1;36mtrue[0m).order([35mcreated_at[0m: [33m:desc[0m)
+    [1;34m24[0m: [32mend[0m
+
