@@ -6,75 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-  Area.create!(
-    [
-      {
-        id: 1,
-        name: "センター街・神南・公園通り・神泉・道玄坂"
-      },
-
-      {
-        id: 2,
-        name: "宮益坂・明治通り・桜ヶ丘"
-      },
-
-      {
-        id: 3,
-        name: "青山・表参道・原宿"
-      },
-
-      {
-        id: 4,
-        name: "恵比寿・広尾"
-      },
-
-      {
-        id: 5,
-        name: "六本木・麻布・赤坂"
-      },
-
-      {
-        id: 6,
-        name: "代官山・中目黒"
-      },
-
-      {
-        id: 7,
-        name: "自由が丘・武蔵小杉"
-      },
-
-      {
-        id: 8,
-        name: "新宿・高田馬場・代々木"
-      },
-
-      {
-        id: 9,
-        name: "池袋・目白"
-      },
-
-      {
-        id: 10,
-        name: "銀座・有楽町"
-      },
-
-      {
-        id: 11,
-        name: "上野・神田"
-      },
-
-      {
-        id: 12,
-        name: "吉祥寺・荻窪・国分寺・立川"
-      },
-
-      {
-        id: 13,
-        name: "阿佐ヶ谷・高円寺・中野"
-      }
-    ]
-  )
-
   User.create!(
     [
       {
@@ -218,55 +149,151 @@
     [
       {
         user_id: 1,
-        body: "こんにちは！今日は寒いですね〜！こんな日はおうち美容日和！いろいろとご提案させていただきますので、ぜひはなしてみるからどうぞ！",
-        tag_list: "挨拶"
+        body: "そういえば先日漫画を読みました！\n今流行りの鬼滅の刃です^^おもしろいですね〜",
+        tag_list: "漫画,アニメ,鬼滅"
+      },
+
+      {
+        user_id: 7,
+        body: "今日はお昼にうどんをたべました！すごくおいしかったです^^",
+        tag_list: "昼食,おすすめ"
       },
 
       {
         user_id: 2,
         body: "サロンモデルさん募集中です！気になる方ははなしてみるでお声がけください！",
-        tag_list: "募集"
-
+        tag_list: "募集,サロンモデル,サロモ"
       },
 
       {
-        user_id: 3,
-        body: "今日は新作が入荷して忙しい一日でした...髪切りたいな〜"
-      },
-
-      {
-        user_id: 4,
-        body: "ヘアスタイルを変えたいけれど最近時間が取れないなあ、夜遅くまでやっている美容師さんぜひ声かけてください！"
-      },
-
-      {
-        user_id: 5,
-        body: "今日も働いた〜！なにかリフレッシュしたいなあ！"
+        user_id: 1,
+        body: "こんにちは！今日は寒いですね〜！\nこんな日はおうち美容日和！\nいろいろとご提案させていただきますので、ぜひはなしてみるからどうぞ！",
+        tag_list: "挨拶,提案"
       },
 
       {
         user_id: 6,
-        body: "最近撮影に力をいれています！"
+        body: "最近撮影に力をいれています！",
+        tag_list: "撮影,サロモ"
       },
 
       {
-        user_id: 7,
-        body: "モデルさん募集しています！ご興味のある方ははなしかけるからお気軽にどうぞ！"
-      },
-
-      {
-        user_id: 8,
-        body: "カットのテストに合格しました！！応援してくださったみなさんありがとうございました！"
+        user_id: 3,
+        body: "今日は新作が入荷して忙しい一日でした...髪切りたいな〜",
+        tag_list: "新作入荷,アパレル,ファッション"
       },
 
       {
         user_id: 9,
-        body: "先日ヘアスタイルを変えたら評判がよかったです。うれしいな"
+        body: "先日ヘアスタイルを変えたら評判がよかったです。うれしいな",
+        tag_list: "ヘアスタイル,イメチェン,美容"
+      },
+
+      {
+        user_id: 3,
+        body: "今日のご飯はカレーにします！",
+        tag_list: "夕食,カレー"
+      },
+
+      {
+        user_id: 2,
+        body: "最近謎解きにはまってるんですよねー、松丸くんの謎解きが面白い！\n謎解きお好きな方おすすめの本とか教えてください！",
+        tag_list: "謎解き"
+      },
+
+      {
+        user_id: 4,
+        body: "ヘアスタイルを変えたいけれど最近時間が取れないなあ\n夜遅くまでやっている美容師さんぜひ声かけてください！",
+        tag_list: "イメチェン"
+      },
+
+      {
+        user_id: 5,
+        body: "今日も働いた〜！なにかリフレッシュしたいなあ！",
+        tag_list: "リフレッシュ"
+      },
+
+      {
+        user_id: 9,
+        body: "そういえば昨日Uberで韓国料理食べました\nすごくおいしかったです！",
+        tag_list: "韓国,昼食"
       },
 
       {
         user_id: 10,
-        body: "新事業の立ち上げに伴い、心機一転髪型を変えたいなと思っています。お声がけお待ちしています！"
+        body: "最近新事業関連の動きでバタバタしてる。忙しいけど楽しいな",
+        tag_list: "新事業,立ち上げ"
+      },
+
+      {
+        user_id: 5,
+        body: "いつも通勤前にカフェラテを飲んでいます。セブンのが一押し！",
+        tag_list: "日課,ルーティーン,カフェラテ"
+      },
+
+      {
+        user_id: 3,
+        body: "明日は休日なので楽しみです！",
+        tag_list: "休日,わくわく"
+      },
+
+      {
+        user_id: 6,
+        body: "カットモデルさん募集中です！",
+        tag_list: "撮影,サロモ,カットモデル"
+      },
+
+      {
+        user_id: 8,
+        body: "カットのテストに合格しました！！応援してくださったみなさんありがとうございました！",
+        tag_list: "テスト合格,カット"
+      },
+
+      {
+        user_id: 7,
+        body: "モデルさん募集しています！ご興味のある方ははなしかけるからお気軽にどうぞ！",
+        tag_list: "サロモ,募集,サロンモデル"
+      },
+
+      {
+        user_id: 2,
+        body: "今日はたくさんご予約いただけてうれしかったです！",
+      },
+
+      {
+        user_id: 10,
+        body: "新事業の立ち上げに伴い、心機一転髪型を変えたいなと思っています。お声がけお待ちしています！",
+        tag_list: "新事業,立ち上げ,募集,カットモデル"
+      },
+
+      {
+        user_id: 4,
+        body: "今日は寒かったですね〜、風邪ひかないようにしなきゃ！",
+        tag_list: "天気,寒い,日常"
+      },
+
+      {
+        user_id: 8,
+        body: "カラーモデルさん募集しています！1500円でワンカラーさせていただけますよ！お気軽にどうぞ！",
+        tag_list: "カラーモデル"
+      },
+
+      {
+        user_id: 9,
+        body: "韓国のアイドルかわいいよなあ〜",
+        tag_list: "韓国"
+      },
+
+      {
+        user_id: 1,
+        body: "最近出かけられないので勉強するようにしています！",
+        tag_list: "勉強,おこもり"
+      },
+
+      {
+        user_id: 10,
+        body: "最近お笑いが面白くてよく息抜きにしてる！千鳥おもしろい",
+        tag_list: "お笑い"
       }
     ]
   )
@@ -274,50 +301,62 @@
   HairStyle.create!(
     [
       {
+        id: 1,
         name: "クール"
       },
 
       {
-        name: "フェミニン"
+        id: 2,
+        name: "レディ"
       },
 
       {
+        id: 3,
         name: "エレガント"
       },
 
       {
+        id: 4,
         name: "ナチュラル"
       },
 
       {
-        name: "ガーリー"
+        id: 5,
+        name: "キュート"
       },
 
       {
+        id: 6,
         name: "カジュアル"
       },
 
       {
+        id: 7,
         name: "外国人風"
       },
 
       {
+        id: 8,
         name: "モテ・愛され"
       },
 
       {
+        id: 9,
         name: "マニッシュ"
       },
 
       {
+        id: 10,
         name: "韓国風"
       },
 
       {
+        id: 11,
         name: "モード"
       },
 
       {
+        id: 12,
         name: "ビジネス・オフィス"
       }
     ]
@@ -326,43 +365,53 @@
   CommunicationStyle.create!(
     [
       {
-        name: "楽しくおしゃべりしたい"
+        id: 1,
+        name: "楽しくおしゃべり"
       },
 
       {
-        name: "静かにしていたい"
+        id: 2,
+        name: "会話は控えめ"
       },
 
       {
-        name: "雑誌を読みたい"
+        id: 3,
+        name: "読書(雑誌)"
       },
 
       {
-        name: "漫画を読みたい"
+        id: 4,
+        name: "読書(漫画)"
       },
 
       {
-        name: "テレビ・映画などを見たい"
+        id: 5,
+        name: "テレビ・映画視聴"
       },
 
       {
-        name: "携帯をいじっていたい"
+        id: 6,
+        name: "携帯閲覧"
       },
 
       {
-        name: "お菓子やお茶を食べたい"
+        id: 7,
+        name: "お菓子やお茶の飲食"
       },
 
       {
-        name: "寝たい"
+        id: 8,
+        name: "仮眠"
       },
 
       {
-        name: "早めに帰りたい"
+        id: 9,
+        name: "早め帰宅"
       },
 
       {
-        name: "ゆっくりしたい"
+        id: 10,
+        name: "ゆったり"
       }
     ]
   )
@@ -370,15 +419,25 @@
 3.times do |i|
   UserHairStyle.create!(user_id: 1, hair_style_id: HairStyle.find(i+1).id)
   UserHairStyle.create!(user_id: 2, hair_style_id: HairStyle.find((i+1)*3).id)
+  UserHairStyle.create!(user_id: 3, hair_style_id: HairStyle.find(i+1).id)
+  UserHairStyle.create!(user_id: 4, hair_style_id: HairStyle.find(i+8).id)
+  UserHairStyle.create!(user_id: 5, hair_style_id: HairStyle.find(i+8).id)
   UserHairStyle.create!(user_id: 6, hair_style_id: HairStyle.find(i+3).id)
   UserHairStyle.create!(user_id: 7, hair_style_id: HairStyle.find(i+4).id)
   UserHairStyle.create!(user_id: 8, hair_style_id: HairStyle.find(i+7).id)
+  UserHairStyle.create!(user_id: 9, hair_style_id: HairStyle.find(i+7).id)
+  UserHairStyle.create!(user_id: 10, hair_style_id: HairStyle.find(i+8).id)
 end
 
 3.times do |i|
+  UserCommunicationStyle.create!(user_id: 1, communication_style_id: CommunicationStyle.find(i+3).id)
+  UserCommunicationStyle.create!(user_id: 2, communication_style_id: CommunicationStyle.find(i+2).id)
   UserCommunicationStyle.create!(user_id: 3, communication_style_id: CommunicationStyle.find(i+1).id)
   UserCommunicationStyle.create!(user_id: 4, communication_style_id: CommunicationStyle.find((i+2)*2).id)
   UserCommunicationStyle.create!(user_id: 5, communication_style_id: CommunicationStyle.find((i+1)*2).id)
+  UserCommunicationStyle.create!(user_id: 6, communication_style_id: CommunicationStyle.find(i+4).id)
+  UserCommunicationStyle.create!(user_id: 7, communication_style_id: CommunicationStyle.find(i+5).id)
+  UserCommunicationStyle.create!(user_id: 8, communication_style_id: CommunicationStyle.find(i+6).id)
   UserCommunicationStyle.create!(user_id: 9, communication_style_id: CommunicationStyle.find(i+4).id)
   UserCommunicationStyle.create!(user_id: 10, communication_style_id: CommunicationStyle.find(i+7).id)
 end

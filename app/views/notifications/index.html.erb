@@ -1,16 +1,17 @@
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6 mx-auto">
+      <div class="col-md-6 mx-auto pt-4">
         <h3 class="text-center">通知一覧</h3>
           <ul class="list-group">
             <%= link_to "全削除", destroy_all_notifications_path, method: :delete %>
 
-            <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+            <% notifications = @notifications.where.not(visitor_id: current_user.id).page(params[:page]).per(10) %>
 
             <% if notifications.exists? %>
               <%= render notifications.includes([:visitor, :visited, :tweet]) %>
+              <%= paginate notifications %>
             <% else %>
-              <li class="list-group-item">通知はございません</p>
+              <li class="list-group-item">通知はありません</p>
             <% end %>
           </ul>
       </div>

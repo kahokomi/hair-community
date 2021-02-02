@@ -30,4 +30,64 @@
     </div>
     <div class="offset-1 about-user"></div>
   </div>
+
+  <div class="about-introduction">
+    <div class="row" style="background-color: #7bc890;"><h3 class="mx-auto">へあこみゅの使い方</h3></div>
+      <div class="row d-flex align-items-center">
+        <div class="col-md-6 text-center">
+          <h3>STEP1</h3>
+          <p>
+            新規登録、ログインが終わったら、<br>
+            まずはヘッダーのマイページから<br>
+            プロフィールの編集をしましょう！<br>
+            ヘッダーの内容はこちらをご確認ください→
+          </p>
+        </div>
+        <div class="col-md-6 header-image"></div>
+      </div>
+      <div class="row d-flex align-items-center">
+        <div class="col-md-6">
+          <div class="userpage-edit"></div>
+          <div class="userpage-edit-select"></div>
+        </div>
+        <div class="col-md-6 text-center">
+          <h3>STEP2</h3>
+          <p>
+            マイページ右上のボタンから編集ページへ<br>
+            必須の内容には必ず入力してください。<br>
+            自己紹介、ヘアスタイル、<br>
+            美容室での過ごし方のスタイルに関しては<br>
+            任意ですが検索の際サーチされやすくなるので<br>
+            入力することをお勧めしています。
+          </p>
+        </div>
+      </div>
+      <div class="row d-flex align-items-center">
+        <div class="col-md-6 text-center">
+          <h3>STEP3</h3>
+          <p>
+            登録が終わったら早速<br>
+            つぶやきを投稿してみましょう！<br>
+            投稿画面では画像やタグ付けも<br>
+            行うことができます。
+          </p>
+        </div>
+        <div class="col-md-6">
+          <div class="tweet-index-image"></div>
+          <div class="tweet-image"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <% if current_user.is_hairdresser == true %>
+          <div class="hdpage-edit"></div>
+          <div class="hdpage-edit-select"></div>
+        <% else %>
+
+        <% end %>
+
+      </div>
+
+      <div class="search-image"></div>
+  </div>
 </div>
