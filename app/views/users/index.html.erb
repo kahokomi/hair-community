@@ -5,40 +5,13 @@
 
 <%# 検索結果の表示 %>
   <div class="row mx-auto">
-    <% if params[:q][:username_or_name_or_hair_salon_or_job_or_position_or_city_or_street_or_introduction_cont_any] == [] %>
-      <h3 class="mx-auto mt-5">検索キーワードがありません。</h3>
+    <% if @hds.present? %>
+      <%= render 'result', users: @hds %>
+      <div class="mx-auto"><%= paginate @hds %></div>
     <% elsif @users.present? %>
-      <table class="table col-md-10 offset-1">
-        <thead>
-          <tr class="row">
-            <th class="col-md-1">
-            </th>
-            <th class="col-md-4">
-              ユーザーID
-            </th>
-            <th class="col-md-2">
-              年齢
-            </th>
-            <th class="col-md-2">
-              職業<span class="badge badge-primary">一般ユーザ</span>
-            </th>
-            <th class="col-md-3">
-              役職<span class="badge badge-danger">美容師</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if current_user.is_hairdresser == true %>
-            <% @users.each do |user| %>
-              <%= render 'result', user: user %>
-            <% end %>
-          <% else %>
-            <% @hds.each do |user| %>
-              <%= render 'result', user: user %>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render 'result', users: @users %>
+      <div class="mx-auto"><%= paginate @users %></div>
+
     <% else %>
       <h3 class="mx-auto mt-5">検索結果がありません</h3>
     <% end %>

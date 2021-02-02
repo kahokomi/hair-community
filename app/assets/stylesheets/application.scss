@@ -130,9 +130,70 @@ img {
   width: 230px;
 }
 
+.about-introduction {
+  font-size: 1.3em;
+}
+
+// アプリケーション説明用の画像
+.header-image {
+  background-image: image-url("header.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 350px;
+}
+
+.userpage-edit {
+  background-image: image-url("userpage_edit.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 350px;
+}
+
+.userpage-edit-select {
+  background-image: image-url("userpage_edit_select.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 250px;
+}
+
+.tweet-index-image {
+  background-image: image-url("tweet_index.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 330px;
+}
+
+.tweet-image {
+  background-image: image-url("tweet_image.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 350px;
+}
+
+.search-image {
+  background-image: image-url("search.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 350px;
+}
+
 /* ヘッダー */
+.navbar-nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .nav-item > .nav-link {
-  margin: 0 30px;
+  margin: 0 auto;
+  width: 140px;
+}
+
+.nav-item i {
+  font-size: 30px;
+}
+
+.nav-item small {
+  font-size: 5px;
 }
 
 .nav-hd-header {
@@ -250,7 +311,7 @@ footer {
   margin-bottom: 20px;
   text-align: center;
   background: #FFF;
-  border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
+  border-radius: 10px 10px 10px 10px;
   border: 1px ridge #797979;
 }
 
@@ -380,6 +441,18 @@ footer {
 }
 
 /*フォロー一覧*/
+.follows-menu li a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  background: #FFF;
+  border-radius: 10px 10px 10px 10px;
+  border: 1px ridge #797979;
+}
+
 .follows-tab {
   border-radius: 10px 10px 10px 10px;
 }
@@ -394,7 +467,7 @@ footer {
 
 .follows-index-user {
   border-bottom: 1px solid #000;
-  font-size: 1.3em;
+  font-size: 1em;
 }
 
 .follows-index-user:last-child {
