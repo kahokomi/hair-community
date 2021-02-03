@@ -258,6 +258,22 @@ footer {
   height: 400px;
 }
 
+.hdpage-edit-image {
+  background-image: image-url("hdpage_edit.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+
+.hdpage_edit_select {
+  background-image: image-url("hdpage_edit_select.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+
 .userpage-edit-image {
   background-image: image-url("userpage_edit.png");
   background-size: cover;
@@ -273,6 +289,8 @@ footer {
   background-repeat: no-repeat;
   height: 250px;
 }
+
+.
 
 .tweet-index-image {
   background-image: image-url("tweet_index.png");
