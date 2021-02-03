@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>-->
     <script src="https://kit.fontawesome.com/095da33a05.js" crossorigin="anonymous"></script>
     <meta name="turbolinks-cache-control" content="no-cache">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -15,23 +16,26 @@
 
   </head>
 
-
   <body>
-    <header>
-      <% if user_signed_in? %>
-        <%= render "layouts/header" %>
-      <% end %>
-    </header>
-    <div class="row bg bg-success time-limit">
-      <% if flash[:notice] %>
-        <p class="mx-auto pt-3"><%= flash[:notice] %></p>
-      <% end %>
-    </div>
-    <%= yield %>
-    <footer>
+    <% unless current_page?(root_path) %>
+    <div class="footerFixed">
+    <% end %>
+      <div>
+        <header>
+          <% if user_signed_in? %>
+            <%= render "layouts/header" %>
+          <% end %>
+        </header>
+        <div class="row bg bg-success time-limit">
+          <% if flash[:notice] %>
+            <p class="mx-auto pt-3"><%= flash[:notice] %></p>
+          <% end %>
+        </div>
+        <%= yield %>
+      </div>
       <% if user_signed_in? %>
         <%= render "layouts/footer" %>
       <% end %>
-    </footer>
+    </div>
   </body>
 </html>

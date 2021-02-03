@@ -1,6 +1,17 @@
 class ChatsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @currentUserRooms = current_user.user_rooms
+    myRoomIds = []
+
+    @currentUserRooms.includes([:room]).each do | ur |
+      myRoomIds << ur.room.id
+    end
+
+    @anotherUserRooms = UserRoom.where(room_id: myRoomIds).includes([:user]).where.not(user_id: current_user.id)
+  end
+
   def show
     @user = User.find(params[:id])
     rooms = current_user.user_rooms.pluck(:room_id)
@@ -20,7 +31,10 @@ class ChatsController < ApplicationController
 
   def create
     @chat = current_user.chats.new(chat_params)
-    @chat.save
+    @room = @chat.room
+      if @chat.save
+        @chat.create_notification_chat(current_user, @room)
+      end
   end
 
   private

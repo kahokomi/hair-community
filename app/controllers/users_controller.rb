@@ -2,10 +2,13 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def show
     @user = User.find(params[:id])
+    @my_tweets = Tweet.where(user_id: @user).order(created_at: :desc)
   end
 
   def edit
@@ -31,11 +34,18 @@ class UsersController < ApplicationController
       :age,
       :year,
       :hair_salon,
+      :price,
+      :prefecture_id,
+      :city,
+      :street,
+      :area_id,
       :job,
       :introduction,
       :image,
       :position,
-      :icon_image
-    )
+      :icon_image,
+      { :hair_style_ids=> [] },
+      { :communication_style_ids=> [] }
+  )
   end
 end

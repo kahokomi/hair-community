@@ -10,8 +10,16 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require_self
+ *= require bxslider
+ *= require_tree .
  */
+
+
+
 @import "bootstrap";
+// @import "bootstrap-tagsinput";
+
 @font-face {
   font-family: 'Waonjoyo';
   src: font-url('WaonJoyo-R.otf') format('truetype');
@@ -26,7 +34,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  // height: 100%;
   font-family: 'Abel', 'M PLUS Rounded 1c';
   letter-spacing: 3px;
   font-weight: 500;
@@ -44,7 +52,7 @@ body > .container-fluid {
 
 .container-fluid {
   height: auto;
-  min-height: 100%;
+  // min-height: 100%;
   padding: 0;
   margin: 0;
 }
@@ -55,6 +63,112 @@ img {
 
 .icon {
   border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #797979;
+}
+
+#map {
+  height: 200px;
+  width: 20%;
+}
+
+/* ヘッダー */
+.navbar-nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nav-item > .nav-link {
+  margin: 0 auto;
+  width: 140px;
+}
+
+.nav-item i {
+  font-size: 30px;
+}
+
+.nav-item small {
+  font-size: 5px;
+}
+
+.nav-hd-header {
+  border-bottom: 1px dashed #C6767B;
+  height: 5em;
+  font-family: 'Abel', 'Waonjoyo';
+}
+
+.nav-user-header {
+  border-bottom: 1px dashed #7290AC;
+  height: 5em;
+  font-family: 'Abel', 'Waonjoyo';
+}
+
+.navbar-brand {
+  background-image: image-url("logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  font-family: 'Abel', 'Waonjoyo';
+  height: 80px;
+  width: 80px;
+}
+
+.search_form {
+  font-size: 0.9em;
+  font-family: 'Abel', 'M PLUS Rounded 1c';
+}
+
+.check_lb {
+  display:block;
+}
+
+.modal-dialog-fluid {
+  max-width: inherit;
+  width: 60%;
+}
+
+.n-stack {
+  line-height: 1em!important;
+}
+
+.n-circle {
+  position: absolute;
+  padding-right: 3rem;
+  color: #efa04c;
+}
+
+.column{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.style-column {
+  margin-left: 20%;
+}
+
+/* フッター */
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  align-items: center;
+  text-align: center;
+}
+
+.user_footer {
+  background-color: #7290AC;
+}
+
+.hd_footer {
+  background-color: #C6767B;
+}
+
+.footerFixed{
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 40px;
+  box-sizing: border-box;
 }
 
 /* topページ*/
@@ -108,57 +222,112 @@ img {
 }
 
 .about-user {
-  background-image: image-url("about-user.png");
+  background-image: image-url("about_user.png");
   background-size: contain;
   background-repeat: no-repeat;
   height: 230px;
   width: 230px;
 }
 
-/* ヘッダー */
-.nav-hd-header {
-  background-color: #C6767B;
-  height: 6em;
-  font-family: 'Abel', 'Waonjoyo';
+.about-introduction {
+  font-size: 1.3em;
 }
 
-.nav-user-header {
-  background-color: #7290AC;
+.step1 {
+  background-color: #00bfff;
 }
 
-.navbar-brand {
-  background-image: image-url("logo.png");
-  background-size: contain;
+.step2 {
+  background-color: #87cefa;
+}
+
+.step3 {
+  background-color: #b0e0e6;
+}
+
+.step4 {
+  background-color: #e0ffff;
+}
+
+// アプリケーション説明用の画像
+.header-image {
+  background-image: image-url("header.png");
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  font-family: 'Abel', 'Waonjoyo';
-  height: 100px;
-  width: 100px;
+  height: 400px;
 }
 
-.search_form {
-  font-size: 0.9em;
+.hdpage-edit-image {
+  background-image: image-url("hdpage_edit.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
 }
 
-/* フッター */
-.footer-hd {
-  background-color: #C6767B;
-  height: 3em;
-  position: relative;
-  bottom: 0;
+.hdpage_edit_select {
+  background-image: image-url("hdpage_edit_select.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
 }
 
-.footer-user {
-  background-color: #7290AC;
-  height: 3em;
-  position: relative;
-  bottom: 0;
+.userpage-edit-image {
+  background-image: image-url("userpage_edit.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 350px;
+}
+
+.userpage-edit-select-image {
+  background-image: image-url("userpage_edit_select.png");
+  background-size: cover;
+  background-position: top right;
+  background-repeat: no-repeat;
+  height: 250px;
+}
+
+.
+
+.tweet-index-image {
+  background-image: image-url("tweet_index.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 330px;
+}
+
+.tweet-image {
+  background-image: image-url("tweet_image.png");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  height: 300px;
+}
+
+.search-image {
+  background-image: image-url("search.png");
+  background-size: cover;
+  background-position: top right;
+  background-repeat: no-repeat;
+  height: 350px;
+}
+
+.chat-image {
+  background-image: image-url("chat.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 350px;
 }
 
 /* タブ機能 */
 .wrap {
-  width: 90%;
+  width: 50%;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 #tab-menu {
@@ -179,7 +348,17 @@ img {
   margin-bottom: 20px;
   text-align: center;
   background: #FFF;
-  border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
+}
+
+.tweet-menu li a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  background: #FFF;
+  border-radius: 10px 10px 10px 10px;
   border: 1px ridge #797979;
 }
 
@@ -205,6 +384,15 @@ img {
 }
 
 /* つぶやき関連 */
+.height-fixed {
+  min-height: 80vh;
+  max-height: 100vh;
+}
+
+.scroll {
+  overflow-y: auto;
+}
+
 #tab-contents .tab.tweet-tab {
   border-radius: 20px 20px 20px 20px;
   background-color: transparent;
@@ -244,7 +432,14 @@ img {
   padding-top: 50px;
 }
 
+// .tweet-pagination {
+//   display: none;
+// }
+
 /*マイページ関連*/
+.userpage-wrap {
+  width: 100%;
+}
 
 .userpage-name {
   font-size: 2.5em;
@@ -260,6 +455,10 @@ img {
 
 .userpage-table-color {
   border-color: #000;
+}
+
+.userpage-tweet {
+  max-height: 170vh!important;
 }
 
 .row.field {
@@ -284,7 +483,23 @@ img {
   }
 }
 
+.form-introduction {
+  height: 200px!important;
+}
+
 /*フォロー一覧*/
+.follows-menu li a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  background: #FFF;
+  border-radius: 10px 10px 10px 10px;
+  border: 1px ridge #797979;
+}
+
 .follows-tab {
   border-radius: 10px 10px 10px 10px;
 }
@@ -299,7 +514,7 @@ img {
 
 .follows-index-user {
   border-bottom: 1px solid #000;
-  font-size: 1.3em;
+  font-size: 1em;
 }
 
 .follows-index-user:last-child {

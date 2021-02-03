@@ -1,35 +1,68 @@
 <% unless controller.controller_name == 'homes' && controller.action_name == 'top' %>
 <% if current_user.is_hairdresser == true %>
-  <nav class="navbar navbar-expand-lg navbar-light nav-hd-header">
+  <nav class="row navbar navbar-expand-lg navbar-light nav-hd-header">
 <% else %>
-  <nav class="navbar navbar-expand-lg navbar-light nav-user-header">
+  <nav class="row navbar navbar-expand-lg navbar-light nav-user-header">
 <% end %>
-    <%= link_to "", tweets_path, class: "navbar-brand" %>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "Home", tweets_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "About", about_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Mypage", user_path(current_user), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
-        </li>
-        <li class="nav-item mt-2 ml-5">ようこそ、<%= current_user.username %>さん</li>
-      </ul>
-      <%= search_form_for @search, url: users_path, class: "search_form" do |f| %>
-        <%= f.label :username, "名前" %>
-        <%= f.search_field :username_cont %>
-
-      　<%= f.radio_button :is_hairdresser_eq, '', {:checked => true} %>指定なし
-        <%= f.radio_button :is_hairdresser_eq, true %>美容師
-        <%= f.radio_button :is_hairdresser_eq, false %>一般ユーザー
-        <%= f.submit '検索', :class => "btn btn-light" %>
-      <% end %>
+    <div class="col-md-2">
+      <%= link_to "", tweets_path, class: "navbar-brand" %>
     </div>
+    <div class="collapse navbar-collapse col-md-8" id="navbarNav">
+      <ul class="navbar-nav w-100 text-center">
+
+        <li class="nav-item">
+          <%= link_to tweets_path, class: "nav-link", data: {"turbolinks" => false} do %>
+            <i class="fas fa-home"></i><br>
+            <small>ホーム</small>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to about_path, class: "nav-link" do %>
+            <i class="fas fa-question-circle"></i><br>
+            <small>へあこみゅについて</small>
+          <% end %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to user_path(current_user), class: "nav-link" do %>
+            <i class="fas fa-user-circle"></i><br>
+            <small>マイページ</small>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to notifications_path, class: "nav-link" do %>
+            <% if unchecked_notifications.any? %>
+              <span class="fa-stack n-stack">
+                <i class="fas fa-bell fa-stack-2x"></i>
+                <i class="fas fa-circle n-circle fa-stack-1x" style="font-size: 15px;"></i>
+              </span>
+            <% else %>
+              <i class="fas fa-bell"></i>
+            <% end %>
+            <br><small>通知</small>
+          <% end %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to users_path, class: "nav-link", 'data-toggle': "modal", 'data-target': "#searchModal" do %>
+            <i class="fas fa-search"></i><br>
+            <small>検索</small>
+          <% end %>
+          <%= render "layouts/search", q: @q %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+            <i class="fas fa-sign-out-alt"></i><br>
+            <small>ログアウト</small>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+
+    <p class="ml-auto text-right col-md-2">
+      ログイン中<br>
+      <%= current_user.username %>さん
+    </p>
   </nav>
 <% end %>

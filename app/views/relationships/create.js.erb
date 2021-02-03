@@ -1,4 +1,4 @@
-$("#follow_<%= @user.id %>").html("<%= j(render "relationships/follow", user: @user) %>");
 $(".follow-count").html("<%= j(render "relationships/link", user: @user) %>");
-$("#tab1").html("<%= j(render 'tweets/hd_contents', hd_tweets: @hd_tweets) %>");
-$("#tab2").html("<%= j(render 'tweets/user_contents', user_tweets: @user_tweets) %>");
+$("#follow_<%= @user.id %>").html("<%= j(render "relationships/follow", user: @user) %>");
+$("#tab1").html("<%= j(render 'tweets/lists', tweets: @hd_tweets) %>");
+$("#tab2").html("<%= j(render 'tweets/lists', tweets: @user_tweets) %>");

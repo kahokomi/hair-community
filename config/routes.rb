@@ -17,5 +17,10 @@ Rails.application.routes.draw do
   resources :tweets, only: [:index, :create, :destroy] do
     resource :likes, only: [:create, :destroy]
   end
-  resources :chats, only: [:show, :create]
+  resources :chats, only: [:show, :create, :index]
+  resources :notifications, only: [:index] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
 end

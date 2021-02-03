@@ -68,12 +68,16 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'bootstrap', '~> 4.3.1'
+gem 'bxslider-rails'
 gem 'jquery-rails'
 gem 'ransack'
 gem 'rails-i18n', '~> 5.1'
 gem 'dotenv-rails'
 gem 'kaminari'
 gem 'faker'
+gem "geocoder"
+gem 'acts-as-taggable-on'
+gem 'active_hash'
 
 group :production do
   gem 'mysql2'

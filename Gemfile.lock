@@ -33,6 +33,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_hash (3.1.0)
+      activesupport (>= 5.0.0)
     activejob (5.2.4.4)
       activesupport (= 5.2.4.4)
       globalid (>= 0.3.6)
@@ -51,6 +53,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (7.0.0)
+      activerecord (>= 5.0, < 6.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
@@ -69,6 +73,7 @@ GEM
     bullet (6.1.2)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
+    bxslider-rails (4.2.5.1)
     byebug (11.1.3)
     capybara (3.34.0)
       addressable
@@ -115,6 +120,7 @@ GEM
     faker (2.15.1)
       i18n (>= 1.6, < 2)
     ffi (1.13.1)
+    geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http-accept (1.7.0)
@@ -337,9 +343,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_hash
+  acts-as-taggable-on
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.3.1)
   bullet
+  bxslider-rails
   byebug
   capybara
   coffee-rails (~> 4.2)
@@ -349,6 +358,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker
+  geocoder
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
