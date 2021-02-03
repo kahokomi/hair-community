@@ -72,111 +72,6 @@ img {
   width: 20%;
 }
 
-/* topページ*/
-.top-login {
-  background: #7290AC;
-  height: 800px;
-}
-
-.fa-angle-double-down {
-  font-size: 30px;
-}
-
-.top-about {
-  background: #fffacd 50%;
-}
-
-.top-logo {
-  background-image: image-url("logo.png");
-  background-size: contain;
-  height: 300px;
-  width: 300px;
-}
-
-.top-btnline {
-  border-top: 1px solid #dcdcdc;
-}
-
-/*Aboutページ*/
-.about-message {
-  line-height: 2em;
-}
-
-.far.fa-handshake {
-  font-size: 100px;
-}
-
-.hairdresser-image {
-  background-image: image-url("hairdresser.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 230px;
-  width: 230px;
-}
-
-.hairdresser-scissor {
-  background-image: image-url("scissor.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 130px;
-  width: 130px;
-}
-
-.about-user {
-  background-image: image-url("about_user.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 230px;
-  width: 230px;
-}
-
-.about-introduction {
-  font-size: 1.3em;
-}
-
-// アプリケーション説明用の画像
-.header-image {
-  background-image: image-url("header.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 350px;
-}
-
-.userpage-edit {
-  background-image: image-url("userpage_edit.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 350px;
-}
-
-.userpage-edit-select {
-  background-image: image-url("userpage_edit_select.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 250px;
-}
-
-.tweet-index-image {
-  background-image: image-url("tweet_index.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 330px;
-}
-
-.tweet-image {
-  background-image: image-url("tweet_image.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 350px;
-}
-
-.search-image {
-  background-image: image-url("search.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 350px;
-}
-
 /* ヘッダー */
 .navbar-nav {
   display: flex;
@@ -272,8 +167,142 @@ footer {
 .footerFixed{
   min-height: 100vh;
   position: relative;
-  padding-bottom: 60px;
+  padding-bottom: 40px;
   box-sizing: border-box;
+}
+
+/* topページ*/
+.top-login {
+  background: #7290AC;
+  height: 800px;
+}
+
+.fa-angle-double-down {
+  font-size: 30px;
+}
+
+.top-about {
+  background: #fffacd 50%;
+}
+
+.top-logo {
+  background-image: image-url("logo.png");
+  background-size: contain;
+  height: 300px;
+  width: 300px;
+}
+
+.top-btnline {
+  border-top: 1px solid #dcdcdc;
+}
+
+/*Aboutページ*/
+.about-message {
+  line-height: 2em;
+}
+
+.far.fa-handshake {
+  font-size: 100px;
+}
+
+.hairdresser-image {
+  background-image: image-url("hairdresser.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 230px;
+  width: 230px;
+}
+
+.hairdresser-scissor {
+  background-image: image-url("scissor.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 130px;
+  width: 130px;
+}
+
+.about-user {
+  background-image: image-url("about_user.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 230px;
+  width: 230px;
+}
+
+.about-introduction {
+  font-size: 1.3em;
+}
+
+.step1 {
+  background-color: #00bfff;
+}
+
+.step2 {
+  background-color: #87cefa;
+}
+
+.step3 {
+  background-color: #b0e0e6;
+}
+
+.step4 {
+  background-color: #e0ffff;
+}
+
+// アプリケーション説明用の画像
+.header-image {
+  background-image: image-url("header.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+
+.userpage-edit-image {
+  background-image: image-url("userpage_edit.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 350px;
+}
+
+.userpage-edit-select-image {
+  background-image: image-url("userpage_edit_select.png");
+  background-size: cover;
+  background-position: top right;
+  background-repeat: no-repeat;
+  height: 250px;
+}
+
+.tweet-index-image {
+  background-image: image-url("tweet_index.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 330px;
+}
+
+.tweet-image {
+  background-image: image-url("tweet_image.png");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  height: 300px;
+}
+
+.search-image {
+  background-image: image-url("search.png");
+  background-size: cover;
+  background-position: top right;
+  background-repeat: no-repeat;
+  height: 350px;
+}
+
+.chat-image {
+  background-image: image-url("chat.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 350px;
 }
 
 /* タブ機能 */

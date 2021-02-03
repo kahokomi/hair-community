@@ -39,11 +39,10 @@
         <span id="likes_<%= tweet.id %>">
           <%= render "likes/btn", tweet: tweet %>
         </span>
-        <% if current_page?(tweets_path) %>
+        <%# if current_page?(tweets_path) %>
           <span class="offset-6">
-        <% else %>
-          <span class="offset-3">
-        <% end %>
+        <%# else %>
+        <%# end %>
             <%= link_to "はなしてみる", chat_path(tweet.user_id), class: "btn btn-success" %>
           </span>
       <% end %>
