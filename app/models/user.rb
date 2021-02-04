@@ -116,7 +116,7 @@ class User < ApplicationRecord
 
   # ジオコーダーで住所の変換を行う
   geocoded_by :concat_address
-  after_validation :geocode
+  after_validation :geocode, if: :concat_address_changed?
 
   # 都道府県、市町村、番地カラムの内容を結合
   def concat_address
