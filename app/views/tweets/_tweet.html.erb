@@ -15,37 +15,50 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-10 offset-1 my-4">
-      <%= attachment_image_tag tweet, :image, size: "700x500" %>
+
+    <div class="row mx-auto">
+      <%= attachment_image_tag tweet, :image, size: "700x500", class: "col-md-10 mx-auto" %>
     </div>
+
     <div class="row tweet-text">
-      <div class="offset-1 col-md-10 text-break">
+      <div class="col-md-10 text-break mx-auto">
         <%= safe_join(tweet.body.split("\n"),tag(:br)) %>
       </div>
     </div>
-    <% tweet.tags.each do |tag| %>
-      <%= link_to tag.name, tweets_path(tag_name: tag.name), class: "badge badge-info" %>
-    <% end %>
-    <%# ユーザーによって表示内容の切り分け %>
-    <div class="card-footer align-items-center">
-      <% if user_signed_in? && tweet.user_id == current_user.id %>
-        <i class="fas fa-heart offset-2"></i><%= tweet.likes.count %>
-        <% if current_page?(tweets_path) %>
-          <%= link_to "つぶやきを消す", tweet_path(tweet), method: :delete, remote: true, class: "btn btn-danger offset-6", data: {confirm: "削除しますか？"} %>
-        <% else %>
-          <%= link_to "つぶやきを消す", tweet_path(tweet), method: :delete, remote: true, class: "btn btn-danger offset-3", data: {confirm: "削除しますか？"} %>
-        <% end %>
-      <% else %>
-        <span id="likes_<%= tweet.id %>">
-          <%= render "likes/btn", tweet: tweet %>
-        </span>
-        <%# if current_page?(tweets_path) %>
-          <span class="offset-6">
-        <%# else %>
-        <%# end %>
-            <%= link_to "はなしてみる", chat_path(tweet.user_id), class: "btn btn-success" %>
-          </span>
+
+    <div class="row">
+      <div class="col-md-11 mx-auto">
+      <% tweet.tags.each do |tag| %>
+        <%= link_to tag.name, tweets_path(tag_name: tag.name), class: "badge badge-info" %>
       <% end %>
+      </div>
+    </div>
+
+    <%# ユーザーによって表示内容の切り分け %>
+    <div class="row">
+      <div class="col-md-11 mx-auto card-footer align-items-center">
+        <div class="row d-flex align-items-center">
+          <% if user_signed_in? && tweet.user_id == current_user.id %>
+            <div class="col-md-3 text-center">
+              <i class="fas fa-heart"></i><%= tweet.likes.count %>
+            </div>
+            <div class="col-md-9 text-right">
+              <%= link_to "つぶやきを消す", tweet_path(tweet), method: :delete, remote: true, class: "btn btn-danger", data: {confirm: "削除しますか？"} %>
+            </div>
+          <% else %>
+            <div class="col-md-3 text-center">
+              <span id="likes_<%= tweet.id %>">
+                <%= render "likes/btn", tweet: tweet %>
+              </span>
+            </div>
+            <div class="col-md-9 text-right">
+              <span>
+                <%= link_to "はなしてみる", chat_path(tweet.user_id), class: "btn btn-success" %>
+              </span>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

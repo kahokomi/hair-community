@@ -78,7 +78,7 @@ class User < ApplicationRecord
       age: 25,
       sex: "女性",
       job: "エンジニア",
-      is_hairdresser: false
+      is_hairdresser: false,
     ) do |user|
     user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
     end

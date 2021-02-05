@@ -17,25 +17,39 @@
   </head>
 
   <body>
-    <% unless current_page?(root_path) %>
-    <div class="footerFixed">
-    <% end %>
+    <% if current_page?(root_path) %>
       <div>
-        <header>
-          <% if user_signed_in? %>
+    <% elsif controller.controller_name == "sessions" ||
+             controller.controller_name == "registrations" ||
+             controller.controller_name == "passwords" %>
+      <div id="wrap" class="toppage">
+    <% else %>
+      <div id="wrap" class="otherpage">
+    <% end %>
+
+        <% if user_signed_in? && controller.action_name != 'top' %>
+          <header>
             <%= render "layouts/header" %>
-          <% end %>
-        </header>
+          </header>
+        <% end %>
+
         <div class="row bg bg-success time-limit">
           <% if flash[:notice] %>
             <p class="mx-auto pt-3"><%= flash[:notice] %></p>
           <% end %>
         </div>
+
         <%= yield %>
+
+        <% if user_signed_in? && controller.action_name != 'top' %>
+          <% if current_user.is_hairdresser == true %>
+            <footer class="hd_footer">
+          <% else %>
+            <footer class="user_footer">
+          <% end %>
+              <small>©︎hair_community</small>
+            </footer>
+        <% end %>
       </div>
-      <% if user_signed_in? %>
-        <%= render "layouts/footer" %>
-      <% end %>
-    </div>
   </body>
 </html>

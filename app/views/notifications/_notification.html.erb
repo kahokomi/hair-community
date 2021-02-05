@@ -1,10 +1,12 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
+
 <li class="list-group-item">
   <%= link_to user_path(visitor) do %>
     <%= attachment_image_tag visitor, :icon_image, fallback: "no_icon.png", size: "50x50", class: "icon" %>
     <%= visitor.name %>さんが
   <% end %>
+  
   <% if notification.action == 'dm' %>
     あなたに<%= link_to "チャット", chat_path(visitor) %>を送りました
   <% elsif notification.action == 'like' %>
@@ -13,6 +15,7 @@
   <% elsif notification.action == 'follow' %>
     あなたに<%= link_to "フォロー", user_follows_path(visited) %>しました
   <% end %>
+  
   <p class="text-right">
     <%= time_ago_in_words(notification.created_at).upcase %>前
   </p>

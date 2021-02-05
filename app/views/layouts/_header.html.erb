@@ -1,68 +1,68 @@
-<% unless controller.controller_name == 'homes' && controller.action_name == 'top' %>
-<% if current_user.is_hairdresser == true %>
-  <nav class="row navbar navbar-expand-lg navbar-light nav-hd-header">
-<% else %>
-  <nav class="row navbar navbar-expand-lg navbar-light nav-user-header">
-<% end %>
-    <div class="col-md-2">
-      <%= link_to "", tweets_path, class: "navbar-brand" %>
-    </div>
-    <div class="collapse navbar-collapse col-md-8" id="navbarNav">
-      <ul class="navbar-nav w-100 text-center">
+  <% if current_user.is_hairdresser == true %>
+    <nav class="row navbar navbar-expand-lg navbar-light nav-hd-header">
+  <% else %>
+    <nav class="row navbar navbar-expand-lg navbar-light nav-user-header">
+  <% end %>
+      <div class="col-md-2">
+        <%= link_to "", tweets_path, class: "navbar-brand" %>
+      </div>
+      <div class="collapse navbar-collapse col-md-8" id="navbarNav">
+        <ul class="navbar-nav w-100 text-center">
 
-        <li class="nav-item">
-          <%= link_to tweets_path, class: "nav-link", data: {"turbolinks" => false} do %>
-            <i class="fas fa-home"></i><br>
-            <small>ホーム</small>
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to about_path, class: "nav-link" do %>
-            <i class="fas fa-question-circle"></i><br>
-            <small>へあこみゅについて</small>
-          <% end %>
-        </li>
-
-        <li class="nav-item">
-          <%= link_to user_path(current_user), class: "nav-link" do %>
-            <i class="fas fa-user-circle"></i><br>
-            <small>マイページ</small>
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to notifications_path, class: "nav-link" do %>
-            <% if unchecked_notifications.any? %>
-              <span class="fa-stack n-stack">
-                <i class="fas fa-bell fa-stack-2x"></i>
-                <i class="fas fa-circle n-circle fa-stack-1x" style="font-size: 15px;"></i>
-              </span>
-            <% else %>
-              <i class="fas fa-bell"></i>
+          <li class="nav-item">
+            <%= link_to tweets_path, class: "nav-link", data: {"turbolinks" => false} do %>
+              <i class="fas fa-home"></i><br>
+              <small>ホーム</small>
             <% end %>
-            <br><small>通知</small>
-          <% end %>
-        </li>
+          </li>
 
-        <li class="nav-item">
-          <%= link_to users_path, class: "nav-link", 'data-toggle': "modal", 'data-target': "#searchModal" do %>
-            <i class="fas fa-search"></i><br>
-            <small>検索</small>
-          <% end %>
-          <%= render "layouts/search", q: @q %>
-        </li>
+          <li class="nav-item">
+            <%= link_to about_path, class: "nav-link" do %>
+              <i class="fas fa-question-circle"></i><br>
+              <small>へあこみゅについて</small>
+            <% end %>
+          </li>
 
-        <li class="nav-item">
-          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
-            <i class="fas fa-sign-out-alt"></i><br>
-            <small>ログアウト</small>
-          <% end %>
-        </li>
-      </ul>
-    </div>
+          <li class="nav-item">
+            <%= link_to user_path(current_user), class: "nav-link" do %>
+              <i class="fas fa-user-circle"></i><br>
+              <small>マイページ</small>
+            <% end %>
+          </li>
 
-    <p class="ml-auto text-right col-md-2">
-      ログイン中<br>
-      <%= current_user.username %>さん
-    </p>
-  </nav>
-<% end %>
+          <li class="nav-item">
+            <%= link_to notifications_path, class: "nav-link" do %>
+              <% if unchecked_notifications.any? %>
+                <span class="fa-stack n-stack">
+                  <i class="fas fa-bell fa-stack-2x"></i>
+                  <i class="fas fa-circle n-circle fa-stack-1x" style="font-size: 15px;"></i>
+                </span>
+              <% else %>
+                <i class="fas fa-bell"></i>
+              <% end %>
+              <br><small>通知</small>
+            <% end %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to users_path, class: "nav-link", 'data-toggle': "modal", 'data-target': "#searchModal" do %>
+              <i class="fas fa-search"></i><br>
+              <small>検索</small>
+            <% end %>
+            <%= render "layouts/search", q: @q %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+              <i class="fas fa-sign-out-alt"></i><br>
+              <small>ログアウト</small>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+
+      <p class="ml-auto text-right col-md-2">
+        ログイン中<br>
+        <%= current_user.username %>さん
+      </p>
+    </nav>

@@ -1,6 +1,6 @@
-<div class="container-fluid d-flex pb-2">
+<div class="container-fluid d-flex pt-4 pb-5">
   <div class="row mx-auto justify-content-center align-items-center w-75">
-    <h2 class="text-center col-md-12">プロフィール編集</h2>
+    <h2 class="text-center mb-3">プロフィール編集</h2>
     <%= form_with model: @user, local: true, class: "col-md-12" do |f| %>
     <%= render "devise/shared/error_messages", resource: @user %>
 
@@ -114,6 +114,7 @@
           <% end %>
           <%= f.text_field :job, autofocus: true, autocomplete: "job", class: "form-control col-md-8" %>
         </div>
+
         <div class="row field">
           <div class="col-md-3">
             <%= f.label :hair_styles, "希望のヘアスタイル", class: "border-bottom border-secondary" %>

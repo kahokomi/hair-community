@@ -1,7 +1,5 @@
 <% if tweets.exists? %>
-  <%# tweets.includes([:user, :tag_taggings, :tags]).each do |tweet| %>
-    <%= render tweets %>
-  <%# end %>
+  <%= render tweets %>
 <% else %>
   <div class="tweet-box py-3">
     <p class="mx-auto text-center">コンテンツがありません</p>

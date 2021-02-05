@@ -1,9 +1,0 @@
-<% if current_user.is_hairdresser == true %>
-  <footer class="hd_footer">
-<% else %>
-  <footer class="user_footer">
-<% end %>
-    <% unless controller.controller_name == 'homes' && controller.action_name == 'top' %>
-      <small>©︎hair_community</small>
-    <% end %>
-  </footer>

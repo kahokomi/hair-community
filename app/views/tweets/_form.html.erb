@@ -8,8 +8,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= form_with model: tweet, url: tweets_path do |f| %>
-          <div id="tweets_error">
+        <%= form_with model: tweet do |f| %>
+          <div id="tweets-error">
             <%= render 'tweets/errors', tweet: @tweet %>
           </div>
           <div class="form_group">
