@@ -53,7 +53,7 @@ $(document).on('turbolinks:load', function(){
 // 新着ユーザスライダー
 $(document).on('turbolinks:load', function() {
   $('.bxslider').bxSlider({
-    speed: 1000,
+    speed: 900,
     moveSlides: 1,
     pause: 3000,
     maxSlides: 1,

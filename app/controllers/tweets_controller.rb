@@ -16,8 +16,11 @@ class TweetsController < ApplicationController
     @tag = params[:tag_name]
 
     #サイドバーで新規ユーザを表示
-    @new_users = User.where(is_hairdresser: false).order(created_at: :desc)
-    @new_hairdressers = User.where(is_hairdresser: true).order(created_at: :desc)
+    # if current_user.is_hairdresser == true
+      @new_users = User.all.order(created_at: :desc).limit(9)
+    # else
+      # @new_users = User.where(is_hairdresser: true).order(created_at: :desc)
+    # end
   end
 
   def create

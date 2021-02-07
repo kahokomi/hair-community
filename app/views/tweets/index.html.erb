@@ -7,7 +7,12 @@
           <div class="card pt-3">
             <div class="test text-center">
               <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "100x100", class: "icon mx-auto mb-5" %>
-              <%= link_to user.username, user_path(user) %>
+              <%= link_to user.username, user_path(user), style: "display: block;"%>
+              <% if user.is_hairdresser == true %>
+                <div class="badge badge-danger">美容師</div>
+              <% else %>
+                <div class="badge badge-primary">一般ユーザ</div>
+              <% end %>
               <p><%= user.name %></p>
             </div>
           </div>
