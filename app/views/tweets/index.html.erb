@@ -4,8 +4,8 @@
       <h3 class="text-center">新着ユーザ</h3>
       <div class="bxslider">
         <% @new_users.each do |user| %>
-          <div class="card pt-3">
-            <div class="test text-center">
+          <div class="pt-3">
+            <div class="text-center">
               <%= attachment_image_tag user, :icon_image, fallback: "no_icon.png", size: "100x100", class: "icon mx-auto mb-5" %>
               <%= link_to user.username, user_path(user), style: "display: block;"%>
               <% if user.is_hairdresser == true %>
@@ -14,6 +14,13 @@
                 <div class="badge badge-primary">一般ユーザ</div>
               <% end %>
               <p><%= user.name %></p>
+              <p>
+                <% if user.is_hairdresser == true %>
+                  <%= user.position %>
+                <% else %>
+                  <%= user.job %>
+                <% end %>
+              </p>
             </div>
           </div>
         <% end %>

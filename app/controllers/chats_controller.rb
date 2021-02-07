@@ -2,14 +2,15 @@ class ChatsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @currentUserRooms = current_user.user_rooms
-    myRoomIds = []
+    @current_user_rooms = current_user.user_rooms
+    my_room_ids = []
 
-    @currentUserRooms.includes([:room]).each do | ur |
-      myRoomIds << ur.room.id
+    @current_user_rooms.includes([:room]).each do | ur |
+      my_room_ids << ur.room.id
     end
 
-    @anotherUserRooms = UserRoom.where(room_id: myRoomIds).includes([:user]).where.not(user_id: current_user.id)
+    # @another_chats = Chat.where(room_id: my_room_ids).where.not(user_id: current_user.id)
+    @another_user_rooms = UserRoom.where(room_id: my_room_ids).includes([:user]).where.not(user_id: current_user.id)
   end
 
   def show
