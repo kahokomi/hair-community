@@ -6,13 +6,13 @@ class Users::SessionsController < Devise::SessionsController
   def new_hairdresser_guest
     hairdresser = User.guest_hairdresser
     sign_in hairdresser
-    redirect_to tweets_path, notice: 'ゲストユーザー(美容師)としてログインしました。'
+    redirect_to about_path, notice: 'ゲストユーザー(美容師)としてログインしました。'
   end
 
   def new_user_guest
     user = User.guest_user
     sign_in user
-    redirect_to tweets_path, notice: 'ゲストユーザー(一般ユーザ)としてログインしました。'
+    redirect_to about_path, notice: 'ゲストユーザー(一般ユーザ)としてログインしました。'
   end
 
   # GET /resource/sign_in
