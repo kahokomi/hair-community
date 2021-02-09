@@ -62,3 +62,11 @@ $(document).on('turbolinks:load', function() {
     touchEnabled: false
   });
 });
+
+// $(document).on('turbolinks:load', function() {
+//   $('.jscroll').jscroll({
+//     contentSelector: '.scroll-test',
+//     nextSelector: 'span.next a',
+
+//   });
+// });
