@@ -11,18 +11,17 @@ describe 'トップページに関するテスト' do
 
   describe '新規登録に関するテスト' do
     before do
-      visit new_user_registration_path
+      visit new_user_registration_path(is_hairdresser: true)
     end
 
     context '新規登録成功' do
-      it '新規登録後、ツイート一覧画面へ遷移' do
+      it '新規登録後、アバウトページへ遷移' do
         fill_in 'user[email]', with: 'test@testmail'
         fill_in 'user[username]', with: 'Testuser3'
-        choose '一般の方'
         fill_in 'user[password]', with: 'Password1'
         fill_in 'user[password_confirmation]', with: 'Password1'
         click_button '新規登録'
-        expect(current_path).to eq tweets_path
+        expect(current_path).to eq about_path
         expect(page).to have_content "アカウントを登録しました"
       end
     end
@@ -31,7 +30,6 @@ describe 'トップページに関するテスト' do
       it 'メールアドレス未入力の場合エラーメッセージが出るか' do
         fill_in 'user[email]', with: ''
         fill_in 'user[username]', with: 'Testuser3'
-        choose '一般の方'
         fill_in 'user[password]', with: 'Password1'
         fill_in 'user[password_confirmation]', with: 'Password1'
         click_button '新規登録'
@@ -41,7 +39,6 @@ describe 'トップページに関するテスト' do
       it '登録済みメールアドレスの場合エラーメッセージが出るか' do
         fill_in 'user[email]', with: user.email
         fill_in 'user[username]', with: 'Testuser3'
-        choose '一般の方'
         fill_in 'user[password]', with: 'Password1'
         fill_in 'user[password_confirmation]', with: 'Password1'
         click_button '新規登録'
@@ -51,7 +48,6 @@ describe 'トップページに関するテスト' do
       it '登録済みユーザーネームの場合エラーメッセージが出るか' do
         fill_in 'user[email]', with: Faker::Internet.email
         fill_in 'user[username]', with: user.username
-        choose '一般の方'
         fill_in 'user[password]', with: 'Password1'
         fill_in 'user[password_confirmation]', with: 'Password1'
         click_button '新規登録'
@@ -70,7 +66,7 @@ describe 'トップページに関するテスト' do
       fill_in 'user[username]', with: user.username
       fill_in 'user[password]', with: user.password
       click_button 'ログイン'
-      expect(current_path).to eq tweets_path
+      expect(current_path).to eq about_path
     end
     it 'ログイン失敗でログインページに戻っているか' do
       fill_in 'user[username]', with: Faker::Lorem.characters(number: 6)
