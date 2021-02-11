@@ -66,4 +66,5 @@ RSpec.configure do |config|
     driven_by :rack_test
   end
   config.include SignInModule
+  config.include Devise::Test::IntegrationHelpers, type: :request
 end

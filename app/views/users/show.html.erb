@@ -78,10 +78,10 @@
                 </script>
                 <script type="text/javascript">
                   function initMap(){
-                    var test = {lat: <%= @user.latitude %>, lng: <%= @user.longitude %>};
+                    var address = {lat: <%= @user.latitude %>, lng: <%= @user.longitude %>};
                     var map = new google.maps.Map(document.getElementById('map'), {
                               zoom: 15,
-                              center: test
+                              center: address
                               });
                     var transitLayer = new google.maps.TransitLayer();
                     transitLayer.setMap(map);
@@ -92,7 +92,7 @@
                     });
 
                     var marker = new google.maps.Marker({
-                                  position:test,
+                                  position:address,
                                   map: map,
                                   title: contentString
                                  });
