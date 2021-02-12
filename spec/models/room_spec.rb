@@ -26,5 +26,21 @@ RSpec.describe Room, "モデルに関するテスト", type: :model do
         expect(association.macro).to eq :has_many
       end
     end
+
+    context 'Userモデルとの関係' do
+      let(:target) { :user }
+
+      it '1:Nとなっている' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context 'Notificationモデルとの関係' do
+      let(:target) { :notifications }
+
+      it '1:Nとなっている' do
+        expect(association.macro).to eq :has_many
+      end
+    end
   end
 end

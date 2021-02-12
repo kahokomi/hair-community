@@ -14,6 +14,10 @@ ja:
         hair_salon: "所属"
         job: "職業"
         age: "年齢"
+        price: "カット料金"
+        prefecture_id: "都道府県"
+        city: "区・市"
+        street: "番地・建物名・部屋番号"
     models:
       user: "ユーザ"
   devise:

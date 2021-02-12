@@ -17,28 +17,14 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
   end
 
   describe '新規登録時バリデーションのチェック' do
-    context '空欄かどうか' do
-      it 'usernameに対してエラーメッセージが返ってくるか' do
+    context 'usernameのテスト' do
+      it '空欄の場合エラーメッセージが返ってくるか' do
         user.username = ''
         is_expected.to eq false
         expect(user.errors[:username]).to include("を入力してください")
       end
 
-      it 'emailに対してエラーメッセージが返ってくるか' do
-        user.email = ''
-        is_expected.to eq false
-        expect(user.errors[:email]).to include("を入力してください")
-      end
-
-      it 'passwordに対してエラーメッセージが返ってくるか' do
-        user.password = ''
-        is_expected.to eq false
-        expect(user.errors[:password]).to include("を入力してください")
-      end
-    end
-
-    context '一意でない場合' do
-      it 'usernameに対してエラーメッセージが返ってくるか' do
+      it '一意でない場合エラーメッセージが返ってくるか' do
         hairdresser.username = 'Hogehoge1'
         hairdresser.save
         user.username = hairdresser.username
@@ -47,7 +33,51 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
         expect(user.errors[:username]).to include("はすでに存在します")
       end
 
-      it 'emailに対してエラーメッセージが返ってくるか' do
+      it '6文字以下の場合エラーメッセージが返ってくるか' do
+        user.username = Faker::Lorem.characters(number: 5)
+        is_expected.to eq false
+        expect(user.errors[:username]).to include("は6文字以上で入力してください")
+      end
+
+      it '20文字以上の場合エラーメッセージが返ってくるか' do
+        user.username = Faker::Lorem.characters(number: 21)
+        is_expected.to eq false
+        expect(user.errors[:username]).to include("は20文字以内で入力してください")
+      end
+
+      it '半角英数以外が含まれている場合エラーメッセージが返ってくるか' do
+        user.username = 'Hoge-hoge1'
+        is_expected.to eq false
+        expect(user.errors[:username]).to include("は不正な値です")
+      end
+
+      it '数字が含まれていない場合エラーメッセージが返ってくるか' do
+        user.username = 'Hogehoge'
+        is_expected.to eq false
+        expect(user.errors[:username]).to include("は不正な値です")
+      end
+
+      it '英大文字が含まれていない場合エラーメッセージが返ってくるか' do
+        user.username = 'hogehog1'
+        is_expected.to eq false
+        expect(user.errors[:username]).to include("は不正な値です")
+      end
+
+      it '英小文字が含まれていない場合エラーメッセージが返ってくるか' do
+        user.username = 'HOGEHOGE1'
+        is_expected.to eq false
+        expect(user.errors[:username]).to include("は不正な値です")
+      end
+    end
+
+    context 'emailのテスト' do
+      it '空欄の場合エラーメッセージが返ってくるか' do
+        user.email = ''
+        is_expected.to eq false
+        expect(user.errors[:email]).to include("を入力してください")
+      end
+
+      it '一意でない場合エラーメッセージが返ってくるか' do
         hairdresser.email = 'hoge@hoge'
         hairdresser.save
         user.email = hairdresser.email
@@ -55,36 +85,54 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
         is_expected.to eq false
         expect(user.errors[:email]).to include("はすでに存在します")
       end
+
+      it 'アットマークが含まれているか' do
+        user.email = 'hogehoge'
+        user.save
+        is_expected.to eq false
+        expect(user.errors[:email]).to include("は不正な値です")
+      end
     end
 
-    context '必要字数を満たしているか' do
-      it 'passwordが6文字以下の場合エラーメッセージが返ってくるか' do
+    context 'passwordに関するテスト' do
+      it '空欄の場合エラーメッセージが返ってくるか' do
+        user.password = ''
+        is_expected.to eq false
+        expect(user.errors[:password]).to include("を入力してください")
+      end
+
+      it '6文字以下の場合エラーメッセージが返ってくるか' do
         user.password = Faker::Lorem.characters(number: 5)
         is_expected.to eq false
         expect(user.errors[:password]).to include("は6文字以上で入力してください")
       end
 
-      it 'usernameが6文字以下の場合エラーメッセージが返ってくるか' do
-        user.username = Faker::Lorem.characters(number: 5)
+      it '128文字以上の場合エラーメッセージが返ってくるか' do
+        user.password = Faker::Lorem.characters(number: 129)
         is_expected.to eq false
-        expect(user.errors[:username]).to include("は6文字以上で入力してください")
+        expect(user.errors[:password]).to include("は128文字以内で入力してください")
       end
 
-      it 'usernameが20文字以上の場合エラーメッセージが返ってくるか' do
-        user.username = Faker::Lorem.characters(number: 21)
+      it '半角英数のみでない場合エラーメッセージが返ってくるか' do
+        user.password = 'Hoge-hoge1'
         is_expected.to eq false
-        expect(user.errors[:username]).to include("は20文字以内で入力してください")
+        expect(user.errors[:password]).to include("は不正な値です")
       end
-    end
 
-    context '半角英数で入力されているか' do
-      it 'usernameが半角英数のみでない場合エラーメッセージが返ってくるか' do
-        user.username = 'hoge-hoge'
+      it '数字が含まれていない場合エラーメッセージが返ってくるか' do
+        user.password = 'Hogehoge'
         is_expected.to eq false
-        expect(user.errors[:username]).to include("は不正な値です")
+        expect(user.errors[:password]).to include("は不正な値です")
       end
-      it 'passwordが半角英数のみでない場合エラーメッセージが返ってくるか' do
-        user.password = 'hoge-hoge'
+
+      it '英大文字が含まれていない場合エラーメッセージが返ってくるか' do
+        user.password = 'hogehoge1'
+        is_expected.to eq false
+        expect(user.errors[:password]).to include("は不正な値です")
+      end
+
+      it '英小文字が含まれていない場合エラーメッセージが返ってくるか' do
+        user.password = 'HOGEHOGE1'
         is_expected.to eq false
         expect(user.errors[:password]).to include("は不正な値です")
       end
@@ -95,88 +143,238 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
     let!(:user) { create(:user) }
     let!(:hairdresser) { create(:hairdresser) }
 
-    context '空欄かどうか' do
-      context 'usernameが空の場合' do
-        subject { user.errors[:username] }
+    context 'usernameに関するテスト' do
+      subject { user.errors[:username] }
 
+      context '空の場合' do
         let(:username) { '' }
-
         before { user.update(username: username) }
-
         it 'エラーメッセージが返ってくるか' do
           is_expected.to include("を入力してください")
         end
       end
 
-      context 'nameが空の場合' do
-        subject { user.errors[:name] }
+      context '一意でない場合' do
+        let(:username) { 'Testuser2' }
+        before { user.update(username: username) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("はすでに存在します")
+        end
+      end
 
+      context '6文字以下の場合' do
+        let(:username) { Faker::Lorem.characters(number: 5) }
+        before { user.update(username: username) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("は6文字以上で入力してください")
+        end
+      end
+
+      context '20文字以上の場合' do
+        let(:username) { Faker::Lorem.characters(number: 21) }
+        before { user.update(username: username) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("は20文字以内で入力してください")
+        end
+      end
+
+      context '半角英数以外が含まれている場合' do
+        let(:username) { 'Hoge-hoge1' }
+        before { user.update(username: username) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("は不正な値です")
+        end
+      end
+
+      context '数字が含まれていない場合か' do
+        let(:username) { 'Hogehoge' }
+        before { user.update(username: username) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("は不正な値です")
+        end
+      end
+
+      context '英大文字が含まれていない場合エラーメッセージが返ってくるか' do
+        let(:username) { 'hogehoge1' }
+        before { user.update(username: username) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("は不正な値です")
+        end
+      end
+
+      context '英小文字が含まれていない場合エラーメッセージが返ってくるか' do
+        let(:username) { 'HOGEHOGE1' }
+        before { user.update(username: username) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("は不正な値です")
+        end
+      end
+    end
+
+    context 'nameのテスト' do
+      subject { user.errors[:name] }
+
+      context '空欄の場合' do
         let(:name) { '' }
-
         before { user.update(name: name) }
-
-        it 'エラーメッセージが返ってくるか' do
-          is_expected.to include("を入力してください")
-        end
-      end
-
-      context 'yearが空の場合' do
-        subject { hairdresser.errors[:year] }
-
-        let(:year) { nil }
-
-        before { hairdresser.update(year: year) }
-
         it 'エラーメッセージが返ってくるか' do
           is_expected.to include("を入力してください")
         end
       end
     end
 
-    context '一般ユーザ 数値が正しく入力されているか' do
-      subject { user.errors[:age] }
-
-      let(:age) { 1 }
-
-      before { user.update(age: age) }
-
-      context 'ageの数値が0以下になっている場合' do
-        let(:age) { 0 }
-
-        it 'エラーメッセージが返ってくるか' do
-          is_expected.to include("は1以上の値にしてください")
-        end
-      end
-
-      context 'ageの数値が100以上担っている場合' do
-        let(:age) { 101 }
-
-        it 'エラーメッセージが返ってくるか' do
-          is_expected.to include("は100以下の値にしてください")
-        end
-      end
-    end
-
-    context '美容師 数値が正しく入力されているか' do
+    context 'yearのテスト' do
       subject { hairdresser.errors[:year] }
 
-      let(:year) { 1 }
+      context '空の場合' do
+        let(:year) { nil }
+        before { hairdresser.update(year: year) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("を入力してください")
+        end
+      end
 
-      before { hairdresser.update(year: year) }
-
-      context 'yearの数値が0以下になっている場合' do
+      context '数値が0以下の場合' do
         let(:year) { 0 }
-
+        before { hairdresser.update(year: year) }
         it 'エラーメッセージが返ってくるか' do
           is_expected.to include("は1以上の値にしてください")
         end
       end
 
-      context 'yearの数値が0以下になっている場合' do
+      context '数値が101以上の場合' do
         let(:year) { 101 }
-
+        before { hairdresser.update(year: year) }
         it 'エラーメッセージが返ってくるか' do
           is_expected.to include("は100以下の値にしてください")
+        end
+      end
+
+      context '数値に文字列が含まれている場合' do
+        let(:year) { "year" }
+        before { hairdresser.update(year: year) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("は数値で入力してください")
+        end
+      end
+    end
+
+    context 'positionに関するテスト' do
+      subject { hairdresser.errors[:position] }
+
+      context '空欄の場合' do
+        let(:position) { '' }
+        before { hairdresser.update(position: position) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("を入力してください")
+        end
+      end
+    end
+
+    context 'hair_salonに関するテスト' do
+      subject { hairdresser.errors[:hair_salon] }
+
+      context '空欄の場合' do
+        let(:hair_salon) { '' }
+        before { hairdresser.update(hair_salon: hair_salon) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("を入力してください")
+        end
+      end
+    end
+
+    context 'jobに関するテスト' do
+      subject { user.errors[:job] }
+
+      context '空欄の場合' do
+        let(:job) { '' }
+        before { user.update(job: job) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("を入力してください")
+        end
+      end
+    end
+
+    context 'ageに関するテスト' do
+      subject { user.errors[:age] }
+
+      context '数値が0以下の場合' do
+        let(:age) { 0 }
+        before { user.update(age: age) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("は1以上の値にしてください")
+        end
+      end
+
+      context '数値が101以上の場合' do
+        let(:age) { 101 }
+        before { user.update(age: age) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("は100以下の値にしてください")
+        end
+      end
+
+      context '数値に文字列が含まれている場合' do
+        let(:age) { "age" }
+        before { user.update(age: age) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("は数値で入力してください")
+        end
+      end
+    end
+
+    context 'priceに関するテスト' do
+      subject { hairdresser.errors[:price] }
+
+      context '数値が0以下の場合' do
+        let(:price) { 0 }
+        before { hairdresser.update(price: price) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("は1以上の値にしてください")
+        end
+      end
+
+      context '数値に文字列が含まれている場合' do
+        let(:price) { "price" }
+        before { hairdresser.update(price: price) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("は数値で入力してください")
+        end
+      end
+    end
+
+    context 'prefectureに関するテスト' do
+      subject { hairdresser.errors[:prefecture_id] }
+
+      context '空欄の場合' do
+        let(:prefecture_id) { nil }
+        before { hairdresser.update(prefecture_id: prefecture_id) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("を入力してください")
+        end
+      end
+    end
+
+    context 'cityに関するテスト' do
+      subject { hairdresser.errors[:city] }
+
+      context '空欄の場合' do
+        let(:city) { '' }
+        before { hairdresser.update(city: city) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("を入力してください")
+        end
+      end
+    end
+
+    context 'streetに関するテスト' do
+      subject { hairdresser.errors[:street] }
+
+      context '空欄の場合' do
+        let(:street) { '' }
+        before { hairdresser.update(street: street) }
+        it 'エラーメッセージが返ってくるか' do
+          is_expected.to include("を入力してください")
         end
       end
     end
@@ -213,6 +411,46 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
 
     context 'Chatモデルとの関係' do
       let(:target) { :chats }
+
+      it '1:Nとなっているか' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context 'Roomモデルとの関係' do
+      let(:target) { :rooms }
+
+      it '1:Nとなっているか' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context 'UserCommunicationStyleモデルとの関係' do
+      let(:target) { :user_communication_styles }
+
+      it '1:Nとなっているか' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context 'UserHairStyleモデルとの関係' do
+      let(:target) { :user_hair_styles }
+
+      it '1:Nとなっているか' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context 'CommunicationStyleモデルとの関係' do
+      let(:target) { :communication_styles }
+
+      it '1:Nとなっているか' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context 'HairStyleモデルとの関係' do
+      let(:target) { :hair_styles }
 
       it '1:Nとなっているか' do
         expect(association.macro).to eq :has_many

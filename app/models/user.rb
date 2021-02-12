@@ -16,6 +16,10 @@ class User < ApplicationRecord
   validates :hair_salon, presence: true, on: :update, if: :hairdresser_valid?
   validates :job, presence: true, on: :update, unless: :hairdresser_valid?
   validates :age, allow_nil: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 100 }, on: :update
+  validates :price, allow_nil: true, numericality: { greater_than_or_equal_to: 1 }, on: :update, if: :hairdresser_valid?
+  validates :prefecture_id, presence: true, on: :update, if: :hairdresser_valid?
+  validates :city, presence: true, on: :update, if: :hairdresser_valid?
+  validates :street, presence: true, on: :update, if: :hairdresser_valid?
 
   # 美容師の時のみバリデーションをかける
   def hairdresser_valid?
@@ -24,6 +28,11 @@ class User < ApplicationRecord
 
   attachment :image
   attachment :icon_image
+
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :prefecture, optional: true, presence: true
+  belongs_to :area, optional: true, presence: true
 
   has_many :tweets, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -34,10 +43,6 @@ class User < ApplicationRecord
   has_many :user_hair_styles, dependent: :destroy
   has_many :communication_styles, through: :user_communication_styles
   has_many :hair_styles, through: :user_hair_styles
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :prefecture, optional: true
-  belongs_to :area, optional: true
 
   # フォロー機能のアソシエーション
   has_many :active_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy

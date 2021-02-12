@@ -5,13 +5,15 @@
   <table class="table table-hover mx-auto w-50">
     <tbody>
       <% if @another_user_rooms.present? %>
-        <% @another_user_rooms.each do |e| %>
+        <% @another_user_rooms.includes([:room, :chats]).each do |e| %>
         <tr>
           <td class="text-center">
             <%= link_to e.user.username, chat_path(e.user_id) %>
           </td>
           <td class="text-muted">
-            <%= e.room.chats.order(created_at: :desc).take.try(:content).truncate(15) %>
+            <% if e.room.chats.present? %>
+              <%= e.room.chats.order(created_at: :desc).take.try(:content).truncate(15) %>
+            <% end %>
           </td>
         </tr>
         <% end %>

@@ -9,11 +9,10 @@ RSpec.describe "Users", type: :request do
     context "ログインしている場合" do
       before do
         sign_in hairdresser
-        get user_path params: id
+        get user_path hairdresser.id
       end
 
       it "リクエストが成功すること" do
-        
         expect(response).to have_http_status "200"
       end
     end
