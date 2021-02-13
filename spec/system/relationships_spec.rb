@@ -4,7 +4,6 @@ require 'rails_helper'
 require 'simplecov'
 SimpleCov.start 'rails'
 
-
 describe 'フォローに関するテスト' do
   let!(:user) { create(:user) }
 

@@ -29,7 +29,6 @@ class User < ApplicationRecord
   attachment :image
   attachment :icon_image
 
-
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture, optional: true, presence: true
   belongs_to :area, optional: true, presence: true
@@ -71,7 +70,7 @@ class User < ApplicationRecord
       street: "神南1丁目",
       is_hairdresser: true
     ) do |user|
-    user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
+      user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
     end
   end
 
@@ -85,7 +84,7 @@ class User < ApplicationRecord
       job: "エンジニア",
       is_hairdresser: false,
     ) do |user|
-    user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
+      user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
     end
   end
 
@@ -109,7 +108,7 @@ class User < ApplicationRecord
 
   # フォロー通知のメソッド
   def create_notification_follow(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ", current_user.id, id, 'follow'])
     if temp.blank?
       notification = current_user.active_notification.new(
         visited_id: id,
@@ -126,9 +125,8 @@ class User < ApplicationRecord
   # 都道府県、市町村、番地カラムの内容を結合
   def concat_address
     # binding.pry
-    if self.prefecture
-      "%s%s%s"%([self.prefecture.name, self.city, self.street])
+    if prefecture
+      "%s%s%s" % [prefecture.name, city, street]
     end
   end
-
 end

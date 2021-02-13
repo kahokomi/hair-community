@@ -4,7 +4,6 @@ require 'rails_helper'
 require 'simplecov'
 SimpleCov.start 'rails'
 
-
 RSpec.describe Tweet, "モデルに関するテスト", type: :model do
   subject { tweet.valid? }
 

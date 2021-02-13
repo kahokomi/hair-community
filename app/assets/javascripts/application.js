@@ -16,6 +16,8 @@
 //= require bootstrap-sprockets
 //= require bxslider
 //= require activestorage
+//= require underscore
+//= require googlemap
 //= require turbolinks
 //= require_tree .
 
@@ -62,31 +64,6 @@ $(document).on('turbolinks:load', function() {
     touchEnabled: false
   });
 });
-
-$(document).on('turbolinks:load', function initMap(){
-  var address = {lat: <%= @user.latitude %>, lng: <%= @user.longitude %>};
-  var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: address
-            });
-  var transitLayer = new google.maps.TransitLayer();
-  transitLayer.setMap(map);
-
-  var contentString = '住所：<%= @user.concat_address %>';
-  var infowindow = new google.maps.InfoWindow({
-    content: contentString
-  });
-
-  var marker = new google.maps.Marker({
-                position:address,
-                map: map,
-                title: contentString
-               });
-
-   marker.addListener('click', function() {
-     infowindow.open(map, marker);
-   });
-}
 
 // $(document).on('turbolinks:load', function() {
 //   $('.jscroll').jscroll({

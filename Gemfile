@@ -78,9 +78,8 @@ gem 'faker'
 gem "geocoder"
 gem 'acts-as-taggable-on'
 gem 'active_hash'
+gem 'gon'
 
 group :production do
   gem 'mysql2'
 end
-
-

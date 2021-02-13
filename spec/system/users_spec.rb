@@ -4,7 +4,6 @@ require 'rails_helper'
 require 'simplecov'
 SimpleCov.start 'rails'
 
-
 describe 'トップページに関するテスト' do
   let!(:user) { create(:user) }
   let!(:hairdresser) { create(:hairdresser) }

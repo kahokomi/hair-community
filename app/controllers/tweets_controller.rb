@@ -15,11 +15,11 @@ class TweetsController < ApplicationController
     @tags = Tweet.includes([:tags, :tag_taggings]).tags_on(:tags)
     @tag = params[:tag_name]
 
-    #サイドバーで新規ユーザを表示
+    # サイドバーで新規ユーザを表示
     # if current_user.is_hairdresser == true
-      @new_users = User.all.order(created_at: :desc).limit(9)
+    @new_users = User.all.order(created_at: :desc).limit(9)
     # else
-      # @new_users = User.where(is_hairdresser: true).order(created_at: :desc)
+    # @new_users = User.where(is_hairdresser: true).order(created_at: :desc)
     # end
   end
 

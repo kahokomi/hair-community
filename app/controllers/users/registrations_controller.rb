@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  #GET /resource/sign_up
+  # GET /resource/sign_up
   def new
     @is_hairdresser = params[:is_hairdresser]
     super

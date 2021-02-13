@@ -5,7 +5,7 @@ class ChatsController < ApplicationController
     @current_user_rooms = current_user.user_rooms
     my_room_ids = []
 
-    @current_user_rooms.includes([:room]).each do | ur |
+    @current_user_rooms.includes([:room]).each do |ur|
       my_room_ids << ur.room.id
     end
 
@@ -33,9 +33,9 @@ class ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
     @room = @chat.room
-      if @chat.save
-        @chat.create_notification_chat(current_user, @room)
-      end
+    if @chat.save
+      @chat.create_notification_chat(current_user, @room)
+    end
   end
 
   private

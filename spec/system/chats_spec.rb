@@ -4,7 +4,6 @@ require 'rails_helper'
 require 'simplecov'
 SimpleCov.start 'rails'
 
-
 describe 'チャットに関するテスト' do
   let!(:user) { create(:user) }
   let!(:room) { create(:room) }

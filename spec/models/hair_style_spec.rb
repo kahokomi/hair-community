@@ -4,7 +4,6 @@ require 'rails_helper'
 require 'simplecov'
 SimpleCov.start 'rails'
 
-
 RSpec.describe HairStyle, "モデルに関するテスト", type: :model do
   describe 'アソシエーションのテスト' do
     let(:association) do

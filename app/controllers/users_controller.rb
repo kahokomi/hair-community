@@ -8,6 +8,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    gon.lat = @user.latitude
+    gon.lng = @user.longitude
+    gon.concat_address = @user.concat_address
     @my_tweets = Tweet.includes([:tags, :user]).where(user_id: @user).order(created_at: :desc)
   end
 
@@ -44,8 +47,8 @@ class UsersController < ApplicationController
       :image,
       :position,
       :icon_image,
-      { :hair_style_ids=> [] },
-      { :communication_style_ids=> [] }
-  )
+      { :hair_style_ids => [] },
+      { :communication_style_ids => [] }
+    )
   end
 end
