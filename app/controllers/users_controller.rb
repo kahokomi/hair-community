@@ -8,10 +8,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @my_tweets = Tweet.includes([:tags, :user]).where(user_id: @user).order(created_at: :desc)
+
+    # googlemapピン表示のため
     gon.lat = @user.latitude
     gon.lng = @user.longitude
     gon.concat_address = @user.concat_address
-    @my_tweets = Tweet.includes([:tags, :user]).where(user_id: @user).order(created_at: :desc)
   end
 
   def edit
