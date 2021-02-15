@@ -77,7 +77,7 @@ http://hair-community.work/
 https://docs.google.com/spreadsheets/d/1z2ZpQg3YC6JsmXkjLbuz_eYbRtVUfsT8RfFLmWhzp3Y/edit#gid=0
 
 ## 開発環境
-- OS：Linux(CentOS)
+
 ### フロントエンド
 - Bootstrap 4.3.1
 - JavaScript、jQuery、Ajax
@@ -87,7 +87,7 @@ https://docs.google.com/spreadsheets/d/1z2ZpQg3YC6JsmXkjLbuz_eYbRtVUfsT8RfFLmWhz
 - Rails 5.2.4.4
 
 ### 開発環境
-- AWS Cloud9
+- Linux(CentOS)
 
 ### 本番環境
 - AWS (EC2、RDS for MySQL、Route53)
