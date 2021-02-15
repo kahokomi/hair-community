@@ -73,7 +73,7 @@ http://hair-community.work/
 - いいね機能
 - フォロー機能
 
-その他詳細な機能一覧はこちら
+詳細な機能一覧はこちら
 https://docs.google.com/spreadsheets/d/1z2ZpQg3YC6JsmXkjLbuz_eYbRtVUfsT8RfFLmWhzp3Y/edit#gid=0
 
 ## 開発環境
