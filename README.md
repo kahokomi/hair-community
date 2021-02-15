@@ -38,9 +38,9 @@ http://hair-community.work/
 私が美容室、美容師の方を選ぶ際、SNSからスタイル写真を見て決めることが多いのですが、   
 実際に行ってみると**お店の雰囲気や美容師の方との相性が私とは少し合わないな**、と感じることがしばしばありました。  
 
-また、友人の中にも  
-**「美容師の方が積極的に話しかけてくれないところがいいな」「自分の要望がうまく伝えられなかった...」**
-と悩む方も多くいます。  
+また、友人からも   
+**「美容師の方が積極的に話しかけてくれないところがいいな」「自分の要望がうまく伝えられなかった...」**  
+といった悩みを聞くこともありました。    
 そういった方達が当サイトを通じて美容師さんと直接コミュニケーションを取ることで、  
 自分に合った美容師さんを見つけ、生涯顧客になれるようなきっかけづくりを実現したいです。
 
@@ -61,15 +61,14 @@ http://hair-community.work/
 ## 設計書
 
 ### 機能一覧
-- CRUD処理(ツイート・マイページ)
 - 通知機能
   - フォロー・いいね・DMが来た時に通知
 - 検索機能
   - キーワード検索の他、ヘアスタイルやコミュニケーションスタイルも選択可能
-- タグ機能
+- タグ機能(acts-as-taggable-on)
   - つぶやきの際追加可能
 - マップ表示
-  - Google Maps APIを使用
+  - 美容師側マイページの住所を使用し表示
 - DM機能
 - いいね機能
 - フォロー機能
@@ -79,11 +78,44 @@ https://docs.google.com/spreadsheets/d/1z2ZpQg3YC6JsmXkjLbuz_eYbRtVUfsT8RfFLmWhz
 
 ## 開発環境
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby
-- フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
-- IDE：Cloud9
+### フロントエンド
+- Bootstrap 4.3.1
+- JavaScript、jQuery、Ajax
 
-<!--## 使用素材-->
-<!--- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。-->
-<!--- 使用しない場合は、使用素材の項目をREADMEから削除してください。-->
+### バックエンド
+- Ruby 2.6.3
+- Rails 5.2.4.4
+
+### 開発環境
+- AWS Cloud9
+
+### 本番環境
+- AWS (EC2、RDS for MySQL、Route53)
+- MySQL2
+- Nginx、 Puma
+- GitHub Actions
+
+### テスト
+- Rspec (単体／結合） 計100以上
+
+### その他使用技術、工夫した点
+- N+1問題の解消(bullet)
+- リーダブルコード(Rubocop-airbnb、部分テンプレート等)
+- 非同期通信 (フォロー、いいね、投稿・削除ボタン、DM)
+- 外部API(Google Maps API)
+- チーム開発を意識したGitHubの活用 （プルリク、マージ）
+- 新着ユーザのスライダー表示(bxslider-rails)
+- ActiveHush(都道府県、東京のエリアデータ)
+
+### ER図
+
+
+## 使用素材
+シルエットイラスト様  
+https://www.silhouette-illust.com/
+
+イラストAC様  
+https://www.ac-illust.com/
+
+フォントフリー様
+https://fontfree.me/
