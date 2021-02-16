@@ -94,7 +94,8 @@ https://docs.google.com/spreadsheets/d/1z2ZpQg3YC6JsmXkjLbuz_eYbRtVUfsT8RfFLmWhz
 - Rails 5.2.4.4
 
 ### 開発環境
-- Linux(CentOS)
+- Amazon Linux
+- IDE(Cloud9)
 
 ### 本番環境
 - AWS (EC2、RDS for MySQL、Route53)
