@@ -26,7 +26,7 @@
         <% end %>
       </div>
     </div>
-    <div class="wrap col-md-6">
+   <div class="wrap col-md-6">
       <% if @tag.present? %>
         <h3>絞り込みタグ：<%= @tag %></h3>
       <% end %>
@@ -38,10 +38,10 @@
       <div class="height-fixed scroll">
         <div id="tab-contents">
             <div id="tab1" class="tab tweet-tab">
-              <%= render 'lists', tweets: @hd_tweets %>
+              <%= render 'tweets/lists', tweets: @hd_tweets %>
             </div>
             <div id="tab2" class="tab tweet-tab">
-              <%= render 'lists', tweets: @user_tweets %>
+              <%= render 'tweets/lists', tweets: @user_tweets %>
             </div>
         </div>
       </div>

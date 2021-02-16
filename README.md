@@ -93,10 +93,6 @@ https://docs.google.com/spreadsheets/d/1z2ZpQg3YC6JsmXkjLbuz_eYbRtVUfsT8RfFLmWhz
 - Ruby 2.6.3
 - Rails 5.2.4.4
 
-### 開発環境
-- Amazon Linux
-- IDE(Cloud9)
-
 ### 本番環境
 - AWS (EC2、RDS for MySQL、Route53)
 - MySQL2
@@ -104,7 +100,7 @@ https://docs.google.com/spreadsheets/d/1z2ZpQg3YC6JsmXkjLbuz_eYbRtVUfsT8RfFLmWhz
 - GitHub Actions
 
 ### テスト
-- Rspec (単体／結合） 計100以上
+- Rspec (単体／結合)
 
 ### その他使用技術、工夫した点
 - N+1問題の解消(bullet)
