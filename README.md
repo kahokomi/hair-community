@@ -87,7 +87,7 @@ https://docs.google.com/spreadsheets/d/1z2ZpQg3YC6JsmXkjLbuz_eYbRtVUfsT8RfFLmWhz
 
 ### フロントエンド
 - Bootstrap 4.3.1
-- JavaScript、jQuery、Ajax
+- JavaScript、jQuery
 
 ### バックエンド
 - Ruby 2.6.3
