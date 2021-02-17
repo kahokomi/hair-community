@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'simplecov'
+SimpleCov.start 'rails'
 
 RSpec.describe "Users", type: :request do
   describe "マイページのテスト" do
