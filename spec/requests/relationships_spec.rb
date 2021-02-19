@@ -6,6 +6,9 @@ SimpleCov.start 'rails'
 
 describe 'フォローに関するテスト' do
   let!(:user) { create(:user) }
+  let!(:hairdresser) { create(:hairdresser) }
+  let!(:)
+  
 
   describe 'フォロー一覧ページ' do
     context 'アクセス制限のテスト' do
