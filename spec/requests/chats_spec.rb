@@ -7,7 +7,6 @@ SimpleCov.start 'rails'
 RSpec.describe "Chats", type: :request do
   let(:user) { create(:user) }
   let(:hairdresser) { create(:hairdresser) }
-  let(:user) { create(:user) }
   let(:room) { create(:room) }
   let(:chat) { create(:chat, user_id: user.id, room_id: room.id) }
   let(:chat_params) { { chat: { user_id: user, content: "hoge", created_at: "2021-02-08 11:38:31", updated_at: "2021-02-08 11:38:31" } } }
@@ -26,13 +25,15 @@ RSpec.describe "Chats", type: :request do
       end
 
       context "ログインしていない場合" do
-        it "リクエストが失敗すること" do
+        before do
           get chat_path(user)
-          expect(response).to have_http_status "302"
+        end
+
+        it "リクエストが失敗すること" do
+          expect(response).to have_http_status "401"
         end
 
         it 'ログインページへ遷移しているか' do
-          get chat_path(user)
           expect(response.body).to include "ログインしてください。"
         end
       end
@@ -46,13 +47,12 @@ RSpec.describe "Chats", type: :request do
 
       context '投稿をしたとき(POST #create)' do
         it '投稿後正しく画面が表示されること' do
-          byebug
-          post chats_path(chat_params), xhr: true
+          post chats_path, params: chat_params, xhr: true
           expect(response).to have_http_status "200"
         end
 
         it '非同期にてメッセージが正常に保存されていること' do
-          post chats_path(chat_params), xhr: true
+          post chats_path, params: chat_params, xhr: true
           expect(response.body).to include 'hoge'
         end
       end
